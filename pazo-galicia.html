@@ -109,19 +109,19 @@
   .g4 { grid-column:6/9; grid-row:2/3; }
   .g5 { grid-column:9/13; grid-row:2/3; }
 
-  /* EXPERIENCES — updated to 6 cards, 3x2 */
-  .experiences { background:var(--ink); padding:7rem; }
+  /* EXPERIENCES — 6 cards, all visible above the fold */
+  .experiences { background:var(--ink); padding:4.5rem 5rem 3rem; min-height:100vh; display:flex; flex-direction:column; }
   .experiences .section-title { color:var(--cream); }
   .exp-intro { color:rgba(221,216,206,0.75); max-width:600px; margin-bottom:0; }
-  .exp-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:4rem; flex-wrap:wrap; gap:1.5rem; }
-  .exp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; border:1px solid rgba(184,145,58,0.15); }
-  .exp-card { position:relative; overflow:hidden; cursor:pointer; aspect-ratio:3/4; }
+  .exp-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem; flex-shrink:0; }
+  .exp-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:1px; border:1px solid rgba(184,145,58,0.15); flex:1; min-height:0; }
+  .exp-card { position:relative; overflow:hidden; cursor:pointer; min-height:0; }
   .exp-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.65) saturate(0.8); transition:transform 0.8s ease, filter 0.5s ease; }
   .exp-card:hover img { transform:scale(1.07); filter:brightness(0.5) saturate(0.9); }
-  .exp-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,8,0.92) 0%, transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:2rem; transition:background 0.4s; }
+  .exp-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,8,0.92) 0%, transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.6rem; transition:background 0.4s; }
   .exp-card:hover .exp-overlay { background:linear-gradient(to top, rgba(15,12,8,0.97) 0%, rgba(15,12,8,0.4) 100%); }
-  .exp-number { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); margin-bottom:0.4rem; }
-  .exp-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem; }
+  .exp-number { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); margin-bottom:0.3rem; }
+  .exp-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--cream); margin-bottom:0.4rem; }
   .exp-desc { font-size:0.76rem; font-weight:300; color:var(--stone); line-height:1.65; opacity:0; transform:translateY(8px); transition:opacity 0.4s, transform 0.4s; }
   .exp-card:hover .exp-desc { opacity:1; transform:translateY(0); }
   .exp-partners-hint { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-top:0.8rem; opacity:0; transition:opacity 0.4s 0.1s; cursor:pointer; display:inline-block; border-bottom:1px solid rgba(184,145,58,0.4); padding-bottom:0.15rem; }
@@ -256,8 +256,9 @@
     .g3 { grid-column:2/3; grid-row:2/3; }
     .g4 { grid-column:1/2; grid-row:3/4; }
     .g5 { grid-column:2/3; grid-row:3/4; }
-    .experiences { padding:4rem 2rem; }
-    .exp-grid { grid-template-columns:1fr 1fr; }
+    .experiences { padding:4rem 2rem 3rem; min-height:unset; }
+    .exp-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+    .exp-card { aspect-ratio:4/3; }
     .seasons { flex-direction:column; padding:4rem 2rem; gap:2rem; }
     .seasons-cards { flex-wrap:wrap; }
     .season-card { min-width:calc(50% - 1px); }
@@ -399,7 +400,7 @@
         <div class="exp-number">01</div>
         <div class="exp-title">Wine &amp; Gastronomy</div>
         <div class="exp-desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
-        <div class="exp-partners-hint" data-filter="wine">5 partner wineries nearby →</div>
+        <div class="exp-partners-hint" data-filter="wine">7 partner wineries nearby →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -505,11 +506,12 @@
         <div class="partner-card" data-cat="fishing">
           <span class="partner-cat-tag cat-fishing">🎣 Fishing &amp; Coast</span>
           <div class="partner-name">Barco La Toja</div>
-          <div class="partner-dist">~24 km · O Grove</div>
+          <div class="partner-dist">~24 km · Isla de La Toja</div>
           <div class="partner-desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.7</span>
             <a class="partner-phone" href="tel:+34609884650">+34 609 88 46 50</a>
+            <a class="partner-web" href="https://www.barcolatoja.com" target="_blank">barcolatoja.com ↗</a>
           </div>
         </div>
 
@@ -521,6 +523,7 @@
           <div class="partner-meta">
             <span class="partner-rating">★ 4.6</span>
             <a class="partner-phone" href="tel:+34986731343">+34 986 73 13 43</a>
+            <a class="partner-web" href="https://www.crucerosriasbaixas.com" target="_blank">crucerosriasbaixas.com ↗</a>
           </div>
         </div>
 
@@ -643,6 +646,7 @@
           <div class="partner-meta">
             <span class="partner-rating">★ 4.8</span>
             <a class="partner-phone" href="tel:+34986555562">+34 986 55 55 62</a>
+            <a class="partner-web" href="https://www.bodegasgranbazan.com/en" target="_blank">bodegasgranbazan.com ↗</a>
           </div>
         </div>
 
@@ -884,8 +888,8 @@ const PARTNERS = [
   // Fishing
   { lat:42.5092, lng:-8.8170, name:'Pescaturismo Cambados',   cat:'fishing',   dist:'~19 km', phone:'+34 622 34 73 89', rating:'5.0' },
   { lat:42.3989, lng:-8.8061, name:'Escaparía',               cat:'fishing',   dist:'~19 km', phone:'+34 669 61 53 61', rating:'4.9' },
-  { lat:42.4959, lng:-8.8613, name:'Barco La Toja',           cat:'fishing',   dist:'~24 km', phone:'+34 609 88 46 50', rating:'4.7' },
-  { lat:42.4955, lng:-8.8611, name:'Cruceiros Rías Baixas',   cat:'fishing',   dist:'~24 km', phone:'+34 986 73 13 43', rating:'4.6' },
+  { lat:42.4889, lng:-8.8500, name:'Barco La Toja',           cat:'fishing',   dist:'~24 km', phone:'+34 609 88 46 50', rating:'4.7' },
+  { lat:42.4972, lng:-8.8636, name:'Cruceiros Rías Baixas',   cat:'fishing',   dist:'~24 km', phone:'+34 986 73 13 43', rating:'4.6' },
   // Hiking
   { lat:42.4306, lng:-8.6430, name:'MountainPics Adventures', cat:'hiking',    dist:'~6 km',  phone:'+34 603 56 08 07', rating:'5.0' },
   // Horseback
