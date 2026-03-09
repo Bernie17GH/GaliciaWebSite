@@ -307,6 +307,20 @@
     .map-panel { position:relative; top:0; height:360px; border-left:none; border-top:1px solid var(--mist); }
     footer { flex-direction:column; gap:1.2rem; text-align:center; padding:2rem; }
   }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switcher { display:flex; align-items:center; gap:0.4rem; margin-left:1.5rem; flex-shrink:0; }
+  .lang-btn {
+    display:flex; align-items:center; gap:0.35rem;
+    background:none; border:1px solid transparent;
+    color:var(--stone); font-family:'Cinzel',serif;
+    font-size:0.6rem; letter-spacing:0.12em;
+    padding:0.3rem 0.55rem; border-radius:3px;
+    cursor:pointer; transition:all 0.25s; line-height:1;
+  }
+  .lang-btn img { border-radius:2px; display:block; }
+  .lang-btn:hover { color:var(--cream); border-color:rgba(184,145,58,0.4); }
+  .lang-btn.lang-active { color:var(--gold); border-color:var(--gold); }
 </style>
 </head>
 <body>
@@ -314,23 +328,31 @@
 <nav id="nav">
   <a href="#" class="nav-logo">Pazo · Galicia</a>
   <ul class="nav-links">
-    <li><a href="#story">The Estate</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#experiences">Experiences</a></li>
-    <li><a href="#weddings">Celebrations</a></li>
-    <li><a href="#contact">Enquire</a></li>
+    <li><a href="#story" data-i18n="nav.estate">The Estate</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#experiences" data-i18n="nav.experiences">Experiences</a></li>
+    <li><a href="#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
+    <li><a href="#contact" data-i18n="nav.enquire">Enquire</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn lang-active" onclick="setLang('en')" title="English">
+      <img src="https://flagcdn.com/gb.svg" alt="English" width="22" height="16"> EN
+    </button>
+    <button class="lang-btn" onclick="setLang('es')" title="Español">
+      <img src="https://flagcdn.com/es.svg" alt="Español" width="22" height="16"> ES
+    </button>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="hero-label">Galicia, Spain &nbsp;·&nbsp; 17th Century Pazo</span>
-    <h1>Where <em>granite</em> holds<br>four centuries<br>of <em>living memory</em></h1>
-    <p class="hero-sub">A noble Galician estate — its walls draped in ivy, its chapel bell still ringing — now opening for weddings, retreats, and a quiet base for nearby excursions.</p>
-    <a href="#story" class="hero-cta">Discover the Pazo</a>
+    <span class="hero-label" data-i18n="hero.label">Galicia, Spain &nbsp;·&nbsp; 17th Century Pazo</span>
+    <h1 data-i18n-html="hero.h1">Where <em>granite</em> holds<br>four centuries<br>of <em>living memory</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">A noble Galician estate — its walls draped in ivy, its chapel bell still ringing — now opening for weddings, retreats, and a quiet base for nearby excursions.</p>
+    <a href="#story" class="hero-cta" data-i18n="hero.cta">Discover the Pazo</a>
   </div>
-  <div class="scroll-hint">Scroll</div>
+  <div class="scroll-hint" data-i18n="hero.scroll">Scroll</div>
 </section>
 
 <div class="intro-band">
@@ -361,14 +383,14 @@
 <section class="story" id="story">
   <div class="story-image reveal">
     <img loading="lazy" src="images/chapel-bell-tower.png" alt="The chapel and bell tower"/>
-    <div class="story-image-caption">The estate chapel — c. 17th century</div>
+    <div class="story-image-caption" data-i18n="story.caption">The estate chapel — c. 17th century</div>
   </div>
   <div class="story-text reveal">
-    <span class="section-label">The Estate</span>
-    <h2 class="section-title">A <em>pazo</em> unlike<br>any other</h2>
+    <span class="section-label" data-i18n="story.label">The Estate</span>
+    <h2 class="section-title" data-i18n-html="story.h2">A <em>pazo</em> unlike<br>any other</h2>
     <div class="gold-rule"></div>
     <p class="body-text">
-      Scattered across the Celtic hills of Galicia, the <em>pazo</em> is the noble manor house of this singular corner of Spain — built not to impress cities, but to be rooted deeply in the land. This estate, dating to the 17th century, is one of the finest examples: a long granite body draped in centuries of ivy, a private chapel with its original bell tower, heraldic stone fountains, a cobbled inner courtyard, and views that stretch over the valley to the forested hills beyond.
+      <span data-i18n-html="story.p1.start">Scattered across the Celtic hills of Galicia, the <em>pazo</em> is the noble manor house of this singular corner of Spain — built not to impress cities, but to be rooted deeply in the land. This estate, dating to the 17th century, is one of the finest examples: a long granite body draped in centuries of ivy, a private chapel with its original bell tower, heraldic stone fountains, a cobbled inner courtyard, and views that stretch over the valley to the forested hills beyond.
     </p>
     <br>
     <p class="body-text">
@@ -380,23 +402,23 @@
 <div class="features">
   <div class="feature-item reveal">
     <span class="feature-icon">🏛️</span>
-    <span class="feature-name">17th Century</span>
-    <p class="feature-desc">Original granite manor, chapel, and courtyard in remarkable condition</p>
+    <span class="feature-name" data-i18n="feat.century.name">17th Century</span>
+    <p class="feature-desc" data-i18n="feat.century.desc">Original granite manor, chapel, and courtyard in remarkable condition</p>
   </div>
   <div class="feature-item reveal">
     <span class="feature-icon">🌿</span>
-    <span class="feature-name">Private Grounds</span>
-    <p class="feature-desc">Meadows, orchards, woodland trails, and sweeping valley views</p>
+    <span class="feature-name" data-i18n="feat.grounds.name">Private Grounds</span>
+    <p class="feature-desc" data-i18n="feat.grounds.desc">Meadows, orchards, woodland trails, and sweeping valley views</p>
   </div>
   <div class="feature-item reveal">
     <span class="feature-icon">🔔</span>
-    <span class="feature-name">Chapel on Site</span>
-    <p class="feature-desc">An original estate chapel with bell tower — rare and extraordinary</p>
+    <span class="feature-name" data-i18n="feat.chapel.name">Chapel on Site</span>
+    <p class="feature-desc" data-i18n="feat.chapel.desc">An original estate chapel with bell tower — rare and extraordinary</p>
   </div>
   <div class="feature-item reveal">
     <span class="feature-icon">🗺️</span>
-    <span class="feature-name">Galicia, España</span>
-    <p class="feature-desc">Celtic heartland — green, wild, and one of Europe's best-kept secrets</p>
+    <span class="feature-name" data-i18n="feat.location.name">Galicia, España</span>
+    <p class="feature-desc" data-i18n="feat.location.desc">Celtic heartland — green, wild, and one of Europe's best-kept secrets</p>
   </div>
 </div>
 
@@ -404,8 +426,8 @@
   <div class="gallery-header">
     <div class="gallery-header-inner reveal">
       <div>
-        <span class="section-label">The Estate in Images</span>
-        <h2 class="section-title">See the <em>Pazo</em></h2>
+        <span class="section-label" data-i18n="gallery.label">The Estate in Images</span>
+        <h2 class="section-title" data-i18n-html="gallery.h2">See the <em>Pazo</em></h2>
       </div>
     </div>
   </div>
@@ -422,11 +444,11 @@
 <section class="experiences" id="experiences">
   <div class="exp-header reveal">
     <div>
-      <span class="section-label">What Awaits</span>
-      <h2 class="section-title" style="color:var(--cream)">Curated <em style="color:var(--stone)">Experiences</em></h2>
-      <p class="exp-intro body-text">Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.</p>
+      <span class="section-label" data-i18n="exp.label">What Awaits</span>
+      <h2 class="section-title" style="color:var(--cream)" data-i18n-html="exp.h2">Curated <em style="color:var(--stone)">Experiences</em></h2>
+      <p class="exp-intro body-text" data-i18n="exp.intro">Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.</p>
     </div>
-    <a href="#partners" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;">View All Partners →</a>
+    <a href="#partners" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;" data-i18n="exp.allpartners">View All Partners →</a>
   </div>
   <div class="exp-grid">
     <div class="exp-card reveal">
@@ -434,9 +456,9 @@
       <img loading="lazy" class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
       <div class="exp-overlay">
         <div class="exp-number">01</div>
-        <div class="exp-title">Wine &amp; Gastronomy</div>
-        <div class="exp-desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
-        <div class="exp-partners-hint" data-filter="wine">7 partner wineries nearby →</div>
+        <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+        <div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
+        <div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -444,9 +466,9 @@
       <img loading="lazy" class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
       <div class="exp-overlay">
         <div class="exp-number">02</div>
-        <div class="exp-title">Hiking &amp; Nature</div>
-        <div class="exp-desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
-        <div class="exp-partners-hint" data-filter="hiking">6 certified Blue Trails &amp; guided walks →</div>
+        <div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+        <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
+        <div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">6 certified Blue Trails &amp; guided walks →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -454,9 +476,9 @@
       <img loading="lazy" class="exp-img" src="images/Horseback2.jpg" alt="Horse in Galician eucalyptus forest"/>
       <div class="exp-overlay">
         <div class="exp-number">03</div>
-        <div class="exp-title">Horseback Riding</div>
-        <div class="exp-desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.</div>
-        <div class="exp-partners-hint" data-filter="horseback">3 equestrian partners within 11 km →</div>
+        <div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
+        <div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.</div>
+        <div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">3 equestrian partners within 11 km →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -464,9 +486,9 @@
       <img loading="lazy" class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast Rías Baixas from above"/>
       <div class="exp-overlay">
         <div class="exp-number">04</div>
-        <div class="exp-title">Coastal Fishing</div>
-        <div class="exp-desc">Join local fisherwomen harvesting shellfish in the Rías, cruise the mussel rafts of O Grove with unlimited local wine, or charter a private boat to hidden Atlantic beaches.</div>
-        <div class="exp-partners-hint" data-filter="fishing">6 fishing partners — coast &amp; river →</div>
+        <div class="exp-title" data-i18n="exp.fishing.title">Coastal Fishing</div>
+        <div class="exp-desc" data-i18n="exp.fishing.desc">Join local fisherwomen harvesting shellfish in the Rías, cruise the mussel rafts of O Grove with unlimited local wine, or charter a private boat to hidden Atlantic beaches.</div>
+        <div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">6 fishing partners — coast &amp; river →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -474,9 +496,9 @@
       <img loading="lazy" class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
       <div class="exp-overlay">
         <div class="exp-number">05</div>
-        <div class="exp-title">Weddings &amp; Celebrations</div>
-        <div class="exp-desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.</div>
-        <div class="exp-partners-hint" data-filter="events">Full-service planning partners available →</div>
+        <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+        <div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.</div>
+        <div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
       </div>
     </div>
     <div class="exp-card reveal">
@@ -484,9 +506,9 @@
       <img loading="lazy" class="exp-img" src="images/Corporate2.jpg" alt="Indoor boardroom corporate event"/>
       <div class="exp-overlay">
         <div class="exp-number">06</div>
-        <div class="exp-title">Corporate Retreats</div>
-        <div class="exp-desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.</div>
-        <div class="exp-partners-hint" data-filter="all">Full curated itineraries on request →</div>
+        <div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
+        <div class="exp-desc" data-i18n="exp.corporate.desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.</div>
+        <div class="exp-partners-hint" data-filter="all" data-i18n="exp.corporate.hint">Full curated itineraries on request →</div>
       </div>
     </div>
   </div>
@@ -502,17 +524,17 @@
     <div class="combined-left">
       <div class="combined-header reveal">
         <div class="combined-header-text">
-          <span class="section-label">Local Partners</span>
-          <h2 class="section-title">Our Curated <em>Experiences</em></h2>
-          <p class="body-text">Exceptional local businesses, wineries, and guides — all personally selected to enrich your time at the Pazo. Each is within comfortable day-excursion distance or hosted right here at the Pazo.</p>
+          <span class="section-label" data-i18n="partners.label">Local Partners</span>
+          <h2 class="section-title" data-i18n-html="partners.h2">Our Curated <em>Experiences</em></h2>
+          <p class="body-text" data-i18n="partners.intro">Exceptional local businesses, wineries, and guides — all personally selected to enrich your time at the Pazo. Each is within comfortable day-excursion distance or hosted right here at the Pazo.</p>
         </div>
         <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="fishing">🎣 Fishing</button>
-          <button class="filter-btn" data-filter="hiking">🥾 Hiking</button>
-          <button class="filter-btn" data-filter="horseback">🐴 Horseback</button>
-          <button class="filter-btn" data-filter="wine">🍷 Wine</button>
-          <button class="filter-btn" data-filter="events">💒 Events</button>
+          <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
+          <button class="filter-btn" data-filter="fishing" data-i18n="filter.fishing">🎣 Fishing</button>
+          <button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 Hiking</button>
+          <button class="filter-btn" data-filter="horseback" data-i18n="filter.horseback">🐴 Horseback</button>
+          <button class="filter-btn" data-filter="wine" data-i18n="filter.wine">🍷 Wine</button>
+          <button class="filter-btn" data-filter="events" data-i18n="filter.events">💒 Events</button>
         </div>
       </div>
       <div class="combined-cards">
@@ -520,10 +542,10 @@
 
         <!-- FISHING -->
         <div class="partner-card" data-cat="fishing">
-          <span class="partner-cat-tag cat-fishing">🎣 Fishing &amp; Coast</span>
+          <span class="partner-cat-tag cat-fishing" data-i18n="pcat.fishing">🎣 Fishing &amp; Coast</span>
           <div class="partner-name" data-partner-slug="pescaturismo">Pescaturismo Cambados</div>
           <div class="partner-dist">~19 km · Cambados harbour</div>
-          <div class="partner-desc">Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.</div>
+          <div class="partner-desc" data-i18n="partner.pescaturismo.desc">Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 5.0</span>
             <a class="partner-phone" href="tel:+34622347389">+34 622 34 73 89</a>
@@ -535,7 +557,7 @@
           <span class="partner-cat-tag cat-fishing">🎣 Fishing &amp; Coast</span>
           <div class="partner-name" data-partner-slug="escaparia">Escaparía</div>
           <div class="partner-dist">~19 km · Sanxenxo marina</div>
-          <div class="partner-desc">Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.</div>
+          <div class="partner-desc" data-i18n="partner.escaparia.desc">Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.9</span>
             <a class="partner-phone" href="tel:+34669615361">+34 669 61 53 61</a>
@@ -547,7 +569,7 @@
           <span class="partner-cat-tag cat-fishing">🎣 Fishing &amp; Coast</span>
           <div class="partner-name" data-partner-slug="barco-latoja">Barco La Toja</div>
           <div class="partner-dist">~24 km · Isla de La Toja</div>
-          <div class="partner-desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
+          <div class="partner-desc" data-i18n="partner.latoja.desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.7</span>
             <a class="partner-phone" href="tel:+34609884650">+34 609 88 46 50</a>
@@ -559,7 +581,7 @@
           <span class="partner-cat-tag cat-fishing">🎣 Fishing &amp; Coast</span>
           <div class="partner-name" data-partner-slug="cruceiros">Cruceiros Rías Baixas</div>
           <div class="partner-dist">~24 km · O Grove</div>
-          <div class="partner-desc">A large catamaran operation with 1,600+ reviews — the region's most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.</div>
+          <div class="partner-desc" data-i18n="partner.cruceiros.desc">A large catamaran operation with 1,600+ reviews — the region's most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.6</span>
             <a class="partner-phone" href="tel:+34986731343">+34 986 73 13 43</a>
@@ -569,10 +591,10 @@
 
         <!-- RIVER FISHING -->
         <div class="partner-card" data-cat="fishing">
-          <span class="partner-cat-tag cat-fishing">🎣 River Fishing</span>
+          <span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River Fishing</span>
           <div class="partner-name" data-partner-slug="rio-lerez">Río Lérez · Coto de Cutián</div>
           <div class="partner-dist">~5 km · Campo Lameiro</div>
-          <div class="partner-desc">One of Galicia's finest trout rivers, running through ancient oak forest virtually on the estate's doorstep. The Cutián beat offers 5 daily permits on a first-come basis. A guide is not included — but we can help you arrange one.</div>
+          <div class="partner-desc" data-i18n="partner.lerez.desc">One of Galicia's finest trout rivers, running through ancient oak forest virtually on the estate's doorstep. The Cutián beat offers 5 daily permits on a first-come basis. A guide is not included — but we can help you arrange one.</div>
           <div class="partner-meta">
             <span class="partner-rating">🎣 Trout · Reo</span>
             <a class="partner-web" href="https://www.depo.gal/es/-/permisos-de-pesca-no-coto-de-cutian" target="_blank">Permits via DEPO ↗</a>
@@ -583,7 +605,7 @@
           <span class="partner-cat-tag cat-fishing">🎣 River Fishing</span>
           <div class="partner-name" data-partner-slug="rios-verdugo">Ríos Verdugo &amp; Oitavén · Coto de Soutomaior</div>
           <div class="partner-dist">~12 km · Soutomaior</div>
-          <div class="partner-desc">Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.</div>
+          <div class="partner-desc" data-i18n="partner.verdugo.desc">Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.</div>
           <div class="partner-meta">
             <span class="partner-rating">🎣 Trout · Barbel</span>
             <a class="partner-web" href="https://www.facebook.com/pescadesoutomaior.sociedade/" target="_blank">Sociedad de Pesca ↗</a>
@@ -592,10 +614,10 @@
 
         <!-- HIKING -->
         <div class="partner-card" data-cat="hiking">
-          <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
+          <span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="mountainpics">MountainPics Adventures</div>
           <div class="partner-dist">~6 km · Pontevedra city</div>
-          <div class="partner-desc">Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.</div>
+          <div class="partner-desc" data-i18n="partner.mountainpics.desc">Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 5.0</span>
             <a class="partner-phone" href="tel:+34603560807">+34 603 56 08 07</a>
@@ -607,7 +629,7 @@
           <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="sendeiro-azul">Sendeiro Azul do Río Verdugo</div>
           <div class="partner-dist">~10 km · Ponte Caldelas</div>
-          <div class="partner-desc">An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC — outstanding for all levels.</div>
+          <div class="partner-desc" data-i18n="partner.sendeiro.desc">An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC — outstanding for all levels.</div>
           <div class="partner-meta">
             <span class="partner-rating">🥾 Blue Trail · All levels</span>
             <a class="partner-web" href="https://www.senderosazules.org/sendeiro-azul-do-rio-verdugo-ponte-caldelas" target="_blank">senderosazules.org ↗</a>
@@ -618,7 +640,7 @@
           <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="sendero-poio">Sendero Litoral · Poio</div>
           <div class="partner-dist">~5 km · Poio</div>
-          <div class="partner-desc">A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.</div>
+          <div class="partner-desc" data-i18n="partner.poio.desc">A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.</div>
           <div class="partner-meta">
             <span class="partner-rating">🥾 4.9 km · 1h · Easy</span>
             <a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-poio" target="_blank">senderosazules.org ↗</a>
@@ -629,7 +651,7 @@
           <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="sendero-marin">Ruta Montes y Playas · Marín</div>
           <div class="partner-dist">~14 km · Marín</div>
-          <div class="partner-desc">A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest — and a visit to the extraordinary Bronze Age petroglyphs of Mogor, one of the finest rock art sites in Europe. Panoramic mirador views over the Ría throughout.</div>
+          <div class="partner-desc" data-i18n="partner.marin.desc">A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest — and a visit to the extraordinary Bronze Age petroglyphs of Mogor, one of the finest rock art sites in Europe. Panoramic mirador views over the Ría throughout.</div>
           <div class="partner-meta">
             <span class="partner-rating">🥾 11 km · 3h · Easy–Medium</span>
             <a class="partner-web" href="https://www.senderosazules.org/ruta-montes-y-playas-marin" target="_blank">senderosazules.org ↗</a>
@@ -640,7 +662,7 @@
           <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="sendero-sanxenxo">Sendero Litoral Sanxenxo–Portonovo</div>
           <div class="partner-dist">~20 km · Sanxenxo</div>
-          <div class="partner-desc">An 8.6 km coastal path between Sanxenxo and Portonovo tracing clifftop promenades, dune systems, and fishing village waterfronts — ending at the fish market lonja with views across the Ría. Easy terrain, outstanding scenery throughout.</div>
+          <div class="partner-desc" data-i18n="partner.sanxenxo.desc">An 8.6 km coastal path between Sanxenxo and Portonovo tracing clifftop promenades, dune systems, and fishing village waterfronts — ending at the fish market lonja with views across the Ría. Easy terrain, outstanding scenery throughout.</div>
           <div class="partner-meta">
             <span class="partner-rating">🥾 8.6 km · 2h 30 · Easy</span>
             <a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-sanxenxo-portonovo-sanxenxo" target="_blank">senderosazules.org ↗</a>
@@ -651,7 +673,7 @@
           <span class="partner-cat-tag cat-hiking">🥾 Hiking</span>
           <div class="partner-name" data-partner-slug="sendero-cabo-udra">Sendero Cabo Udra · Bueu</div>
           <div class="partner-dist">~25 km · Bueu</div>
-          <div class="partner-desc">An 11.3 km circular trail through a Natura 2000 reserve and Special Protection Area for Birds at Cabo Udra — dramatic Atlantic headland, diverse habitats, and an on-site Nature Interpretation Centre. The most wild and challenging of the local Blue Trails.</div>
+          <div class="partner-desc" data-i18n="partner.cabudra.desc">An 11.3 km circular trail through a Natura 2000 reserve and Special Protection Area for Birds at Cabo Udra — dramatic Atlantic headland, diverse habitats, and an on-site Nature Interpretation Centre. The most wild and challenging of the local Blue Trails.</div>
           <div class="partner-meta">
             <span class="partner-rating">🥾 11.3 km · 2h 45 · Medium</span>
             <a class="partner-web" href="https://www.senderosazules.org/sendero-de-cabo-udra-bueu" target="_blank">senderosazules.org ↗</a>
@@ -660,10 +682,10 @@
 
         <!-- HORSEBACK -->
         <div class="partner-card" data-cat="horseback">
-          <span class="partner-cat-tag cat-horseback">🐴 Horseback</span>
+          <span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
           <div class="partner-name" data-partner-slug="hipica-appalaosa">Hípica Appalaosa</div>
           <div class="partner-dist">~6 km · Pontevedra</div>
-          <div class="partner-desc">Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.</div>
+          <div class="partner-desc" data-i18n="partner.appalaosa.desc">Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.7</span>
             <a class="partner-phone" href="tel:+34697290355">+34 697 29 03 55</a>
@@ -675,7 +697,7 @@
           <span class="partner-cat-tag cat-horseback">🐴 Horseback</span>
           <div class="partner-name" data-partner-slug="o-casal">O Casal Equitación</div>
           <div class="partner-dist">~9 km · Salcedo</div>
-          <div class="partner-desc">Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.</div>
+          <div class="partner-desc" data-i18n="partner.ocasal.desc">Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.3</span>
             <a class="partner-phone" href="tel:+34671077280">+34 671 07 72 80</a>
@@ -687,7 +709,7 @@
           <span class="partner-cat-tag cat-horseback">🐴 Horseback</span>
           <div class="partner-name" data-partner-slug="hipica-rabadeira">Hípica Rabadeira</div>
           <div class="partner-dist">~11 km · Puentecaldelas</div>
-          <div class="partner-desc">The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.</div>
+          <div class="partner-desc" data-i18n="partner.rabadeira.desc">The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 5.0</span>
             <a class="partner-phone" href="tel:+34659131999">+34 659 13 19 99</a>
@@ -697,10 +719,10 @@
 
         <!-- WINE -->
         <div class="partner-card" data-cat="wine">
-          <span class="partner-cat-tag cat-wine">🍷 Wine</span>
+          <span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="pazo-senorans">Pazo de Señorans</div>
           <div class="partner-dist">~13 km · Paradela</div>
-          <div class="partner-desc">One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.</div>
+          <div class="partner-desc" data-i18n="partner.senorans.desc">One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.8</span>
             <a class="partner-phone" href="tel:+34986715373">+34 986 71 53 73</a>
@@ -712,7 +734,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="terras-lantano">Terras de Lantaño</div>
           <div class="partner-dist">~13 km · Baceiro</div>
-          <div class="partner-desc">A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.</div>
+          <div class="partner-desc" data-i18n="partner.lantano.desc">A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.7</span>
             <a class="partner-phone" href="tel:+34615646442">+34 615 64 64 42</a>
@@ -724,7 +746,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="mar-de-frades">Bodega Mar de Frades</div>
           <div class="partner-dist">~14 km · Val do Salnés</div>
-          <div class="partner-desc">An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.</div>
+          <div class="partner-desc" data-i18n="partner.marefrades.desc">An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.5</span>
             <a class="partner-phone" href="tel:+34637479469">+34 637 47 94 69</a>
@@ -736,7 +758,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="vionta">Bodegas Vionta</div>
           <div class="partner-dist">~15 km · Meaño</div>
-          <div class="partner-desc">A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.</div>
+          <div class="partner-desc" data-i18n="partner.vionta.desc">A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.8</span>
             <a class="partner-phone" href="tel:+34986747566">+34 986 74 75 66</a>
@@ -748,7 +770,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="pazo-baion">Bodega Pazo Baión</div>
           <div class="partner-dist">~15 km · A Abelleira</div>
-          <div class="partner-desc">A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.</div>
+          <div class="partner-desc" data-i18n="partner.pazobaioon.desc">A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.7</span>
             <a class="partner-phone" href="tel:+34636800234">+34 636 80 02 34</a>
@@ -760,7 +782,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="granbazan">Bodegas Granbazán</div>
           <div class="partner-dist">~16 km · Tremoedo</div>
-          <div class="partner-desc">One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.</div>
+          <div class="partner-desc" data-i18n="partner.granbazan.desc">One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.8</span>
             <a class="partner-phone" href="tel:+34986555562">+34 986 55 55 62</a>
@@ -772,7 +794,7 @@
           <span class="partner-cat-tag cat-wine">🍷 Wine</span>
           <div class="partner-name" data-partner-slug="martin-codax">Bodegas Martín Códax</div>
           <div class="partner-dist">~17 km · Cambados</div>
-          <div class="partner-desc">One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.</div>
+          <div class="partner-desc" data-i18n="partner.martincodax.desc">One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 4.6</span>
             <a class="partner-phone" href="tel:+34986526040">+34 986 52 60 40</a>
@@ -782,10 +804,10 @@
 
         <!-- EVENTS -->
         <div class="partner-card" data-cat="events">
-          <span class="partner-cat-tag cat-events">💒 Weddings &amp; Events</span>
+          <span class="partner-cat-tag cat-events" data-i18n="pcat.events">💒 Weddings &amp; Events</span>
           <div class="partner-name" data-partner-slug="consejo-silvia">El Consejo de Silvia</div>
-          <div class="partner-dist">At the Pazo</div>
-          <div class="partner-desc">Silvia specialises in destination weddings and is experienced at coordinating international couples remotely — from Miami, China, and beyond. Methodical, warm, and universally praised.</div>
+          <div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
+          <div class="partner-desc" data-i18n="partner.silvia.desc">Silvia specialises in destination weddings and is experienced at coordinating international couples remotely — from Miami, China, and beyond. Methodical, warm, and universally praised.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 5.0</span>
             <a class="partner-phone" href="tel:+34647032575">+34 647 03 25 75</a>
@@ -796,8 +818,8 @@
         <div class="partner-card" data-cat="events">
           <span class="partner-cat-tag cat-events">💒 Weddings &amp; Events</span>
           <div class="partner-name" data-partner-slug="la-narunera">La Narunera</div>
-          <div class="partner-dist">At the Pazo</div>
-          <div class="partner-desc">Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer's dream — every event she designs is considered a visual masterpiece.</div>
+          <div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
+          <div class="partner-desc" data-i18n="partner.ainara.desc">Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer's dream — every event she designs is considered a visual masterpiece.</div>
           <div class="partner-meta">
             <span class="partner-rating">★ 5.0</span>
             <a class="partner-phone" href="tel:+34657630414">+34 657 63 04 14</a>
@@ -823,37 +845,37 @@
     <img loading="lazy" src="images/inner-courtyard.png" alt="Inner courtyard for weddings"/>
   </div>
   <div class="weddings-content reveal">
-    <span class="section-label">Celebrations</span>
-    <h2 class="section-title">Weddings &amp; <em>Special Events</em></h2>
-    <p class="body-text" style="color:rgba(221,216,206,0.75)">
+    <span class="section-label" data-i18n="wed.label">Celebrations</span>
+    <h2 class="section-title" data-i18n-html="wed.h2">Weddings &amp; <em>Special Events</em></h2>
+    <p class="body-text" style="color:rgba(221,216,206,0.75)" data-i18n="wed.intro">
       The pazo's cobbled courtyard, colonnaded galleries, chapel, and sweeping grounds make it one of the most extraordinary wedding venues in all of Spain. A celebration here is not merely memorable — it is unforgettable.
     </p>
     <ul class="event-list">
-      <li>Exclusive estate hire for weddings and private celebrations</li>
-      <li>On-site chapel available for ceremonies</li>
-      <li>Private accommodation for the wedding party and guests</li>
-      <li>In-house catering with regional Galician cuisine and local wines</li>
-      <li>Stone courtyards, terraces, and gardens for outdoor receptions</li>
-      <li>Family holidays and multi-generational group stays</li>
-      <li>Full event coordination and trusted local supplier network</li>
+      <li data-i18n="wed.li1">Exclusive estate hire for weddings and private celebrations</li>
+      <li data-i18n="wed.li2">On-site chapel available for ceremonies</li>
+      <li data-i18n="wed.li3">Private accommodation for the wedding party and guests</li>
+      <li data-i18n="wed.li4">In-house catering with regional Galician cuisine and local wines</li>
+      <li data-i18n="wed.li5">Stone courtyards, terraces, and gardens for outdoor receptions</li>
+      <li data-i18n="wed.li6">Family holidays and multi-generational group stays</li>
+      <li data-i18n="wed.li7">Full event coordination and trusted local supplier network</li>
     </ul>
   </div>
 </div>
 
 <div class="details">
   <div class="detail-text reveal">
-    <span class="section-label">Details of the Estate</span>
-    <h2 class="section-title">Centuries of <em>craft</em> in stone</h2>
+    <span class="section-label" data-i18n="det.label">Details of the Estate</span>
+    <h2 class="section-title" data-i18n-html="det.h2">Centuries of <em>craft</em> in stone</h2>
     <div class="gold-rule"></div>
-    <p class="body-text">
+    <p class="body-text" data-i18n-html="det.body">
       Every corner of this pazo tells a story. The heraldic fountain bears the family coat of arms of its original noble owners, carved in granite four hundred years ago. The <em>cruceiro</em> — the traditional Galician stone cross — stands watch over the orchard as it always has. The colonnaded gallery looks over the valley, unchanged since the day it was built.
     </p>
     <div class="detail-facts">
-      <div class="detail-fact"><span class="fact-label">Built</span><span class="fact-value">17th Century</span></div>
-      <div class="detail-fact"><span class="fact-label">Architecture</span><span class="fact-value">Galician Pazo</span></div>
-      <div class="detail-fact"><span class="fact-label">Chapel</span><span class="fact-value">On-site, original bell tower</span></div>
-      <div class="detail-fact"><span class="fact-label">Grounds</span><span class="fact-value">Meadows, orchards &amp; woodland</span></div>
-      <div class="detail-fact"><span class="fact-label">Location</span><span class="fact-value">Galicia, Northwest Spain</span></div>
+      <div class="detail-fact"><span class="fact-label" data-i18n="det.built">Built</span><span class="fact-value">17th Century</span></div>
+      <div class="detail-fact"><span class="fact-label" data-i18n="det.arch">Architecture</span><span class="fact-value">Galician Pazo</span></div>
+      <div class="detail-fact"><span class="fact-label" data-i18n="det.chapel">Chapel</span><span class="fact-value" data-i18n="det.chapelval">On-site, original bell tower</span></div>
+      <div class="detail-fact"><span class="fact-label" data-i18n="det.grounds">Grounds</span><span class="fact-value" data-i18n="det.groundsval">Meadows, orchards &amp; woodland</span></div>
+      <div class="detail-fact"><span class="fact-label" data-i18n="det.location">Location</span><span class="fact-value">Galicia, Northwest Spain</span></div>
     </div>
   </div>
   <div class="detail-image reveal">
@@ -863,77 +885,77 @@
 
 <section class="seasons">
   <div class="seasons-left reveal">
-    <span class="section-label">Year Round</span>
-    <h2 class="section-title">Open across<br>all <em>four<br>seasons</em></h2>
+    <span class="section-label" data-i18n="sea.label">Year Round</span>
+    <h2 class="section-title" data-i18n-html="sea.h2">Open across<br>all <em>four<br>seasons</em></h2>
   </div>
   <div class="seasons-cards reveal">
     <div class="season-card">
       <span class="season-emoji">🌸</span>
-      <span class="season-name">Spring</span>
-      <p class="season-desc">Camellia gardens in bloom, wildflowers in the meadows, and the first warmth of the Galician sun.</p>
+      <span class="season-name" data-i18n="sea.spring.name">Spring</span>
+      <p class="season-desc" data-i18n="sea.spring.desc">Camellia gardens in bloom, wildflowers in the meadows, and the first warmth of the Galician sun.</p>
     </div>
     <div class="season-card">
       <span class="season-emoji">☀️</span>
-      <span class="season-name">Summer</span>
-      <p class="season-desc">Long golden evenings, outdoor celebrations, and wedding season at its most glorious.</p>
+      <span class="season-name" data-i18n="sea.summer.name">Summer</span>
+      <p class="season-desc" data-i18n="sea.summer.desc">Long golden evenings, outdoor celebrations, and wedding season at its most glorious.</p>
     </div>
     <div class="season-card">
       <span class="season-emoji">🍂</span>
-      <span class="season-name">Autumn</span>
-      <p class="season-desc">Harvest feasts, truffle walks, wine events, and the forests turning gold and amber.</p>
+      <span class="season-name" data-i18n="sea.autumn.name">Autumn</span>
+      <p class="season-desc" data-i18n="sea.autumn.desc">Harvest feasts, truffle walks, wine events, and the forests turning gold and amber.</p>
     </div>
     <div class="season-card">
       <span class="season-emoji">❄️</span>
-      <span class="season-name">Winter</span>
-      <p class="season-desc">Stone fireplaces, misty forest hikes, and intimate retreats in the deep quiet of the estate.</p>
+      <span class="season-name" data-i18n="sea.winter.name">Winter</span>
+      <p class="season-desc" data-i18n="sea.winter.desc">Stone fireplaces, misty forest hikes, and intimate retreats in the deep quiet of the estate.</p>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="reveal">
-    <span class="section-label">Begin Your Story</span>
-    <h2 class="section-title">Make an <em>Enquiry</em></h2>
+    <span class="section-label" data-i18n="con.label">Begin Your Story</span>
+    <h2 class="section-title" data-i18n-html="con.h2">Make an <em>Enquiry</em></h2>
     <div class="gold-rule" style="background:var(--gold)"></div>
-    <p class="contact-sub">
+    <p class="contact-sub" data-i18n="con.sub">
       Whether you're planning a wedding, dreaming of a retreat, or searching for a holiday unlike any other — we would love to hear from you. Every enquiry receives a personal response within 48 hours.
     </p>
   </div>
   <div class="contact-form reveal">
     <div class="form-row">
-      <input type="text" placeholder="First Name"/>
-      <input type="text" placeholder="Last Name"/>
+      <input type="text" placeholder="First Name" data-i18n-ph="con.firstname"/>
+      <input type="text" placeholder="Last Name" data-i18n-ph="con.lastname"/>
     </div>
-    <input type="email" placeholder="Email Address"/>
-    <input type="tel" placeholder="Phone (optional)"/>
+    <input type="email" placeholder="Email Address" data-i18n-ph="con.email"/>
+    <input type="tel" placeholder="Phone (optional)" data-i18n-ph="con.phone"/>
     <select>
-      <option value="" disabled selected>Type of Enquiry</option>
-      <option>Wedding or Celebration</option>
-      <option>Wellness or Yoga Retreat</option>
-      <option>Corporate Offsite</option>
-      <option>Family Holiday</option>
-      <option>Wine &amp; Gastronomy Experience</option>
-      <option>Hiking, Fishing or Horse Trails</option>
-      <option>General Enquiry</option>
+      <option value="" disabled selected data-i18n="con.opt0">Type of Enquiry</option>
+      <option data-i18n="con.opt1">Wedding or Celebration</option>
+      <option data-i18n="con.opt2">Wellness or Yoga Retreat</option>
+      <option data-i18n="con.opt3">Corporate Offsite</option>
+      <option data-i18n="con.opt4">Family Holiday</option>
+      <option data-i18n="con.opt5">Wine &amp; Gastronomy Experience</option>
+      <option data-i18n="con.opt6">Hiking, Fishing or Horse Trails</option>
+      <option data-i18n="con.opt7">General Enquiry</option>
     </select>
     <div class="form-row">
-      <input type="text" placeholder="Approximate Dates"/>
-      <input type="text" placeholder="Number of Guests"/>
+      <input type="text" placeholder="Approximate Dates" data-i18n-ph="con.dates"/>
+      <input type="text" placeholder="Number of Guests" data-i18n-ph="con.guests"/>
     </div>
-    <textarea placeholder="Tell us about your vision — what kind of experience are you dreaming of?"></textarea>
-    <button class="form-submit">Send Enquiry</button>
+    <textarea placeholder="Tell us about your vision" data-i18n-ph="con.vision" — what kind of experience are you dreaming of?"></textarea>
+    <button class="form-submit" data-i18n="con.submit">Send Enquiry</button>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">Pazo · Galicia, España</div>
   <ul class="footer-links">
-    <li><a href="#story">The Estate</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#experiences">Experiences</a></li>
-    <li><a href="#partners">Partners</a></li>
-    <li><a href="#weddings">Celebrations</a></li>
-    <li><a href="#contact">Enquire</a></li>
+    <li><a href="#story" data-i18n="nav.estate">The Estate</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#experiences" data-i18n="nav.experiences">Experiences</a></li>
+    <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
+    <li><a href="#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
+    <li><a href="#contact" data-i18n="nav.enquire">Enquire</a></li>
   </ul>
 </footer>
 
@@ -1211,6 +1233,360 @@ document.querySelectorAll('.partner-card').forEach(card => {
 
 // Always show property
 if (!map.hasLayer(propMarker)) map.addLayer(propMarker);
+
+/* ═══════════════════════════════════════════════════
+   INTERNATIONALISATION — English / Castilian Spanish
+   ═══════════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  en: {
+    'nav.estate':       'The Estate',
+    'nav.gallery':      'Gallery',
+    'nav.experiences':  'Experiences',
+    'nav.celebrations': 'Celebrations',
+    'nav.enquire':      'Enquire',
+    'nav.partners':     'Partners',
+
+    'hero.label': 'Galicia, Spain &nbsp;·&nbsp; 17th Century Pazo',
+    'hero.h1':    'Where <em>granite</em> holds<br>four centuries<br>of <em>living memory</em>',
+    'hero.sub':   'A noble Galician estate — its walls draped in ivy, its chapel bell still ringing — now opening for weddings, retreats, and a quiet base for nearby excursions.',
+    'hero.cta':   'Discover the Pazo',
+    'hero.scroll':'Scroll',
+
+    'story.label':   'The Estate',
+    'story.h2':      'A <em>pazo</em> unlike<br>any other',
+    'story.caption': 'The estate chapel — c. 17th century',
+
+    'feat.century.name':  '17th Century',
+    'feat.century.desc':  'Original granite manor, chapel, and courtyard in remarkable condition',
+    'feat.grounds.name':  'Private Grounds',
+    'feat.grounds.desc':  'Meadows, orchards, woodland trails, and sweeping valley views',
+    'feat.chapel.name':   'Chapel on Site',
+    'feat.chapel.desc':   'An original estate chapel with bell tower — rare and extraordinary',
+    'feat.location.name': 'Galicia, España',
+    'feat.location.desc': "Celtic heartland — green, wild, and one of Europe's best-kept secrets",
+
+    'gallery.label': 'The Estate in Images',
+    'gallery.h2':    'See the <em>Pazo</em>',
+
+    'exp.label':       'What Awaits',
+    'exp.h2':          'Curated <em style="color:var(--stone)">Experiences</em>',
+    'exp.intro':       'Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.',
+    'exp.allpartners': 'View All Partners →',
+
+    'exp.wine.title':     'Wine &amp; Gastronomy',
+    'exp.wine.desc':      'Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.',
+    'exp.wine.hint':      '7 partner wineries nearby →',
+    'exp.hiking.title':   'Hiking &amp; Nature',
+    'exp.hiking.desc':    'Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.',
+    'exp.hiking.hint':    '6 certified Blue Trails &amp; guided walks →',
+    'exp.horse.title':    'Horseback Riding',
+    'exp.horse.desc':     'Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.',
+    'exp.horse.hint':     '3 equestrian partners within 11 km →',
+    'exp.fishing.title':  'Coastal Fishing',
+    'exp.fishing.desc':   'Join local fisherwomen harvesting shellfish in the Rías, cruise the mussel rafts of O Grove with unlimited local wine, or charter a private boat to hidden Atlantic beaches.',
+    'exp.fishing.hint':   '6 fishing partners — coast &amp; river →',
+    'exp.weddings.title': 'Weddings &amp; Celebrations',
+    'exp.weddings.desc':  'The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.',
+    'exp.weddings.hint':  'Full-service planning partners available →',
+    'exp.corporate.title':'Corporate Retreats',
+    'exp.corporate.desc': 'Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.',
+    'exp.corporate.hint': 'Full curated itineraries on request →',
+
+    'partners.label': 'Local Partners',
+    'partners.h2':    'Our Curated <em>Experiences</em>',
+    'partners.intro': 'Exceptional local businesses, wineries, and guides — all personally selected to enrich your time at the Pazo. Each is within comfortable day-excursion distance or hosted right here at the Pazo.',
+
+    'filter.all':      'All',
+    'filter.fishing':  '🎣 Fishing',
+    'filter.hiking':   '🥾 Hiking',
+    'filter.horseback':'🐴 Horseback',
+    'filter.wine':     '🍷 Wine',
+    'filter.events':   '💒 Events',
+
+    'pcat.fishing':   '🎣 Fishing &amp; Coast',
+    'pcat.river':     '🎣 River Fishing',
+    'pcat.hiking':    '🥾 Hiking',
+    'pcat.horseback': '🐴 Horseback',
+    'pcat.wine':      '🍷 Wine',
+    'pcat.events':    '💒 Weddings &amp; Events',
+
+    'partner.atpazo':          'At the Pazo',
+    'partner.pescaturismo.desc':'Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.',
+    'partner.escaparia.desc':  'Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.',
+    'partner.latoja.desc':     'A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.',
+    'partner.cruceiros.desc':  'A large catamaran operation with 1,600+ reviews — the region\'s most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.',
+    'partner.lerez.desc':      "One of Galicia's finest trout rivers, running through ancient oak forest virtually on the estate's doorstep. The Cutián beat offers 5 daily permits on a first-come basis. A guide is not included — but we can help you arrange one.",
+    'partner.verdugo.desc':    'Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.',
+    'partner.mountainpics.desc':'Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.',
+    'partner.sendeiro.desc':   'An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC — outstanding for all levels.',
+    'partner.poio.desc':       'A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.',
+    'partner.marin.desc':      'A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest — and a visit to the extraordinary Bronze Age petroglyphs of Mogor, one of the finest rock art sites in Europe. Panoramic mirador views over the Ría throughout.',
+    'partner.sanxenxo.desc':   'An 8.6 km coastal path between Sanxenxo and Portonovo tracing clifftop promenades, dune systems, and fishing village waterfronts — ending at the fish market lonja with views across the Ría. Easy terrain, outstanding scenery throughout.',
+    'partner.silvia.desc':     'Silvia specialises in destination weddings and is experienced at coordinating international couples remotely — from Miami, China, and beyond. Methodical, warm, and universally praised.',
+    'partner.ainara.desc':     'Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer\'s dream — every event she designs is considered a visual masterpiece.',
+    'partner.cabudra.desc':    'An 11.3 km circular trail through a Natura 2000 reserve and Special Protection Area for Birds at Cabo Udra — dramatic Atlantic headland, diverse habitats, and an on-site Nature Interpretation Centre. The most wild and challenging of the local Blue Trails.',
+    'partner.appalaosa.desc':  'Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.',
+    'partner.ocasal.desc':     'Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.',
+    'partner.rabadeira.desc':  'The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.',
+    'partner.senorans.desc':   'One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.',
+    'partner.lantano.desc':    'A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.',
+    'partner.marefrades.desc': 'An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.',
+    'partner.vionta.desc':     'A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.',
+    'partner.pazobaioon.desc': 'A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.',
+    'partner.granbazan.desc':  'One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.',
+    'partner.martincodax.desc':'One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.',
+
+    'wed.label': 'Celebrations',
+    'wed.h2':    'Weddings &amp; <em>Special Events</em>',
+    'wed.intro': "The pazo's cobbled courtyard, colonnaded galleries, chapel, and sweeping grounds make it one of the most extraordinary wedding venues in all of Spain. A celebration here is not merely memorable — it is unforgettable.",
+    'wed.li1':   'Exclusive estate hire for weddings and private celebrations',
+    'wed.li2':   'On-site chapel available for ceremonies',
+    'wed.li3':   'Private accommodation for the wedding party and guests',
+    'wed.li4':   'In-house catering with regional Galician cuisine and local wines',
+    'wed.li5':   'Stone courtyards, terraces, and gardens for outdoor receptions',
+    'wed.li6':   'Family holidays and multi-generational group stays',
+    'wed.li7':   'Full event coordination and trusted local supplier network',
+
+    'det.label':      'Details of the Estate',
+    'det.h2':         'Centuries of <em>craft</em> in stone',
+    'det.body':       'Every corner of this pazo tells a story. The heraldic fountain bears the family coat of arms of its original noble owners, carved in granite four hundred years ago. The <em>cruceiro</em> — the traditional Galician stone cross — stands watch over the orchard as it always has. The colonnaded gallery looks over the valley, unchanged since the day it was built.',
+    'det.built':      'Built',
+    'det.arch':       'Architecture',
+    'det.chapel':     'Chapel',
+    'det.chapelval':  'On-site, original bell tower',
+    'det.grounds':    'Grounds',
+    'det.groundsval': 'Meadows, orchards &amp; woodland',
+    'det.location':   'Location',
+
+    'sea.label':       'Year Round',
+    'sea.h2':          'Open across<br>all <em>four<br>seasons</em>',
+    'sea.spring.name': 'Spring',
+    'sea.spring.desc': 'Camellia gardens in bloom, wildflowers in the meadows, and the first warmth of the Galician sun.',
+    'sea.summer.name': 'Summer',
+    'sea.summer.desc': 'Long golden evenings, outdoor celebrations, and wedding season at its most glorious.',
+    'sea.autumn.name': 'Autumn',
+    'sea.autumn.desc': 'Harvest feasts, truffle walks, wine events, and the forests turning gold and amber.',
+    'sea.winter.name': 'Winter',
+    'sea.winter.desc': 'Stone fireplaces, misty forest hikes, and intimate retreats in the deep quiet of the estate.',
+
+    'con.label':    'Begin Your Story',
+    'con.h2':       'Make an <em>Enquiry</em>',
+    'con.sub':      "Whether you're planning a wedding, dreaming of a retreat, or searching for a holiday unlike any other — we would love to hear from you. Every enquiry receives a personal response within 48 hours.",
+    'con.firstname':'First Name',
+    'con.lastname': 'Last Name',
+    'con.email':    'Email Address',
+    'con.phone':    'Phone (optional)',
+    'con.opt0':     'Type of Enquiry',
+    'con.opt1':     'Wedding or Celebration',
+    'con.opt2':     'Wellness or Yoga Retreat',
+    'con.opt3':     'Corporate Offsite',
+    'con.opt4':     'Family Holiday',
+    'con.opt5':     'Wine &amp; Gastronomy Experience',
+    'con.opt6':     'Hiking, Fishing or Horse Trails',
+    'con.opt7':     'General Enquiry',
+    'con.dates':    'Approximate Dates',
+    'con.guests':   'Number of Guests',
+    'con.vision':   'Tell us about your vision — what kind of experience are you dreaming of?',
+    'con.submit':   'Send Enquiry',
+
+    // marquee
+    'marq': ['Weddings &amp; Celebrations','Wellness Retreats','Wine &amp; Gastronomy','Horseback Trails','Coastal Fishing','Hiking &amp; Nature','Corporate Escapes','Rías Baixas Wineries','17th Century Heritage','Private Estate'],
+  },
+
+  es: {
+    'nav.estate':       'La Finca',
+    'nav.gallery':      'Galería',
+    'nav.experiences':  'Experiencias',
+    'nav.celebrations': 'Celebraciones',
+    'nav.enquire':      'Contacto',
+    'nav.partners':     'Colaboradores',
+
+    'hero.label': 'Galicia, España &nbsp;·&nbsp; Pazo del Siglo XVII',
+    'hero.h1':    'Donde el <em>granito</em> guarda<br>cuatro siglos<br>de <em>memoria viva</em>',
+    'hero.sub':   'Una noble finca gallega — sus muros cubiertos de hiedra, su campana de capilla aún repicando — que abre sus puertas para bodas, retiros y como base tranquila para excursiones cercanas.',
+    'hero.cta':   'Descubre el Pazo',
+    'hero.scroll':'Desliza',
+
+    'story.label':   'La Finca',
+    'story.h2':      'Un <em>pazo</em> sin igual',
+    'story.caption': 'La capilla de la finca — s. XVII',
+
+    'feat.century.name':  'Siglo XVII',
+    'feat.century.desc':  'Pazo original de granito, capilla y patio interior en notable estado de conservación',
+    'feat.grounds.name':  'Finca Privada',
+    'feat.grounds.desc':  'Prados, huertos, senderos por el bosque y vistas panorámicas al valle',
+    'feat.chapel.name':   'Capilla en la Finca',
+    'feat.chapel.desc':   'Capilla original con campanario — un lujo auténtico y extraordinario',
+    'feat.location.name': 'Galicia, España',
+    'feat.location.desc': 'Corazón celta — verde, salvaje y uno de los secretos mejor guardados de Europa',
+
+    'gallery.label': 'La Finca en Imágenes',
+    'gallery.h2':    'Descubre el <em>Pazo</em>',
+
+    'exp.label':       'Lo que te Espera',
+    'exp.h2':          'Experiencias <em style="color:var(--stone)">Seleccionadas</em>',
+    'exp.intro':       'Cada estancia se adapta al entorno, a la estación del año y a ti. Cada experiencia se diseña en colaboración con los mejores propietarios locales, guías y artesanos de Galicia.',
+    'exp.allpartners': 'Ver Todos los Colaboradores →',
+
+    'exp.wine.title':     'Vino &amp; Gastronomía',
+    'exp.wine.desc':      'Visitas privadas y catas en las grandes bodegas de las Rías Baixas — Martín Códax, Pazo Baión, Señorans, Granbazán — maridadas con festines de producto gallego de temporada.',
+    'exp.wine.hint':      '7 bodegas colaboradoras cercanas →',
+    'exp.hiking.title':   'Senderismo &amp; Naturaleza',
+    'exp.hiking.desc':    'Rutas guiadas por bosques de robles centenarios, valles fluviales y acantilados costeros con el guía local Pablo de MountainPics Adventures — itinerarios para todos los niveles.',
+    'exp.hiking.hint':    '6 Senderos Azules certificados &amp; rutas guiadas →',
+    'exp.horse.title':    'Rutas a Caballo',
+    'exp.horse.desc':     'Paseos por la campiña gallega y bosques antiguos, incluyendo el legendario Camino de Santiago a caballo — gestionado con tres centros ecuestres de primera calidad.',
+    'exp.horse.hint':     '3 centros ecuestres a menos de 11 km →',
+    'exp.fishing.title':  'Pesca en la Costa',
+    'exp.fishing.desc':   'Únete a las mariscadoras en la recolección de marisco en las Rías, navega entre los bateles mejilloneros de O Grove con vino local ilimitado, o fleta una embarcación privada hacia playas atlánticas escondidas.',
+    'exp.fishing.hint':   '6 colaboradores de pesca — costa &amp; río →',
+    'exp.weddings.title': 'Bodas &amp; Celebraciones',
+    'exp.weddings.desc':  'El patio empedrado, las galerías porticadas, la capilla y los amplios jardines convierten este pazo en uno de los espacios más extraordinarios para celebraciones de toda España.',
+    'exp.weddings.hint':  'Coordinadores de eventos disponibles →',
+    'exp.corporate.title':'Retiros Corporativos',
+    'exp.corporate.desc': 'Jornadas de liderazgo y experiencias de equipo en un entorno de historia auténtica — privado, inspirador y sin parangón con cualquier sala de reuniones. Combinado con senderismo, vino y excursiones costeras.',
+    'exp.corporate.hint': 'Itinerarios a medida bajo petición →',
+
+    'partners.label': 'Colaboradores Locales',
+    'partners.h2':    'Nuestras Experiencias <em>Seleccionadas</em>',
+    'partners.intro': 'Negocios locales, bodegas y guías excepcionales — todos seleccionados personalmente para enriquecer tu estancia en el Pazo. Cada uno se encuentra a una cómoda distancia para una excursión de día, o se organiza aquí mismo en el Pazo.',
+
+    'filter.all':      'Todos',
+    'filter.fishing':  '🎣 Pesca',
+    'filter.hiking':   '🥾 Senderismo',
+    'filter.horseback':'🐴 Equitación',
+    'filter.wine':     '🍷 Vino',
+    'filter.events':   '💒 Eventos',
+
+    'pcat.fishing':   '🎣 Pesca &amp; Costa',
+    'pcat.river':     '🎣 Pesca Fluvial',
+    'pcat.hiking':    '🥾 Senderismo',
+    'pcat.horseback': '🐴 Equitación',
+    'pcat.wine':      '🍷 Vino',
+    'pcat.events':    '💒 Bodas &amp; Eventos',
+
+    'partner.atpazo':           'En el Pazo',
+    'partner.pescaturismo.desc':'Experiencias de marisqueo con las célebres rederas de Cambados — una auténtica y práctica ventana a la cultura costera gallega.',
+    'partner.escaparia.desc':   'Excursiones privadas en barco hacia playas atlánticas escondidas en el estuario de Aldán. El capitán angloparlante Matt acumula críticas extraordinarias — ideal para huéspedes internacionales.',
+    'partner.latoja.desc':      'Una entrañable experiencia en batela mejillonera — navega entre los parques de cultivo de O Grove con mejillones y vino local ilimitados. Una de las experiencias turísticas más valoradas de la provincia.',
+    'partner.cruceiros.desc':   'Un gran catamarán con más de 1.600 reseñas — la excursión en barco para grupos más popular de la región. Mejillones, paella y vino local servidos a bordo con vistas al estuario.',
+    'partner.lerez.desc':       'Uno de los mejores ríos de trucha de Galicia, que discurre por un bosque de robles centenarios prácticamente a las puertas de la finca. El coto de Cutián ofrece 5 permisos diarios por orden de solicitud. El guía no está incluido, pero podemos ayudarte a conseguir uno.',
+    'partner.verdugo.desc':     'Dos ríos confluyen en la espectacular Poza das Bestas bajo un histórico puente colgante — trucha, barbo y anguila en pozas queridas por generaciones de pescadores locales. Permisos a través de la Xunta. Podemos ayudarte a organizar un guía.',
+    'partner.mountainpics.desc':'Pablo dirige extraordinarias expediciones de senderismo y aventura por toda Galicia. Una propuesta perfecta para actividades de team building, jornadas de bienestar en la naturaleza e itinerarios de varios días.',
+    'partner.sendeiro.desc':    'Un sendero circular de 8-9 km que bordea el río Verdugo entre bosques de robles centenarios, pasos de piedras, molinos antiguos y una playa fluvial en A Calzada. El primer sendero interior de España en obtener la certificación Sendero Azul de ADEAC — excepcional para todos los niveles.',
+    'partner.poio.desc':        'Un cómodo paseo costero de 4,9 km por la Ría de Pontevedra que pasa por el Parque da Memoria, el estuario de Reiboa, molinos de agua antiguos y el primer parque de cultivo de ostras de la Península Ibérica. Magnífico para la observación de aves.',
+    'partner.marin.desc':       'Un espectacular recorrido de 11 km que enlaza cinco playas de Bandera Azul con un bosque de altura — y visita los extraordinarios petroglifos de la Edad del Bronce de Mogor, uno de los conjuntos de arte rupestre más importantes de Europa. Vistas panorámicas sobre la Ría.',
+    'partner.sanxenxo.desc':    'Un sendero costero de 8,6 km entre Sanxenxo y Portonovo que recorre paseos marítimos sobre los acantilados, sistemas de dunas y frentes marítimos de pueblos pesqueros — con final en la lonja del mercado de pescado y vistas a la Ría. Terreno fácil y paisaje extraordinario.',
+    'partner.silvia.desc':      'Silvia está especializada en bodas de destino y tiene experiencia coordinando parejas internacionales a distancia — desde Miami, China y más allá. Metódica, cercana y universalmente elogiada.',
+    'partner.ainara.desc':      'Ainara crea celebraciones únicas y llenas de significado con una atención al detalle extraordinaria. El sueño de cualquier fotógrafo — cada evento que diseña es considerado una obra maestra visual.',
+    'partner.cabudra.desc':     'Un sendero circular de 11,3 km por una reserva Natura 2000 y Zona de Especial Protección para las Aves en Cabo Udra — promontorio atlántico de gran dramatismo, hábitats diversos y un Centro de Interpretación de la Naturaleza in situ. El más salvaje y exigente de los Senderos Azules locales.',
+    'partner.appalaosa.desc':   'Rutas a caballo por la campiña gallega adaptadas a todos los niveles, desde principiantes hasta jinetes experimentados. Cholo y su equipo son reconocidos por su calidez y el excelente cuidado de sus caballos.',
+    'partner.ocasal.desc':      'Horsemanship natural, equinoterapia, rutas a caballo y animales de granja. Un centro ecuestre con enfoque en el bienestar — excelente para retiros de mindfulness y experiencias en familia.',
+    'partner.rabadeira.desc':   'La experiencia ecuestre de referencia — ofrece el Camino de Santiago a caballo, un viaje de varios días para toda la vida. El guía Rafa es celebrado por todos los huéspedes a los que ha acompañado.',
+    'partner.senorans.desc':    'Una de las joyas de las Rías Baixas — una histórica finca tipo pazo que también acoge bodas y grandes eventos. Guías angloparlantes y un Albariño extraordinario.',
+    'partner.lantano.desc':     'Una bodega familiar boutique con viñas de Albariño de especial relevancia histórica. Ambiente muy personal y artesanal — ideal para experiencias íntimas en grupo pequeño con sensación de descubrimiento genuino.',
+    'partner.marefrades.desc':  'Un productor de reconocimiento internacional en Finca Valiñas, con vistas panorámicas al estuario. Visitas guiadas en inglés con la guía Sandra, reconocida por Decanter por su calidad excepcional.',
+    'partner.vionta.desc':      'Una bodega en lo alto de una colina con espectaculares vistas panorámicas sobre las Rías. La guía angloparlante Ursula dirige visitas unánimemente elogiadas por su calidez y profundidad de conocimiento.',
+    'partner.pazobaioon.desc':  'Una bodega en una finca histórica tipo pazo con unos jardines impresionantes y visitas consistentemente alabadas. La guía Eugenia da vida a este excepcional Albariño para los huéspedes de todos los niveles.',
+    'partner.granbazan.desc':   'Una de las experiencias vínicas mejor valoradas de la región — una finca de estilo château arquitectónicamente destacada con 548 reseñas. También es un espacio para bodas y eventos; un colaborador natural de mutua referencia.',
+    'partner.martincodax.desc': 'Uno de los productores de las Rías Baixas más icónicos e internacionalmente reconocidos. Visitas guiadas en excelente inglés con maridaje de marisco — una experiencia de referencia para los amantes del vino.',
+
+    'wed.label': 'Celebraciones',
+    'wed.h2':    'Bodas &amp; <em>Eventos Especiales</em>',
+    'wed.intro': 'El patio empedrado, las galerías porticadas, la capilla y los amplios jardines del pazo lo convierten en uno de los espacios para bodas más extraordinarios de toda España. Una celebración aquí no es simplemente memorable — es inolvidable.',
+    'wed.li1':   'Alquiler exclusivo de la finca para bodas y celebraciones privadas',
+    'wed.li2':   'Capilla disponible para la ceremonia',
+    'wed.li3':   'Alojamiento privado para los novios e invitados',
+    'wed.li4':   'Catering propio con cocina gallega de temporada y vinos locales',
+    'wed.li5':   'Patios de piedra, terrazas y jardines para celebraciones al aire libre',
+    'wed.li6':   'Vacaciones familiares y estancias para grupos multigeneracionales',
+    'wed.li7':   'Coordinación integral del evento y red de proveedores locales de confianza',
+
+    'det.label':      'Detalles de la Finca',
+    'det.h2':         'Siglos de <em>arte</em> en piedra',
+    'det.body':       'Cada rincón de este pazo cuenta una historia. La fuente heráldica luce el escudo familiar de sus nobles propietarios originales, tallado en granito hace cuatrocientos años. El <em>cruceiro</em> — la tradicional cruz de piedra gallega — vigila el huerto como siempre lo ha hecho. La galería porticada contempla el valle, inmutable desde el día en que fue construida.',
+    'det.built':      'Construido',
+    'det.arch':       'Arquitectura',
+    'det.chapel':     'Capilla',
+    'det.chapelval':  'En la finca, campanario original',
+    'det.grounds':    'Terrenos',
+    'det.groundsval': 'Prados, huertos &amp; bosque',
+    'det.location':   'Ubicación',
+
+    'sea.label':       'Todo el Año',
+    'sea.h2':          'Abierto las<br><em>cuatro<br>estaciones</em>',
+    'sea.spring.name': 'Primavera',
+    'sea.spring.desc': 'Jardines de camelias en flor, flores silvestres en los prados y el primer calor del sol gallego.',
+    'sea.summer.name': 'Verano',
+    'sea.summer.desc': 'Largas tardes doradas, celebraciones al aire libre y la temporada de bodas en todo su esplendor.',
+    'sea.autumn.name': 'Otoño',
+    'sea.autumn.desc': 'Banquetes de cosecha, rutas de trufa, eventos vinícolas y los bosques tornándose dorados y cobrizos.',
+    'sea.winter.name': 'Invierno',
+    'sea.winter.desc': 'Chimeneas de piedra, excursiones por los bosques entre la niebla y retiros íntimos en el silencio profundo de la finca.',
+
+    'con.label':    'Comienza tu Historia',
+    'con.h2':       'Haz una <em>Consulta</em>',
+    'con.sub':      'Tanto si estás planeando una boda, soñando con un retiro, o buscando unas vacaciones fuera de lo común — nos encantaría saber de ti. Cada consulta recibe una respuesta personalizada en un plazo de 48 horas.',
+    'con.firstname':'Nombre',
+    'con.lastname': 'Apellidos',
+    'con.email':    'Correo Electrónico',
+    'con.phone':    'Teléfono (opcional)',
+    'con.opt0':     'Tipo de Consulta',
+    'con.opt1':     'Boda o Celebración',
+    'con.opt2':     'Retiro de Bienestar o Yoga',
+    'con.opt3':     'Evento Corporativo',
+    'con.opt4':     'Vacaciones en Familia',
+    'con.opt5':     'Experiencia Vino &amp; Gastronomía',
+    'con.opt6':     'Senderismo, Pesca o Equitación',
+    'con.opt7':     'Consulta General',
+    'con.dates':    'Fechas Aproximadas',
+    'con.guests':   'Número de Invitados',
+    'con.vision':   '¿Cuéntanos tu idea — qué tipo de experiencia estás soñando?',
+    'con.submit':   'Enviar Consulta',
+
+    'marq': ['Bodas &amp; Celebraciones','Retiros de Bienestar','Vino &amp; Gastronomía','Rutas a Caballo','Pesca Costera','Senderismo &amp; Naturaleza','Escapadas Corporativas','Bodegas Rías Baixas','Patrimonio del Siglo XVII','Finca Privada'],
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = TRANSLATIONS[lang];
+
+  // Update flag button states
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('lang-active', btn.getAttribute('onclick').includes(`'${lang}'`));
+  });
+
+  // Text elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key].replace(/&amp;/g,'&');
+  });
+
+  // HTML elements (contain <em>, <br> etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key].replace(/&amp;/g,'&');
+  });
+
+  // Marquee items
+  const marqItems = document.querySelectorAll('.marquee-item');
+  const marqList = t['marq'];
+  marqItems.forEach((el, i) => {
+    el.innerHTML = marqList[i % marqList.length];
+  });
+
+  // Set html lang attribute
+  document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+}
 </script>
 </body>
 </html>
