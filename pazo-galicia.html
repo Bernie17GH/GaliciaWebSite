@@ -109,16 +109,39 @@
   .g4 { grid-column:6/9; grid-row:2/3; }
   .g5 { grid-column:9/13; grid-row:2/3; }
 
-  /* EXPERIENCES — 6 cards, all visible above the fold */
-  .experiences { background:var(--ink); padding:4.5rem 5rem 3rem; min-height:100vh; display:flex; flex-direction:column; }
+  /* EXPERIENCES — always fits within the viewport */
+  .experiences {
+    background:var(--ink);
+    padding:4.5rem 5rem 2rem;
+    height:100vh;
+    max-height:100vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    box-sizing:border-box;
+  }
   .experiences .section-title { color:var(--cream); }
   .exp-intro { color:rgba(221,216,206,0.75); max-width:600px; margin-bottom:0; }
-  .exp-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem; flex-shrink:0; }
-  .exp-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:1px; border:1px solid rgba(184,145,58,0.15); flex:1; min-height:0; }
-  .exp-card { position:relative; overflow:hidden; cursor:pointer; min-height:0; }
+  .exp-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:0.75rem; flex-shrink:0; }
+  .exp-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(2,1fr);
+    gap:1px;
+    border:1px solid rgba(184,145,58,0.15);
+    flex:1;
+    min-height:0;   /* critical — lets grid shrink inside flex */
+    overflow:hidden;
+  }
+  .exp-card {
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    min-height:0;   /* critical — lets card shrink inside grid */
+  }
   .exp-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
     filter:brightness(0.65) saturate(0.8);
-    opacity:0; transition:opacity 1.2s ease, transform 0.8s ease, filter 0.5s ease; }
+    opacity:0; transition:opacity 1.2s ease, filter 0.5s ease; }
   .exp-card img.exp-img-active { opacity:1; }
   .exp-card:hover img.exp-img-active { filter:brightness(0.5) saturate(0.9); }
   .exp-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,8,0.92) 0%, transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.6rem; transition:background 0.4s; }
@@ -269,9 +292,9 @@
     .g3 { grid-column:2/3; grid-row:2/3; }
     .g4 { grid-column:1/2; grid-row:3/4; }
     .g5 { grid-column:2/3; grid-row:3/4; }
-    .experiences { padding:4rem 2rem 3rem; min-height:unset; }
+    .experiences { padding:4rem 2rem 2rem; height:auto; max-height:none; overflow:visible; }
     .exp-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
-    .exp-card { aspect-ratio:4/3; }
+    .exp-card { aspect-ratio:4/3; min-height:160px; }
     .seasons { flex-direction:column; padding:4rem 2rem; gap:2rem; }
     .seasons-cards { flex-wrap:wrap; }
     .season-card { min-width:calc(50% - 1px); }
