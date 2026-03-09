@@ -116,8 +116,11 @@
   .exp-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem; flex-shrink:0; }
   .exp-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:1px; border:1px solid rgba(184,145,58,0.15); flex:1; min-height:0; }
   .exp-card { position:relative; overflow:hidden; cursor:pointer; min-height:0; }
-  .exp-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.65) saturate(0.8); transition:transform 0.8s ease, filter 0.5s ease; }
-  .exp-card:hover img { transform:scale(1.07); filter:brightness(0.5) saturate(0.9); }
+  .exp-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    filter:brightness(0.65) saturate(0.8);
+    opacity:0; transition:opacity 1.2s ease, transform 0.8s ease, filter 0.5s ease; }
+  .exp-card img.exp-img-active { opacity:1; }
+  .exp-card:hover img.exp-img-active { filter:brightness(0.5) saturate(0.9); }
   .exp-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,8,0.92) 0%, transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.6rem; transition:background 0.4s; }
   .exp-card:hover .exp-overlay { background:linear-gradient(to top, rgba(15,12,8,0.97) 0%, rgba(15,12,8,0.4) 100%); }
   .exp-number { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); margin-bottom:0.3rem; }
@@ -404,7 +407,8 @@
   </div>
   <div class="exp-grid">
     <div class="exp-card reveal">
-      <img src="images/chapel-bell-tower.png" alt="Wine and gastronomy"/>
+      <img class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Albariño grapes on the vine"/>
+      <img class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
       <div class="exp-overlay">
         <div class="exp-number">01</div>
         <div class="exp-title">Wine &amp; Gastronomy</div>
@@ -413,7 +417,8 @@
       </div>
     </div>
     <div class="exp-card reveal">
-      <img src="images/landscape-view.png" alt="Hiking and nature"/>
+      <img class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Coastal hiking trail Galicia"/>
+      <img class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
       <div class="exp-overlay">
         <div class="exp-number">02</div>
         <div class="exp-title">Hiking &amp; Nature</div>
@@ -422,7 +427,8 @@
       </div>
     </div>
     <div class="exp-card reveal">
-      <img src="images/inner-courtyard.png" alt="Horseback riding"/>
+      <img class="exp-img exp-img-active" src="images/Horseback.jpg" alt="Horseback riding through Galician forest"/>
+      <img class="exp-img" src="images/Horseback2.jpg" alt="Horse in Galician eucalyptus forest"/>
       <div class="exp-overlay">
         <div class="exp-number">03</div>
         <div class="exp-title">Horseback Riding</div>
@@ -431,7 +437,8 @@
       </div>
     </div>
     <div class="exp-card reveal">
-      <img src="images/valley-view.png" alt="Coastal fishing"/>
+      <img class="exp-img exp-img-active" src="images/pesca.jpg" alt="River fly fishing in Galician forest"/>
+      <img class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast Rías Baixas from above"/>
       <div class="exp-overlay">
         <div class="exp-number">04</div>
         <div class="exp-title">Coastal Fishing</div>
@@ -440,7 +447,8 @@
       </div>
     </div>
     <div class="exp-card reveal">
-      <img src="images/heraldic-fountain.png" alt="Weddings and celebrations"/>
+      <img class="exp-img exp-img-active" src="images/Events.jpg" alt="Elegant wedding banquet hall"/>
+      <img class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
       <div class="exp-overlay">
         <div class="exp-number">05</div>
         <div class="exp-title">Weddings &amp; Celebrations</div>
@@ -449,7 +457,8 @@
       </div>
     </div>
     <div class="exp-card reveal">
-      <img src="images/green-meadow.png" alt="Corporate retreats"/>
+      <img class="exp-img exp-img-active" src="images/Corporate.jpg" alt="Outdoor corporate retreat in nature"/>
+      <img class="exp-img" src="images/Corporate2.jpg" alt="Indoor boardroom corporate event"/>
       <div class="exp-overlay">
         <div class="exp-number">06</div>
         <div class="exp-title">Corporate Retreats</div>
@@ -906,6 +915,28 @@
 </footer>
 
 <script>
+/* ── EXPERIENCE TILE CAROUSEL ── */
+function advanceCard(card) {
+  const imgs = card.querySelectorAll('.exp-img');
+  if (imgs.length < 2) return;
+  const activeIdx = [...imgs].findIndex(i => i.classList.contains('exp-img-active'));
+  imgs[activeIdx].classList.remove('exp-img-active');
+  imgs[(activeIdx + 1) % imgs.length].classList.add('exp-img-active');
+}
+
+document.querySelectorAll('.exp-card').forEach((card, i) => {
+  // Stagger start so all 6 don't flip at the same moment
+  setTimeout(() => {
+    setInterval(() => advanceCard(card), 10000);
+  }, i * 1667); // ~1.67s apart across 6 cards
+
+  // Click the tile (not the hint link) to advance image immediately
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.exp-partners-hint')) return; // let hint handle its own click
+    advanceCard(card);
+  });
+});
+
 /* ── EXPERIENCE TILE → PARTNER FILTER LINK ── */
 document.querySelectorAll('.exp-partners-hint').forEach(hint => {
   hint.addEventListener('click', () => {
