@@ -136,11 +136,17 @@
     position:relative; overflow:hidden;
   }
   .exp-carousel .exp-card .exp-desc { opacity:1 !important; transform:none !important; }
-  .exp-carousel .exp-card .exp-partners-hint { opacity:1 !important; }
+  /* Hide hint link text on mobile — whole card is the tap target */
+  .exp-carousel .exp-card .exp-partners-hint { display:none !important; }
   .exp-carousel .exp-card img.exp-img-active { filter:brightness(0.75) saturate(0.85); }
   .exp-carousel .exp-card .exp-overlay {
     background:linear-gradient(to top,rgba(15,12,8,0.82) 0%,rgba(15,12,8,0.15) 100%);
+    justify-content:flex-start; padding-top:1.1rem;
   }
+  /* Number on its own line, then title, then desc */
+  .exp-carousel .exp-card .exp-number { margin-bottom:0.15rem; }
+  .exp-carousel .exp-card .exp-title { font-size:1rem; margin-bottom:0.35rem; white-space:normal; }
+  .exp-carousel .exp-card .exp-desc  { font-size:0.7rem; line-height:1.5; }
 
   .exp-dots { display:flex; justify-content:center; gap:8px; margin-top:1.2rem; padding:0 1.4rem; }
   .exp-dot {
@@ -1496,9 +1502,12 @@ if (expCarousel) {
       expCarousel.scrollTo({ left: parseInt(dot.dataset.index) * (card.offsetWidth+3), behavior:'smooth' });
     });
   });
-  expCarousel.querySelectorAll('.exp-partners-hint').forEach(hint => {
-    hint.addEventListener('click', (e) => {
-      e.stopPropagation();
+  expCarousel.querySelectorAll('.exp-card').forEach(card => {
+    const hint = card.querySelector('.exp-partners-hint');
+    if (!hint) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (!isMobile()) return;
       applyFilter(hint.dataset.filter);
       document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
     });
