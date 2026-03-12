@@ -154,8 +154,8 @@
   .exp-dot.active { background:var(--gold); transform:scale(1.4); }
 
   /* -- PARTNERS + MAP ------------------------------------- */
-  .combined-section { overflow-x:hidden; max-width:100vw; }
-  .combined-layout { display:flex !important; flex-direction:column; overflow-x:hidden; }
+  .combined-section { overflow-x:hidden; width:100%; max-width:100vw; box-sizing:border-box; }
+  .combined-layout  { display:flex !important; flex-direction:column; overflow-x:hidden; width:100%; }
   .map-panel {
     position:relative !important; top:0 !important; order:0;
     height:33vh; min-height:200px;
@@ -165,30 +165,31 @@
     overflow:hidden;
   }
   #map { width:100%; height:33vh; min-height:200px; }
-  .combined-left { order:1; flex-shrink:0; }
-  .combined-header { position:sticky; top:52px; padding:1.5rem 1.4rem 1.2rem; gap:1rem; }
+  .combined-left   { order:1; flex-shrink:1; width:100%; max-width:100%; box-sizing:border-box; overflow-x:hidden; }
+  .combined-header { position:sticky; top:52px; padding:1.5rem 1.4rem 1.2rem; gap:1rem;
+                     width:100%; max-width:100%; box-sizing:border-box; }
   .combined-header-text .section-title { font-size:1.8rem; }
 
   .filter-bar {
-    display:flex; flex-wrap:nowrap; width:100%;
-    justify-content:space-between;
+    display:flex; flex-wrap:nowrap; width:100%; max-width:100%;
+    justify-content:space-between; box-sizing:border-box;
   }
   .filter-bar::-webkit-scrollbar { display:none; }
   .filter-btn {
-    flex:1; text-align:center;
-    font-size:0.75rem; padding:0.55rem 0.2rem;
-    letter-spacing:0.03em; position:relative;
-    white-space:nowrap;
+    flex:1 1 0; min-width:0; text-align:center;
+    font-size:0.68rem; padding:0.55rem 0.1rem;
+    letter-spacing:0; position:relative;
+    white-space:nowrap; overflow:hidden;
+    box-sizing:border-box;
   }
-  /* show text labels on mobile alongside emoji, 20% smaller than button font */
-  .filter-btn .filter-label { display:inline; font-size:0.7rem; letter-spacing:0.1em; }
-  /* remove tooltip — labels are visible now */
+  /* labels scale with button */
+  .filter-btn .filter-label { display:inline; font-size:0.62rem; letter-spacing:0; }
   .filter-btn::after { display:none; }
 
-  .combined-cards { padding:0.6rem 0 3rem; }
-  .partners-grid { grid-template-columns:1fr; gap:0; }
+  .combined-cards { padding:0.6rem 0 3rem; width:100%; max-width:100%; box-sizing:border-box; }
+  .partners-grid  { grid-template-columns:1fr; gap:0; width:100%; box-sizing:border-box; }
 
-  /* Full-width card using CSS grid to reorder children */
+  /* Full-width card */
   .partner-card {
     display:grid;
     grid-template-columns: 2fr 3fr;
@@ -202,9 +203,8 @@
     row-gap:0;
     padding:0.55rem 1.1rem;
     border-bottom:1px solid var(--mist);
-    border-radius:0;
-    cursor:pointer;
-    align-items:start;
+    border-radius:0; cursor:pointer; align-items:start;
+    width:100%; max-width:100%; box-sizing:border-box;
   }
   .partner-card .partner-cat-tag {
     grid-area:tag;
