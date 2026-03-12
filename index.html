@@ -10,10 +10,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
-:root{--stone:#c4b49a;--moss:#3d5235;--earth:#7a6552;--cream:#f5f0e8;--ink:#1a1610;--gold:#b8913a;--mist:#ddd8ce;--ivy:#4a6b3a}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;transition:background 0.5s,backdrop-filter 0.5s}nav.scrolled{background:rgba(26,22,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(184,145,58,0.15)}.nav-logo{font-family:'Cinzel',serif;font-size:0.95rem;letter-spacing:0.22em;color:var(--cream);text-decoration:none;text-transform:uppercase}.nav-links{display:flex;gap:2.4rem;list-style:none}.nav-links a{font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s,color 0.2s}.nav-links a:hover{opacity:1;color:var(--gold)}.hero{position:relative;height:100vh;min-height:660px;display:flex;align-items:flex-end;overflow:hidden}.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,12,8,0.1) 0%,rgba(15,12,8,0.45) 55%,rgba(15,12,8,0.85) 100%),url('images/manor-exterior.jpg') center 40%/cover no-repeat;animation:heroZoom 20s ease-in-out infinite alternate}@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.0)}}.hero-content{position:relative;z-index:2;padding:0 7rem 5.5rem;max-width:860px;animation:fadeUp 1.4s ease both}@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.hero-label{font-family:'Jost',sans-serif;font-size:0.66rem;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;display:block;animation:fadeUp 1.4s 0.2s ease both}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.4rem,7.5vw,6.5rem);font-weight:300;line-height:1.03;color:var(--cream);margin-bottom:1.4rem;animation:fadeUp 1.4s 0.35s ease both}.hero h1 em{font-style:italic;color:var(--stone)}.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:rgba(245,240,232,0.8);font-weight:300;margin-bottom:2.5rem;max-width:580px;line-height:1.7;animation:fadeUp 1.4s 0.5s ease both}.hero-cta{display:inline-block;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:1rem 2.8rem;text-decoration:none;transition:background 0.3s;animation:fadeUp 1.4s 0.65s ease both}.hero-cta:hover{background:var(--cream)}.scroll-hint{position:absolute;bottom:2.2rem;right:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(245,240,232,0.55);font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;animation:fadeUp 2s 1.2s ease both}.scroll-hint::before{content:'';display:block;width:1px;height:44px;background:var(--stone);animation:scrollLine 2.2s ease infinite}@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}.intro-band{background:var(--ink);padding:1.8rem 0;overflow:hidden}.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 28s linear infinite}.marquee-item{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);padding:0 2.5rem;border-right:1px solid rgba(184,145,58,0.25)}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.section-label{font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.9rem}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.5rem);font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.5rem}.section-title em{font-style:italic;color:var(--earth)}.body-text{font-size:0.97rem;font-weight:300;line-height:1.9;color:#4a4038}.gold-rule{width:48px;height:1px;background:var(--gold);margin:1.5rem 0}.reveal{transition:opacity 0.85s ease,transform 0.85s ease}.js-ready .reveal{opacity:0;transform:translateY(26px)}.js-ready .reveal.visible{opacity:1;transform:none}.story{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:680px}.story-image{position:relative;overflow:hidden}.story-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s ease}.story-image:hover img{transform:scale(1.04)}.story-image-caption{position:absolute;bottom:1.5rem;left:1.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:rgba(245,240,232,0.7);letter-spacing:0.05em}.story-text{background:var(--cream);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.features{background:var(--moss);padding:3.5rem 7rem;display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.08)}.feature-item{flex:1;padding:0 2.5rem;border-right:1px solid rgba(255,255,255,0.12);text-align:center}.feature-item:first-child{padding-left:0}.feature-item:last-child{border-right:none}.feature-icon{font-size:1.6rem;margin-bottom:0.7rem;display:block}.feature-name{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.4rem}.feature-desc{font-size:0.78rem;font-weight:300;color:rgba(245,240,232,0.65);line-height:1.6}.gallery{padding:7rem 0 0;background:var(--cream)}.gallery-header{padding:0 7rem 3rem}.gallery-header-inner{display:flex;align-items:flex-end;justify-content:space-between}.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:320px 320px;gap:4px}.g-item{overflow:hidden;cursor:pointer}.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease,filter 0.4s ease;filter:saturate(0.9)}.g-item:hover img{transform:scale(1.06);filter:saturate(1.1)}.g1{grid-column:1/6;grid-row:1/3}.g2{grid-column:6/9;grid-row:1/2}.g3{grid-column:9/13;grid-row:1/2}.g4{grid-column:6/9;grid-row:2/3}.g5{grid-column:9/13;grid-row:2/3}.experiences{background:var(--ink);padding:4.5rem 5rem 2rem;height:100vh;max-height:100vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box}.experiences .section-title{color:var(--cream)}.exp-intro{color:rgba(221,216,206,0.75);max-width:600px;margin-bottom:0}.exp-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;flex-shrink:0}.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px;border:1px solid rgba(184,145,58,0.15);flex:1;min-height:0;overflow:hidden}.exp-card{position:relative;overflow:hidden;cursor:pointer;min-height:0}.exp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(1.0) saturate(1.0);opacity:0;transition:opacity 1.2s ease,filter 0.5s ease}.exp-card img.exp-img-active{opacity:1}.exp-card:hover img.exp-img-active,.exp-card.active img.exp-img-active{filter:brightness(0.45) saturate(0.85)}.exp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,8,0.72) 0%,rgba(15,12,8,0.05) 45%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;transition:background 0.4s}.exp-card:hover .exp-overlay,.exp-card.active .exp-overlay{background:linear-gradient(to top,rgba(15,12,8,0.97) 0%,rgba(15,12,8,0.55) 100%)}.exp-number{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);margin-bottom:0.3rem}.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:0.4rem;text-shadow:0 1px 6px rgba(0,0,0,0.6)}.exp-desc{font-size:0.76rem;font-weight:300;color:var(--stone);line-height:1.65;opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s}.exp-card:hover .exp-desc,.exp-card.active .exp-desc{opacity:1;transform:translateY(0)}.exp-partners-hint{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:0.8rem;opacity:0;transition:opacity 0.4s 0.1s;cursor:pointer;display:inline-block;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.15rem}.exp-partners-hint:hover{color:var(--cream);border-bottom-color:rgba(245,240,232,0.4)}.exp-card:hover .exp-partners-hint,.exp-card.active .exp-partners-hint{opacity:1}.combined-section{background:var(--cream);padding:0;border-top:1px solid var(--mist)}.combined-layout{display:grid;grid-template-columns:3fr 2fr;align-items:start}.combined-left{display:flex;flex-direction:column}.combined-header{position:sticky;top:68px;z-index:10;background:var(--cream);padding:3rem 2.5rem 2rem 5rem;display:flex;flex-direction:column;gap:1.5rem;flex-shrink:0;border-bottom:1px solid var(--mist)}.combined-header-text{max-width:500px}.combined-cards{padding:2rem 2.5rem 7rem 5rem;overflow-y:auto}.filter-bar{display:flex;gap:0;flex-wrap:wrap}.filter-btn{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.7rem 1.4rem;border:1px solid rgba(120,100,80,0.25);background:transparent;color:var(--earth);cursor:pointer;transition:all 0.25s;white-space:nowrap;margin-right:-1px;position:relative}.filter-btn:hover{background:var(--mist);color:var(--ink);border-color:var(--stone);z-index:1}.filter-btn.active{background:var(--ink);color:var(--gold);border-color:var(--ink);z-index:2}.partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--mist);border:1px solid var(--mist)}.partner-card{background:var(--cream);padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:0.4rem;transition:background 0.25s;border-bottom:2px solid transparent}.partner-card:hover{background:#eee9de;border-bottom-color:var(--gold)}.partner-card.active{background:#e8e0d0;border-bottom-color:var(--gold);outline:2px solid var(--gold);outline-offset:-2px}.partner-card.hidden{display:none}.partner-cat-tag{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.4rem;color:var(--cream);background:var(--earth);padding:0.22rem 0.6rem;align-self:flex-start;margin-bottom:0.2rem}.partner-cat-tag.cat-fishing{background:#3a6b7a}.partner-cat-tag.cat-hiking{background:#3d5235}.partner-cat-tag.cat-horseback{background:#7a4a2a}.partner-cat-tag.cat-wine{background:#6b3a5a}.partner-cat-tag.cat-events{background:#3a4a6b}.partner-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);line-height:1.2}.partner-dist{font-size:0.7rem;font-weight:300;color:var(--earth);letter-spacing:0.05em}.partner-desc{font-size:0.77rem;font-weight:300;color:#5a5048;line-height:1.65;margin-top:0.2rem;flex:1}.partner-meta{display:flex;align-items:center;gap:1rem;margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid rgba(120,100,80,0.12);flex-wrap:wrap}.partner-phone{font-size:0.7rem;font-weight:300;color:var(--earth);text-decoration:none;transition:color 0.2s}.partner-phone:hover{color:var(--ink)}.partner-rating{font-size:0.7rem;color:var(--gold);font-weight:400}.partner-web{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--earth);text-decoration:none;transition:color 0.2s;margin-left:auto}.partner-web:hover{color:var(--ink)}.map-panel{position:sticky;top:68px;height:calc(100vh - 68px);max-height:calc(100vh - 68px);overflow:hidden;border-left:1px solid var(--mist);align-self:start}#map{width:100%;height:100%}.leaflet-popup-content-wrapper{border-radius:0;font-family:'Jost',sans-serif}.popup-inner{padding:0.2rem 0.1rem}.popup-cat{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:0.3rem}.popup-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:#1a1610;margin-bottom:0.2rem}.popup-dist{font-size:0.72rem;color:#7a6552;margin-bottom:0.4rem}.popup-phone{font-size:0.72rem;color:#3a6b7a}.popup-property .popup-name{color:var(--moss)}.weddings{display:grid;grid-template-columns:1fr 1fr;min-height:680px}.weddings-img{position:relative;overflow:hidden;min-height:480px}.weddings-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 1.4s ease}.weddings-img img.wed-img-active{opacity:1}.weddings-content{background:var(--ink);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.weddings-content .section-title{color:var(--cream)}.event-list{list-style:none}.event-list li{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-top:1px solid rgba(255,255,255,0.07);font-size:0.9rem;font-weight:300;color:rgba(221,216,206,0.7);line-height:1.6}.event-list li::before{content:'—';color:var(--gold);flex-shrink:0}.details{display:grid;grid-template-columns:1fr 1fr}.detail-image{position:relative;overflow:hidden;min-height:500px}.detail-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s ease}.detail-image:hover img{transform:scale(1.04)}.detail-text{background:var(--mist);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.detail-facts{margin-top:2rem;display:flex;flex-direction:column;gap:0}.detail-fact{display:flex;justify-content:space-between;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid rgba(120,100,80,0.15);font-size:0.88rem}.fact-label{font-weight:300;color:var(--earth);letter-spacing:0.05em}.fact-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink)}.seasons{padding:5rem 7rem;background:var(--cream);display:flex;align-items:center;gap:5rem}.seasons-left{flex-shrink:0;max-width:260px}.seasons-left .section-title{margin-bottom:0}.seasons-cards{display:flex;gap:1px;flex:1;background:var(--mist)}.season-card{flex:1;background:var(--cream);padding:2.2rem 1.5rem;text-align:center;transition:background 0.3s;border-bottom:2px solid transparent}.season-card:hover{background:#f0ebe0;border-bottom-color:var(--gold)}.season-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem}.season-name{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.6rem}.season-desc{font-size:0.8rem;font-weight:300;color:var(--earth);line-height:1.65}.contact{background:var(--ink);padding:7rem;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start}.contact .section-title{color:var(--cream)}.contact-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--stone);line-height:1.85;margin-top:0.5rem}.contact-form{display:flex;flex-direction:column;gap:0.8rem}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}.contact-form input,.contact-form select,.contact-form textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--cream);padding:0.95rem 1.2rem;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:300;outline:none;width:100%;transition:border-color 0.3s}.contact-form select option{background:var(--ink)}.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.28)}.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--gold)}.contact-form textarea{height:120px;resize:vertical}.form-submit{align-self:flex-start;background:var(--gold);color:var(--ink);border:none;padding:0.95rem 2.8rem;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:background 0.3s}.form-submit:hover{background:var(--cream)}footer{background:#0c0a07;padding:2.5rem 7rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(184,145,58,0.12)}.footer-logo{font-family:'Cinzel',serif;font-size:0.88rem;letter-spacing:0.22em;color:var(--stone)}.footer-links{display:flex;gap:2.4rem;list-style:none}.footer-links a{font-size:0.65rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--gold)}
+:root{--stone:#c4b49a;--moss:#3d5235;--earth:#7a6552;--cream:#f5f0e8;--ink:#1a1610;--gold:#b8913a;--mist:#ddd8ce;--ivy:#4a6b3a}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scroll-snap-type:y proximity;}body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;overflow-y:scroll;}nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(26,22,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(184,145,58,0.15);transition:background 0.5s,backdrop-filter 0.5s}nav.scrolled{background:rgba(26,22,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(184,145,58,0.15)}.nav-logo{font-family:'Cinzel',serif;font-size:0.95rem;letter-spacing:0.22em;color:var(--cream);text-decoration:none;text-transform:uppercase}.nav-links{display:flex;gap:2.4rem;list-style:none}.nav-links a{font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s,color 0.2s}.nav-links a:hover{opacity:1;color:var(--gold)}.hero{position:relative;height:100vh;min-height:660px;display:flex;align-items:flex-end;overflow:hidden}.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,12,8,0.1) 0%,rgba(15,12,8,0.45) 55%,rgba(15,12,8,0.85) 100%),url('images/manor-exterior.jpg') center 40%/cover no-repeat;animation:heroZoom 20s ease-in-out infinite alternate}@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.0)}}.hero-content{position:relative;z-index:2;padding:0 7rem 5.5rem;max-width:860px;animation:fadeUp 1.4s ease both}@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.hero-label{font-family:'Jost',sans-serif;font-size:0.66rem;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;display:block;animation:fadeUp 1.4s 0.2s ease both}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.4rem,7.5vw,6.5rem);font-weight:300;line-height:1.03;color:var(--cream);margin-bottom:1.4rem;animation:fadeUp 1.4s 0.35s ease both}.hero h1 em{font-style:italic;color:var(--stone)}.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:rgba(245,240,232,0.8);font-weight:300;margin-bottom:2.5rem;max-width:580px;line-height:1.7;animation:fadeUp 1.4s 0.5s ease both}.hero-cta{display:inline-block;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:1rem 2.8rem;text-decoration:none;transition:background 0.3s;animation:fadeUp 1.4s 0.65s ease both}.hero-cta:hover{background:var(--cream)}.scroll-hint{position:absolute;bottom:2.2rem;right:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(245,240,232,0.55);font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;animation:fadeUp 2s 1.2s ease both}.scroll-hint::before{content:'';display:block;width:1px;height:44px;background:var(--stone);animation:scrollLine 2.2s ease infinite}@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}.intro-band{background:var(--ink);padding:1.8rem 0;overflow:hidden}.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 28s linear infinite}.marquee-item{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);padding:0 2.5rem;border-right:1px solid rgba(184,145,58,0.25)}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.section-label{font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.9rem}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.5rem);font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.5rem}.section-title em{font-style:italic;color:var(--earth)}.body-text{font-size:0.97rem;font-weight:300;line-height:1.9;color:#4a4038}.gold-rule{width:48px;height:1px;background:var(--gold);margin:1.5rem 0}.reveal{transition:opacity 0.85s ease,transform 0.85s ease}.js-ready .reveal{opacity:0;transform:translateY(26px)}.js-ready .reveal.visible{opacity:1;transform:none}
+/* Scroll snapping — each section anchors at the top */
+.hero,.intro-band,.story,.features,.gallery,.experiences,.combined-section,.weddings,.details,.seasons,.contact,footer{scroll-snap-align:start;}.story{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:680px}.story-image{position:relative;overflow:hidden}.story-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s ease}.story-image:hover img{transform:scale(1.04)}.story-image-caption{position:absolute;bottom:1.5rem;left:1.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:rgba(245,240,232,0.7);letter-spacing:0.05em}.story-text{background:var(--cream);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.features{background:var(--moss);padding:3.5rem 7rem;display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.08)}.feature-item{flex:1;padding:0 2.5rem;border-right:1px solid rgba(255,255,255,0.12);text-align:center}.feature-item:first-child{padding-left:0}.feature-item:last-child{border-right:none}.feature-icon{font-size:1.6rem;margin-bottom:0.7rem;display:block}.feature-name{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.4rem}.feature-desc{font-size:0.78rem;font-weight:300;color:rgba(245,240,232,0.65);line-height:1.6}.gallery{padding:7rem 0 0;background:var(--cream)}.gallery-header{padding:0 7rem 3rem}.gallery-header-inner{display:flex;align-items:flex-end;justify-content:space-between}.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:320px 320px;gap:4px}.g-item{overflow:hidden;cursor:pointer}.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease,filter 0.4s ease;filter:saturate(0.9)}.g-item:hover img{transform:scale(1.06);filter:saturate(1.1)}.g1{grid-column:1/6;grid-row:1/3}.g2{grid-column:6/9;grid-row:1/2}.g3{grid-column:9/13;grid-row:1/2}.g4{grid-column:6/9;grid-row:2/3}.g5{grid-column:9/13;grid-row:2/3}.experiences{background:var(--ink);padding:4.5rem 5rem 2rem;height:100vh;max-height:100vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box}.experiences .section-title{color:var(--cream)}.exp-intro{color:rgba(221,216,206,0.75);max-width:600px;margin-bottom:0}.exp-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;flex-shrink:0}.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px;border:1px solid rgba(184,145,58,0.15);flex:1;min-height:0;overflow:hidden}.exp-card{position:relative;overflow:hidden;cursor:pointer;min-height:0}.exp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(1.0) saturate(1.0);opacity:0;transition:opacity 1.2s ease,filter 0.5s ease}.exp-card img.exp-img-active{opacity:1}.exp-card:hover img.exp-img-active,.exp-card.active img.exp-img-active{filter:brightness(0.45) saturate(0.85)}.exp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,8,0.72) 0%,rgba(15,12,8,0.05) 45%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;transition:background 0.4s}.exp-card:hover .exp-overlay,.exp-card.active .exp-overlay{background:linear-gradient(to top,rgba(15,12,8,0.97) 0%,rgba(15,12,8,0.55) 100%)}.exp-number{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);margin-bottom:0.3rem}.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:0.4rem;text-shadow:0 1px 6px rgba(0,0,0,0.6)}.exp-desc{font-size:0.76rem;font-weight:300;color:var(--stone);line-height:1.65;opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s}.exp-card:hover .exp-desc,.exp-card.active .exp-desc{opacity:1;transform:translateY(0)}.exp-partners-hint{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:0.8rem;opacity:0;transition:opacity 0.4s 0.1s;cursor:pointer;display:inline-block;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.15rem}.exp-partners-hint:hover{color:var(--cream);border-bottom-color:rgba(245,240,232,0.4)}.exp-card:hover .exp-partners-hint,.exp-card.active .exp-partners-hint{opacity:1}.combined-section{background:var(--cream);padding:0;border-top:1px solid var(--mist)}.combined-layout{display:grid;grid-template-columns:3fr 2fr;align-items:start}.combined-left{display:flex;flex-direction:column}.combined-header{position:sticky;top:68px;z-index:10;background:var(--cream);padding:3rem 2.5rem 2rem 5rem;display:flex;flex-direction:column;gap:1.5rem;flex-shrink:0;border-bottom:1px solid var(--mist)}.combined-header-text{max-width:500px}.combined-cards{padding:2rem 2.5rem 7rem 5rem;overflow-y:auto}.filter-bar{display:flex;gap:0;flex-wrap:wrap}.filter-btn{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.7rem 1.4rem;border:1px solid rgba(120,100,80,0.25);background:transparent;color:var(--earth);cursor:pointer;transition:all 0.25s;white-space:nowrap;margin-right:-1px;position:relative}.filter-btn:hover{background:var(--mist);color:var(--ink);border-color:var(--stone);z-index:1}.filter-btn.active{background:var(--ink);color:var(--gold);border-color:var(--ink);z-index:2}.partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--mist);border:1px solid var(--mist)}.partner-card{background:var(--cream);padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:0.4rem;transition:background 0.25s;border-bottom:2px solid transparent}.partner-card:hover{background:#eee9de;border-bottom-color:var(--gold)}.partner-card.active{background:#e8e0d0;border-bottom-color:var(--gold);outline:2px solid var(--gold);outline-offset:-2px}.partner-card.hidden{display:none}.partner-cat-tag{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.4rem;color:var(--cream);background:var(--earth);padding:0.22rem 0.6rem;align-self:flex-start;margin-bottom:0.2rem}.partner-cat-tag.cat-fishing{background:#3a6b7a}.partner-cat-tag.cat-hiking{background:#3d5235}.partner-cat-tag.cat-horseback{background:#7a4a2a}.partner-cat-tag.cat-wine{background:#6b3a5a}.partner-cat-tag.cat-events{background:#3a4a6b}.partner-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);line-height:1.2}.partner-dist{font-size:0.7rem;font-weight:300;color:var(--earth);letter-spacing:0.05em}.partner-desc{font-size:0.77rem;font-weight:300;color:#5a5048;line-height:1.65;margin-top:0.2rem;flex:1}.partner-meta{display:flex;align-items:center;gap:1rem;margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid rgba(120,100,80,0.12);flex-wrap:wrap}.partner-phone{font-size:0.7rem;font-weight:300;color:var(--earth);text-decoration:none;transition:color 0.2s}.partner-phone:hover{color:var(--ink)}.partner-rating{font-size:0.7rem;color:var(--gold);font-weight:400}.partner-web{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--earth);text-decoration:none;transition:color 0.2s;margin-left:auto}.partner-web:hover{color:var(--ink)}.map-panel{position:sticky;top:68px;height:calc(100vh - 68px);max-height:calc(100vh - 68px);overflow:hidden;border-left:1px solid var(--mist);align-self:start}#map{width:100%;height:100%}.leaflet-popup-content-wrapper{border-radius:0;font-family:'Jost',sans-serif}.popup-inner{padding:0.2rem 0.1rem}.popup-cat{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:0.3rem}.popup-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:#1a1610;margin-bottom:0.2rem}.popup-dist{font-size:0.72rem;color:#7a6552;margin-bottom:0.4rem}.popup-phone{font-size:0.72rem;color:#3a6b7a}.popup-property .popup-name{color:var(--moss)}.weddings{display:grid;grid-template-columns:1fr 1fr;min-height:680px}.weddings-img{position:relative;overflow:hidden;min-height:480px}.weddings-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 1.4s ease}.weddings-img img.wed-img-active{opacity:1}.weddings-content{background:var(--ink);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.weddings-content .section-title{color:var(--cream)}.event-list{list-style:none}.event-list li{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-top:1px solid rgba(255,255,255,0.07);font-size:0.9rem;font-weight:300;color:rgba(221,216,206,0.7);line-height:1.6}.event-list li::before{content:'—';color:var(--gold);flex-shrink:0}.details{display:grid;grid-template-columns:1fr 1fr}.detail-image{position:relative;overflow:hidden;min-height:500px}.detail-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s ease}.detail-image:hover img{transform:scale(1.04)}.detail-text{background:var(--mist);padding:6rem 5.5rem;display:flex;flex-direction:column;justify-content:center}.detail-facts{margin-top:2rem;display:flex;flex-direction:column;gap:0}.detail-fact{display:flex;justify-content:space-between;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid rgba(120,100,80,0.15);font-size:0.88rem}.fact-label{font-weight:300;color:var(--earth);letter-spacing:0.05em}.fact-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink)}.seasons{padding:5rem 7rem;background:var(--cream);display:flex;align-items:center;gap:5rem}.seasons-left{flex-shrink:0;max-width:260px}.seasons-left .section-title{margin-bottom:0}.seasons-cards{display:flex;gap:1px;flex:1;background:var(--mist)}.season-card{flex:1;background:var(--cream);padding:2.2rem 1.5rem;text-align:center;transition:background 0.3s;border-bottom:2px solid transparent}.season-card:hover{background:#f0ebe0;border-bottom-color:var(--gold)}.season-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem}.season-name{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.6rem}.season-desc{font-size:0.8rem;font-weight:300;color:var(--earth);line-height:1.65}.contact{background:var(--ink);padding:7rem;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start}.contact .section-title{color:var(--cream)}.contact-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--stone);line-height:1.85;margin-top:0.5rem}.contact-form{display:flex;flex-direction:column;gap:0.8rem}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}.contact-form input,.contact-form select,.contact-form textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--cream);padding:0.95rem 1.2rem;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:300;outline:none;width:100%;transition:border-color 0.3s}.contact-form select option{background:var(--ink)}.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.28)}.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--gold)}.contact-form textarea{height:120px;resize:vertical}.form-submit{align-self:flex-start;background:var(--gold);color:var(--ink);border:none;padding:0.95rem 2.8rem;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:background 0.3s}.form-submit:hover{background:var(--cream)}footer{background:#0c0a07;padding:2.5rem 7rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(184,145,58,0.12)}.footer-logo{font-family:'Cinzel',serif;font-size:0.88rem;letter-spacing:0.22em;color:var(--stone)}.footer-links{display:flex;gap:2.4rem;list-style:none}.footer-links a{font-size:0.65rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--gold)}
 /* hamburger hidden on desktop */
 .nav-hamburger{display:none;}
 .exp-carousel-wrap{display:none;}
+/* drawer hidden on desktop — only activated inside mobile media query */
+.nav-drawer{display:none;}
 .lang-switcher{display:flex;align-items:center;gap:0.4rem;margin-left:1.5rem;flex-shrink:0}.lang-btn{display:flex;align-items:center;gap:0.35rem;background:none;border:1px solid transparent;color:var(--stone);font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;padding:0.3rem 0.55rem;border-radius:3px;cursor:pointer;transition:all 0.25s;line-height:1}.lang-btn img{border-radius:2px;display:block}.lang-btn:hover{color:var(--cream);border-color:rgba(184,145,58,0.4)}.lang-btn.lang-active{color:var(--gold);border-color:var(--gold)}
 /* ============================================================
    MOBILE STYLES — max-width 768px
@@ -21,14 +25,14 @@
 @media (max-width: 768px) {
 
   /* -- NAV ------------------------------------------------- */
-  nav { padding:0.9rem 1.2rem; z-index:300; }
+  nav { padding:0.9rem 1.2rem; z-index:1000; }
   .nav-links { display:none !important; }
   .lang-switcher { display:none !important; }
 
   .nav-hamburger {
     display:flex !important; flex-direction:column; justify-content:space-between;
     width:26px; height:18px; background:none; border:none;
-    cursor:pointer; padding:0; z-index:400; flex-shrink:0;
+    cursor:pointer; padding:0; z-index:1100; flex-shrink:0;
   }
   .nav-hamburger span {
     display:block; width:100%; height:1.5px; background:var(--cream);
@@ -42,7 +46,7 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:2rem; position:fixed; inset:0;
     background:rgba(15,12,8,0.97); backdrop-filter:blur(18px);
-    z-index:350; list-style:none;
+    z-index:1050; list-style:none;
     transform:translateX(100%);
     transition:transform 0.4s cubic-bezier(0.77,0,0.175,1);
   }
@@ -111,7 +115,7 @@
     flex:0 0 80vw; height:54vw; min-height:210px; scroll-snap-align:start;
     grid-column:unset !important; grid-row:unset !important;
   }
-  .g1 { flex:0 0 90vw; height:62vw; }
+  .g1 { flex:0 0 80vw; height:54vw; }
 
   /* -- EXPERIENCES ---------------------------------------- */
   .experiences {
@@ -161,16 +165,102 @@
   .combined-header-text .section-title { font-size:1.8rem; }
 
   .filter-bar {
-    display:flex; flex-wrap:nowrap; overflow-x:auto;
-    scrollbar-width:none; gap:0; -webkit-overflow-scrolling:touch;
+    display:flex; flex-wrap:nowrap; width:100%;
+    justify-content:space-between;
   }
   .filter-bar::-webkit-scrollbar { display:none; }
-  .filter-btn { flex-shrink:0; font-size:0.58rem; padding:0.6rem 1rem; }
+  .filter-btn {
+    flex:1; text-align:center;
+    font-size:0.75rem; padding:0.55rem 0.2rem;
+    letter-spacing:0.03em; position:relative;
+    white-space:nowrap;
+  }
+  /* show text labels on mobile alongside emoji, 20% smaller than button font */
+  .filter-btn .filter-label { display:inline; font-size:0.7rem; letter-spacing:0.1em; }
+  /* remove tooltip — labels are visible now */
+  .filter-btn::after { display:none; }
 
-  .combined-cards { padding:1.2rem 1.4rem 4rem; }
-  .partners-grid { grid-template-columns:1fr; }
-  .partner-card { padding:1.4rem 1.2rem; }
-  .partner-name { font-size:1.05rem; }
+  .combined-cards { padding:0.6rem 0 3rem; }
+  .partners-grid { grid-template-columns:1fr; gap:0; }
+
+  /* Full-width card using CSS grid to reorder children */
+  .partner-card {
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "tag  name"
+      "desc desc"
+      "dist dist"
+      "meta meta";
+    column-gap:0.6rem;
+    row-gap:0;
+    padding:0.55rem 1.1rem;
+    border-bottom:1px solid var(--mist);
+    border-radius:0;
+    cursor:pointer;
+    align-items:start;
+  }
+  .partner-card .partner-cat-tag {
+    grid-area:tag;
+    align-self:center;
+    justify-self:start;
+    margin-bottom:0;
+    font-size:0.71rem;
+    padding:0.18rem 0.5rem;
+    width:auto;
+    box-sizing:border-box;
+  }
+  .partner-card .partner-name {
+    grid-area:name;
+    font-size:1.11rem;
+    line-height:1.25;
+    align-self:center;
+  }
+  /* Remove chevron we added previously — handled by ::after on name */
+  .partner-card .partner-name::after { display:none; }
+
+  /* Description: one truncated line by default */
+  .partner-card .partner-desc {
+    grid-area:desc;
+    display:block;
+    font-size:0.78rem;
+    line-height:1.5;
+    margin-top:0.3rem;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-height:1.5em;
+    transition:max-height 0.35s ease, white-space 0s 0s;
+  }
+  /* Expanded: full description */
+  .partner-card.expanded .partner-desc {
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+    max-height:20em;
+  }
+
+  /* Distance always visible at bottom */
+  .partner-card .partner-dist {
+    grid-area:dist;
+    font-size:0.72rem;
+    margin-top:0.3rem;
+    padding-top:0.25rem;
+  }
+
+  /* Meta: hidden until expanded */
+  .partner-card .partner-meta {
+    grid-area:meta;
+    display:none;
+    margin-top:0.35rem;
+    padding-top:0.35rem;
+    border-top:1px solid rgba(120,100,80,0.1);
+  }
+  .partner-card.expanded .partner-meta { display:flex; }
+  .partner-card .partner-phone,
+  .partner-card .partner-rating,
+  .partner-card .partner-web { font-size:0.72rem; }
 
   /* -- WEDDINGS ------------------------------------------- */
   .weddings { grid-template-columns:1fr; min-height:unset; }
@@ -362,23 +452,23 @@
 </div>
 <div class="exp-grid">
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Albariño grapes on the vine"/>
-<img loading="lazy" class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
+<img loading="lazy" class="exp-img exp-img-active" src="images/Events.jpg" alt="Elegant wedding banquet hall"/>
+<img loading="lazy" class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
 <div class="exp-overlay">
 <div class="exp-number">01</div>
-<div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
-<div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
-<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
+<div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+<div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.</div>
+<div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Coastal hiking trail Galicia"/>
-<img loading="lazy" class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
+<img loading="lazy" class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Albariño grapes on the vine"/>
+<img loading="lazy" class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
 <div class="exp-overlay">
 <div class="exp-number">02</div>
-<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
-<div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
-<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
+<div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+<div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
+<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
 </div>
 </div>
 <div class="exp-card reveal">
@@ -403,13 +493,13 @@
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Events.jpg" alt="Elegant wedding banquet hall"/>
-<img loading="lazy" class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
+<img loading="lazy" class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Coastal hiking trail Galicia"/>
+<img loading="lazy" class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
 <div class="exp-overlay">
 <div class="exp-number">05</div>
-<div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
-<div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.</div>
-<div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
+<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+<div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
+<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
 </div>
 </div>
 <div class="exp-card reveal">
@@ -427,23 +517,23 @@
 <div class="exp-carousel-wrap" id="expCarouselWrap">
   <div class="exp-carousel" id="expCarousel">
     <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Wine and Gastronomy"/>
-      <img class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard"/>
+      <img class="exp-img exp-img-active" src="images/Events.jpg" alt="Weddings"/>
+      <img class="exp-img" src="images/Events2.jpg" alt="Wedding table"/>
       <div class="exp-overlay">
         <div class="exp-number">01</div>
-        <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
-        <div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán.</div>
-        <div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
+        <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+        <div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds — one of Spain's most extraordinary celebration venues.</div>
+        <div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
       </div>
     </div>
     <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Hiking and Nature"/>
-      <img class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones"/>
+      <img class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Wine and Gastronomy"/>
+      <img class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard"/>
       <div class="exp-overlay">
         <div class="exp-number">02</div>
-        <div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
-        <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures.</div>
-        <div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
+        <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+        <div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán.</div>
+        <div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
       </div>
     </div>
     <div class="exp-card">
@@ -467,13 +557,13 @@
       </div>
     </div>
     <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Events.jpg" alt="Weddings"/>
-      <img class="exp-img" src="images/Events2.jpg" alt="Wedding table"/>
+      <img class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Hiking and Nature"/>
+      <img class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones"/>
       <div class="exp-overlay">
         <div class="exp-number">05</div>
-        <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
-        <div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds — one of Spain's most extraordinary celebration venues.</div>
-        <div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
+        <div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+        <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures.</div>
+        <div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
       </div>
     </div>
     <div class="exp-card">
@@ -507,12 +597,12 @@
 <h2 class="section-title" id="partners-h2">Our Curated <em>Experiences</em></h2>
 </div>
 <div class="filter-bar">
-<button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
-<button class="filter-btn" data-filter="fishing" data-i18n="filter.fishing">🎣 Fishing</button>
-<button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 Hiking</button>
-<button class="filter-btn" data-filter="horseback" data-i18n="filter.horseback">🐴 Horseback</button>
-<button class="filter-btn" data-filter="wine" data-i18n="filter.wine">🍷 Wine</button>
-<button class="filter-btn" data-filter="events" data-i18n="filter.events">💒 Events</button>
+<button class="filter-btn active" data-filter="all" data-i18n="filter.all">⊞ <span class="filter-label">All</span></button>
+<button class="filter-btn" data-filter="events" data-i18n="filter.events">💒 <span class="filter-label">Events</span></button>
+<button class="filter-btn" data-filter="wine" data-i18n="filter.wine">🍷 <span class="filter-label">Wine</span></button>
+<button class="filter-btn" data-filter="horseback" data-i18n="filter.horseback">🐴 <span class="filter-label">Horseback</span></button>
+<button class="filter-btn" data-filter="fishing" data-i18n="filter.fishing">🎣 <span class="filter-label">Fishing</span></button>
+<button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 <span class="filter-label">Hiking</span></button>
 </div>
 </div>
 <div class="combined-cards">
@@ -1272,20 +1362,22 @@ function applyFilter(f) {
 }
 filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter)); });
 
-function makeIcon(cat, isProperty) {
+function makeIcon(cat, isProperty, emojiOverride) {
   const cfg = CAT_CONFIG[cat];
   const s = isProperty ? 44 : 36;
+  const icon = emojiOverride || cfg.emoji;
   return L.divIcon({
     className:'',
-    html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${isProperty?'20px':'16px'};border:${isProperty?'3px solid #b8913a':'2px solid rgba(255,255,255,0.8)'};box-shadow:0 2px 8px rgba(0,0,0,0.35);cursor:pointer;">${cfg.emoji}</div>`,
+    html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${isProperty?'20px':'16px'};border:${isProperty?'3px solid #b8913a':'2px solid rgba(255,255,255,0.8)'};box-shadow:0 2px 8px rgba(0,0,0,0.35);cursor:pointer;">${icon}</div>`,
     iconSize:[s,s], iconAnchor:[s/2,s/2], popupAnchor:[0,-(s/2+4)]
   });
 }
-function makeIconHighlighted(cat) {
+function makeIconHighlighted(cat, emojiOverride) {
   const cfg = CAT_CONFIG[cat];
+  const icon = emojiOverride || cfg.emoji;
   return L.divIcon({
     className:'',
-    html:`<div style="width:52px;height:52px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:22px;border:3px solid #b8913a;box-shadow:0 0 0 4px rgba(184,145,58,0.35),0 3px 12px rgba(0,0,0,0.45);cursor:pointer;">${cfg.emoji}</div>`,
+    html:`<div style="width:52px;height:52px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:22px;border:3px solid #b8913a;box-shadow:0 0 0 4px rgba(184,145,58,0.35),0 3px 12px rgba(0,0,0,0.45);cursor:pointer;">${icon}</div>`,
     iconSize:[52,52], iconAnchor:[26,26], popupAnchor:[0,-30]
   });
 }
@@ -1307,7 +1399,8 @@ const propMarker = L.marker([PROPERTY.lat, PROPERTY.lng], { icon: makeIcon('prop
 propMarker.bindPopup(buildPropertyPopup('en'), { maxWidth: 220 });
 const markersByCategory = {}, markersBySlug = {};
 PARTNERS.forEach(p => {
-  const m = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat, false) });
+  const partnerEmoji = p.subcatLabel ? [...p.subcatLabel][0] : null;
+  const m = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat, false, partnerEmoji) });
   m.bindPopup(buildPartnerPopup(p, 'en'), { maxWidth: 240 });
   m.addTo(map);
   if (!markersByCategory[p.cat]) markersByCategory[p.cat] = [];
@@ -1326,6 +1419,13 @@ function resetMapView() {
 document.querySelectorAll('.partner-card').forEach(card => {
   card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
+    // Mobile: toggle expanded state first; collapse others
+    if (isMobile()) {
+      const isExpanded = card.classList.contains('expanded');
+      document.querySelectorAll('.partner-card.expanded').forEach(c => c.classList.remove('expanded'));
+      if (!isExpanded) card.classList.add('expanded');
+    }
+
     const slug = card.querySelector('[data-partner-slug]')?.dataset.partnerSlug;
     if (!slug || !markersBySlug[slug]) return;
     const entries = markersBySlug[slug];
@@ -1337,7 +1437,7 @@ document.querySelectorAll('.partner-card').forEach(card => {
     if (activeCard) activeCard.classList.remove('active');
     activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false)); });
     activeCard = card; activeMarkers = entries; card.classList.add('active');
-    entries.forEach(({ marker, data }) => { marker.setIcon(makeIconHighlighted(data.cat)); });
+    entries.forEach(({ marker, data }) => { marker.setIcon(makeIconHighlighted(data.cat, data.subcatLabel ? [...data.subcatLabel][0] : null)); });
     const points = [[PROPERTY.lat, PROPERTY.lng], ...entries.map(({ data }) => [data.lat, data.lng])];
     map.invalidateSize();
     map.fitBounds(L.latLngBounds(points), { padding:[60,60], maxZoom:13 });
