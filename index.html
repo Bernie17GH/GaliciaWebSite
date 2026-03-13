@@ -1371,10 +1371,12 @@ function applyFilter(f) {
     if (!map.hasLayer(propMarker)) map.addLayer(propMarker);
     resetMapView();
   }
-  // Scroll card list back to top on mobile after filter change
+  // On mobile: scroll so map is at top, then reset card list to top
   if (isMobile()) {
+    const section = document.getElementById('partners');
+    if (section) section.scrollIntoView({ behavior:'smooth', block:'start' });
     const cards = document.querySelector('.combined-cards');
-    if (cards) cards.scrollTop = 0;
+    if (cards) setTimeout(() => { cards.scrollTop = 0; }, 300);
   }
 }
 filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter)); });
