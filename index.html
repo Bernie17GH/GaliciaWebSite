@@ -1373,7 +1373,7 @@ function applyFilter(f) {
   }
   // On mobile: scroll so map is at top, then reset card list to top
   if (isMobile()) {
-    const section = document.getElementById('partners');
+    const section = document.querySelector('.map-panel') || document.getElementById('partners');
     if (section) section.scrollIntoView({ behavior:'smooth', block:'start' });
     const cards = document.querySelector('.combined-cards');
     if (cards) setTimeout(() => { cards.scrollTop = 0; }, 300);
