@@ -165,12 +165,13 @@
     overflow:hidden;
   }
   #map { width:100%; height:33vh; min-height:200px; }
-  .combined-left   { order:1; flex-shrink:1; width:100%; max-width:100%; box-sizing:border-box; overflow-x:hidden; }
-  .combined-header { position:sticky; top:52px; padding:1.5rem 1.4rem 1.2rem; gap:1rem;
-                     width:100%; max-width:100%; box-sizing:border-box; }
+  .combined-left   { order:1; flex-shrink:1; width:100%; max-width:100%; box-sizing:border-box; overflow-x:hidden;
+                     display:flex; flex-direction:column; height:calc(100vh - 33vh - 52px); }
+  .combined-header { position:sticky; top:52px; padding:0.7rem 1.4rem 0.6rem; gap:0.6rem;
+                     width:100%; max-width:100%; box-sizing:border-box; flex-shrink:0; }
   .combined-header-text .section-title { font-size:1.8rem; }
-
-  .filter-bar {
+  .combined-cards  { padding:0 0 2rem; width:100%; max-width:100%; box-sizing:border-box;
+                     flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }  .filter-bar {
     display:flex; flex-wrap:nowrap; width:100%; max-width:100%;
     justify-content:space-between; box-sizing:border-box;
   }
@@ -1369,6 +1370,11 @@ function applyFilter(f) {
     });
     if (!map.hasLayer(propMarker)) map.addLayer(propMarker);
     resetMapView();
+  }
+  // Scroll card list back to top on mobile after filter change
+  if (isMobile()) {
+    const cards = document.querySelector('.combined-cards');
+    if (cards) cards.scrollTop = 0;
   }
 }
 filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter)); });
