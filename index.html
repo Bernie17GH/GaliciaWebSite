@@ -1334,7 +1334,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 const filterBtns = document.querySelectorAll('.filter-btn');
 let activeMarkers = [], activeCard = null, currentFilter = 'all';
 
-function applyFilter(f) {
+function applyFilter(f, scrollToMap) {
   currentFilter = f;
   const headingCfg = {
     en: { all:'Our Curated <em>Experiences</em>', cats:{ fishing:'Fishing and Game', hiking:'Hiking', horseback:'Horseback', wine:'Wine', events:'Events' }, noSuffix:{events:true} },
@@ -1372,14 +1372,14 @@ function applyFilter(f) {
     resetMapView();
   }
   // On mobile: scroll so map is at top, then reset card list to top
-  if (isMobile()) {
+  if (isMobile() && scrollToMap) {
     const section = document.querySelector('.map-panel') || document.getElementById('partners');
     if (section) section.scrollIntoView({ behavior:'smooth', block:'start' });
     const cards = document.querySelector('.combined-cards');
     if (cards) setTimeout(() => { cards.scrollTop = 0; }, 300);
   }
 }
-filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter)); });
+filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter, true)); });
 
 function makeIcon(cat, isProperty, emojiOverride) {
   const cfg = CAT_CONFIG[cat];
@@ -1401,7 +1401,9 @@ function makeIconHighlighted(cat, emojiOverride) {
   });
 }
 
-const map = L.map('map', { zoomControl:true }).setView([42.46, -8.72], 10);
+const map = L.map('map', { zoomControl:true, keyboard:false }).setView([42.46, -8.72], 10);
+// Prevent Leaflet init from scrolling the page on mobile
+if (typeof window !== 'undefined') { setTimeout(() => window.scrollTo(0, 0), 0); }
 // Invalidate multiple times — mobile layout can settle slowly
 [100, 300, 600, 1200].forEach(ms => setTimeout(() => map.invalidateSize(), ms));
 // Debounce resize so Leaflet recalculates AFTER the CSS has finished applying
@@ -1521,7 +1523,7 @@ if (expCarousel) {
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
       if (!isMobile()) return;
-      applyFilter(hint.dataset.filter);
+      applyFilter(hint.dataset.filter, true);
       document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
     });
   });
