@@ -1276,7 +1276,7 @@ function setLang(lang) {
   });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key].replace(/&amp;/g,'&');
+    if (t[key] !== undefined) el.textContent = t[key].replace(/&amp;/g,'&').replace(/&nbsp;/g,'\u00a0');
   });
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
