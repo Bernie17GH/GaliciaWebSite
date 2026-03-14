@@ -160,6 +160,7 @@ footer p{width:100%;text-align:right;}
   /* EXPERIENCES */
   .experiences{padding:2.5rem 0 2rem;height:auto;max-height:none;overflow:visible;}
   .exp-header{padding:0 1.4rem;margin-bottom:1.5rem;flex-direction:column;align-items:flex-start;gap:0.8rem;}
+  .exp-allpartners-link{display:none;}
   .exp-grid{display:none !important;}
   .exp-carousel-wrap{display:block !important;}
   .exp-carousel{
@@ -282,7 +283,7 @@ footer p{width:100%;text-align:right;}
 <h2 class="section-title" style="color:var(--cream)" data-i18n-html="exp.h2">Curated <em style="color:var(--stone)">Experiences</em></h2>
 <p class="exp-intro body-text" data-i18n="exp.intro">Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.</p>
 </div>
-<a href="#partners" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;" data-i18n="exp.allpartners">View All Partners →</a>
+<a href="#partners" class="exp-allpartners-link" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;" data-i18n="exp.allpartners">View All Partners →</a>
 </div>
 <div class="exp-grid">
 <div class="exp-card reveal">
@@ -794,6 +795,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+function scrollToId(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const navH = navEl.offsetHeight;
+  const top = target.getBoundingClientRect().top + window.scrollY - navH;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
 /* Reveal on scroll */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -810,8 +819,9 @@ function advanceCard(card) {
   imgs[activeIdx].classList.remove('exp-img-active');
   imgs[(activeIdx + 1) % imgs.length].classList.add('exp-img-active');
 }
-document.querySelectorAll('.exp-grid .exp-card').forEach((card, i) => {
-  setTimeout(() => { setInterval(() => advanceCard(card), 10000); }, i * 1667);
+/* Experience grid image cycling — desktop grid + mobile carousel */
+document.querySelectorAll('.exp-grid .exp-card, .exp-carousel .exp-card').forEach((card, i) => {
+  setTimeout(() => { setInterval(() => advanceCard(card), 4000); }, i * 667);
   card.addEventListener('click', (e) => {
     if (e.target.closest('.exp-partners-hint')) return;
     advanceCard(card);
@@ -823,7 +833,7 @@ document.querySelectorAll('.exp-grid .exp-card').forEach((card, i) => {
 document.querySelectorAll('.exp-grid .exp-partners-hint').forEach(hint => {
   hint.addEventListener('click', () => {
     applyFilter(hint.dataset.filter);
-    document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
+    scrollToId('partners');
   });
 });
 
@@ -869,8 +879,12 @@ function applyFilter(f, scrollToMap) {
     resetMapView();
   }
   if (isMobile() && scrollToMap) {
-    const section = document.querySelector('.map-panel') || document.getElementById('partners');
-    if (section) section.scrollIntoView({ behavior:'smooth', block:'start' });
+    const mapPanel = document.querySelector('.map-panel');
+    if (mapPanel) {
+      const navH = navEl.offsetHeight;
+      const top = mapPanel.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior:'smooth' });
+    }
     const cards = document.querySelector('.combined-cards');
     if (cards) setTimeout(() => { cards.scrollTop = 0; }, 300);
   }
@@ -1013,14 +1027,43 @@ if (hamburger && navDrawer) {
 const expCarousel = document.getElementById('expCarousel');
 const expDots = document.querySelectorAll('.exp-dot');
 if (expCarousel) {
+  const expCount = expDots.length;
+  let expUserScrolling = false, expPauseTimer;
+
+  function expAdvance() {
+    if (!isMobile() || expUserScrolling) return;
+    const card = expCarousel.querySelector('.exp-card');
+    if (!card) return;
+    const cardW = card.offsetWidth + 3;
+    const current = Math.min(Math.round(expCarousel.scrollLeft / cardW), expCount - 1);
+    const next = (current + 1) % expCount;
+    expCarousel.scrollTo({ left: next * cardW, behavior: 'smooth' });
+  }
+
+  let expAutoTimer = setInterval(expAdvance, 3000);
+
   expCarousel.addEventListener('scroll', () => {
     if (!isMobile()) return;
     const card = expCarousel.querySelector('.exp-card');
     if (!card) return;
     const cardW = card.offsetWidth + 3;
-    const idx = Math.min(Math.round(expCarousel.scrollLeft / cardW), expDots.length - 1);
+    const idx = Math.min(Math.round(expCarousel.scrollLeft / cardW), expCount - 1);
     expDots.forEach((d, i) => d.classList.toggle('active', i === idx));
   }, { passive:true });
+
+  expCarousel.addEventListener('touchstart', () => {
+    expUserScrolling = true;
+    clearTimeout(expPauseTimer);
+    clearInterval(expAutoTimer);
+  }, { passive: true });
+
+  expCarousel.addEventListener('touchend', () => {
+    expPauseTimer = setTimeout(() => {
+      expUserScrolling = false;
+      expAutoTimer = setInterval(expAdvance, 3000);
+    }, 4000);
+  }, { passive: true });
+
   expDots.forEach(dot => {
     dot.addEventListener('click', () => {
       const card = expCarousel.querySelector('.exp-card');
@@ -1035,7 +1078,7 @@ if (expCarousel) {
     card.addEventListener('click', () => {
       if (!isMobile()) return;
       applyFilter(hint.dataset.filter, true);
-      document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
+      scrollToId('partners');
     });
   });
 }
