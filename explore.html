@@ -30,6 +30,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .section-title em{font-style:italic;color:var(--earth);}
 .body-text{font-size:0.97rem;font-weight:300;line-height:1.9;color:#4a4038;}
 .reveal{transition:opacity 0.85s ease,transform 0.85s ease;}
+/* Offset anchor scroll by nav height */
+.experiences,.combined-section,[id]{scroll-margin-top:68px;}
 .js-ready .reveal{opacity:0;transform:translateY(26px);}
 .js-ready .reveal.visible{opacity:1;transform:none;}
 
@@ -109,6 +111,7 @@ footer p{width:100%;text-align:right;}
    ============================================================ */
 @media (max-width:768px){
   nav{padding:0.9rem 1.2rem;z-index:1000;}
+  .experiences,.combined-section,[id]{scroll-margin-top:52px;}
   .nav-links{display:none !important;}
   .lang-switcher{display:none !important;}
 
@@ -775,6 +778,21 @@ try { const saved = localStorage.getItem('pazo_lang'); if (saved && TRANSLATIONS
 document.documentElement.classList.add('js-ready');
 
 function isMobile() { return window.innerWidth <= 768; }
+
+/* Offset all anchor-link scrolls by nav height */
+const navEl = document.getElementById('nav');
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const id = this.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const navH = navEl.offsetHeight;
+    const top = target.getBoundingClientRect().top + window.scrollY - navH;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
 
 /* Reveal on scroll */
 const observer = new IntersectionObserver((entries) => {
