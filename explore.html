@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experiences &amp; Partners — A Galician Pazo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root{--stone:#c4b49a;--moss:#3d5235;--earth:#7a6552;--cream:#f5f0e8;--ink:#1a1610;--gold:#b8913a;--mist:#ddd8ce;--ivy:#4a6b3a}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;}body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;overflow-y:scroll;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(26,22,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(184,145,58,0.15);}
+.nav-logo{font-family:'Cinzel',serif;font-size:0.95rem;letter-spacing:0.22em;color:var(--cream);text-decoration:none;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.4rem;list-style:none;align-items:center;}
+.nav-links a{font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s,color 0.2s;}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+.lang-switcher{display:flex;align-items:center;gap:0.4rem;margin-left:1.5rem;flex-shrink:0;}
+.lang-btn{display:flex;align-items:center;gap:0.35rem;background:none;border:1px solid transparent;color:var(--stone);font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;padding:0.3rem 0.55rem;border-radius:3px;cursor:pointer;transition:all 0.25s;line-height:1;}
+.lang-btn img{border-radius:2px;display:block;}
+.lang-btn:hover{color:var(--cream);border-color:rgba(184,145,58,0.4);}
+.lang-btn.lang-active{color:var(--gold);border-color:var(--gold);}
+
+/* ── SHARED UTILITIES ── */
+.section-label{font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.9rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.5rem);font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.5rem;}
+.section-title em{font-style:italic;color:var(--earth);}
+.body-text{font-size:0.97rem;font-weight:300;line-height:1.9;color:#4a4038;}
+.reveal{transition:opacity 0.85s ease,transform 0.85s ease;}
+.js-ready .reveal{opacity:0;transform:translateY(26px);}
+.js-ready .reveal.visible{opacity:1;transform:none;}
+
+/* ── EXPERIENCES ── */
+.experiences{background:var(--ink);padding:4.5rem 5rem 2rem;height:100vh;max-height:100vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;}
+.experiences .section-title{color:var(--cream);}
+.exp-intro{color:rgba(221,216,206,0.75);max-width:600px;margin-bottom:0;}
+.exp-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;flex-shrink:0;}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:1px;border:1px solid rgba(184,145,58,0.15);flex:1;min-height:0;overflow:hidden;}
+.exp-card{position:relative;overflow:hidden;cursor:pointer;min-height:0;}
+.exp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(1.0) saturate(1.0);opacity:0;transition:opacity 1.2s ease,filter 0.5s ease;}
+.exp-card img.exp-img-active{opacity:1;}
+.exp-card:hover img.exp-img-active,.exp-card.active img.exp-img-active{filter:brightness(0.45) saturate(0.85);}
+.exp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,8,0.72) 0%,rgba(15,12,8,0.05) 45%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;transition:background 0.4s;}
+.exp-card:hover .exp-overlay,.exp-card.active .exp-overlay{background:linear-gradient(to top,rgba(15,12,8,0.97) 0%,rgba(15,12,8,0.55) 100%);}
+.exp-number{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);margin-bottom:0.3rem;}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:0.4rem;text-shadow:0 1px 6px rgba(0,0,0,0.6);}
+.exp-desc{font-size:0.76rem;font-weight:300;color:var(--stone);line-height:1.65;opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s;}
+.exp-card:hover .exp-desc,.exp-card.active .exp-desc{opacity:1;transform:translateY(0);}
+.exp-partners-hint{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:0.8rem;opacity:0;transition:opacity 0.4s 0.1s;cursor:pointer;display:inline-block;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.15rem;}
+.exp-partners-hint:hover{color:var(--cream);border-bottom-color:rgba(245,240,232,0.4);}
+.exp-card:hover .exp-partners-hint,.exp-card.active .exp-partners-hint{opacity:1;}
+/* Mobile carousel — hidden on desktop */
+.exp-carousel-wrap{display:none;}
+.exp-dots{display:none;}
+.exp-dot{width:6px;height:6px;border-radius:50%;background:rgba(184,145,58,0.3);transition:background 0.3s,transform 0.3s;cursor:pointer;}
+.exp-dot.active{background:var(--gold);transform:scale(1.4);}
+
+/* ── PARTNERS + MAP ── */
+.combined-section{background:var(--cream);padding:0;border-top:1px solid var(--mist);}
+.combined-layout{display:grid;grid-template-columns:3fr 2fr;align-items:start;}
+.combined-left{display:flex;flex-direction:column;}
+.combined-header{position:sticky;top:68px;z-index:10;background:var(--cream);padding:3rem 2.5rem 2rem 5rem;display:flex;flex-direction:column;gap:1.5rem;flex-shrink:0;border-bottom:1px solid var(--mist);}
+.combined-header-text{max-width:500px;}
+.combined-cards{padding:2rem 2.5rem 7rem 5rem;overflow-y:auto;}
+.filter-bar{display:flex;gap:0;flex-wrap:wrap;}
+.filter-btn{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.7rem 1.4rem;border:1px solid rgba(120,100,80,0.25);background:transparent;color:var(--earth);cursor:pointer;transition:all 0.25s;white-space:nowrap;margin-right:-1px;position:relative;}
+.filter-btn:hover{background:var(--mist);color:var(--ink);border-color:var(--stone);z-index:1;}
+.filter-btn.active{background:var(--ink);color:var(--gold);border-color:var(--ink);z-index:2;}
+.partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--mist);border:1px solid var(--mist);}
+.partner-card{background:var(--cream);padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:0.4rem;transition:background 0.25s;border-bottom:2px solid transparent;}
+.partner-card:hover{background:#eee9de;border-bottom-color:var(--gold);}
+.partner-card.active{background:#e8e0d0;border-bottom-color:var(--gold);outline:2px solid var(--gold);outline-offset:-2px;}
+.partner-card.hidden{display:none;}
+.partner-cat-tag{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.4rem;color:var(--cream);background:var(--earth);padding:0.22rem 0.6rem;align-self:flex-start;margin-bottom:0.2rem;}
+.partner-cat-tag.cat-fishing{background:#3a6b7a;}.partner-cat-tag.cat-hiking{background:#3d5235;}.partner-cat-tag.cat-horseback{background:#7a4a2a;}.partner-cat-tag.cat-wine{background:#6b3a5a;}.partner-cat-tag.cat-events{background:#3a4a6b;}
+.partner-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);line-height:1.2;}
+.partner-dist{font-size:0.7rem;font-weight:300;color:var(--earth);letter-spacing:0.05em;}
+.partner-desc{font-size:0.77rem;font-weight:300;color:#5a5048;line-height:1.65;margin-top:0.2rem;flex:1;}
+.partner-meta{display:flex;align-items:center;gap:1rem;margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid rgba(120,100,80,0.12);flex-wrap:wrap;}
+.partner-phone{font-size:0.7rem;font-weight:300;color:var(--earth);text-decoration:none;transition:color 0.2s;}.partner-phone:hover{color:var(--ink);}
+.partner-rating{font-size:0.7rem;color:var(--gold);font-weight:400;}
+.partner-web{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--earth);text-decoration:none;transition:color 0.2s;margin-left:auto;}.partner-web:hover{color:var(--ink);}
+.map-panel{position:sticky;top:68px;height:calc(100vh - 68px);max-height:calc(100vh - 68px);overflow:hidden;border-left:1px solid var(--mist);align-self:start;}
+#map{width:100%;height:100%;}
+.leaflet-control-container { z-index: 400 !important; }
+.leaflet-control { z-index: 400 !important; }
+.leaflet-popup-content-wrapper{border-radius:0;font-family:'Jost',sans-serif;}
+.popup-inner{padding:0.2rem 0.1rem;}.popup-cat{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:0.3rem;}
+.popup-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:#1a1610;margin-bottom:0.2rem;}
+.popup-dist{font-size:0.72rem;color:#7a6552;margin-bottom:0.4rem;}.popup-phone{font-size:0.72rem;color:#3a6b7a;}.popup-property .popup-name{color:var(--moss);}
+
+/* ── FOOTER ── */
+footer{background:#0c0a07;padding:2.5rem 7rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;border-top:1px solid rgba(184,145,58,0.12);}
+footer p{width:100%;text-align:right;}
+.footer-logo{font-family:'Cinzel',serif;font-size:0.88rem;letter-spacing:0.22em;color:var(--stone);}
+.footer-links{display:flex;gap:2.4rem;list-style:none;}
+.footer-links a{font-size:0.65rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+
+/* hamburger / drawer — hidden on desktop */
+.nav-hamburger{display:none;}
+.nav-drawer{display:none;}
+
+/* ============================================================
+   MOBILE — max-width 768px
+   ============================================================ */
+@media (max-width:768px){
+  nav{padding:0.9rem 1.2rem;z-index:1000;}
+  .nav-links{display:none !important;}
+  .lang-switcher{display:none !important;}
+
+  .nav-hamburger{
+    display:flex !important;flex-direction:column;justify-content:space-between;
+    width:26px;height:18px;background:none;border:none;
+    cursor:pointer;padding:0;z-index:1100;flex-shrink:0;
+  }
+  .nav-hamburger span{display:block;width:100%;height:1.5px;background:var(--cream);transition:transform 0.35s ease,opacity 0.25s ease;transform-origin:center;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(8.25px) rotate(45deg);}
+  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-8.25px) rotate(-45deg);}
+
+  .nav-drawer{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2rem;position:fixed;inset:0;
+    background:rgba(15,12,8,0.97);backdrop-filter:blur(18px);
+    z-index:1050;list-style:none;
+    transform:translateX(100%);
+    transition:transform 0.4s cubic-bezier(0.77,0,0.175,1);
+  }
+  .nav-drawer.open{transform:translateX(0);}
+  .nav-drawer li a{
+    font-family:'Cinzel',serif;font-size:1.35rem;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--cream);text-decoration:none;
+    opacity:0.85;transition:color 0.2s,opacity 0.2s;display:block;
+  }
+  .nav-drawer li a:hover{color:var(--gold);opacity:1;}
+  .drawer-back{
+    display:inline-block !important;background:transparent;
+    color:var(--stone) !important;font-family:'Jost',sans-serif !important;
+    font-size:0.8rem !important;font-weight:300 !important;
+    letter-spacing:0.2em;text-transform:uppercase !important;
+    border:1px solid rgba(196,180,154,0.35) !important;
+    padding:0.75rem 2rem;text-decoration:none;opacity:1 !important;
+  }
+  .drawer-lang{display:flex;gap:0.8rem;}
+  .drawer-lang .lang-btn{
+    display:flex;align-items:center;gap:0.35rem;
+    background:none;border:1px solid rgba(184,145,58,0.35);
+    color:var(--stone);font-family:'Cinzel',serif;font-size:0.6rem;
+    letter-spacing:0.12em;padding:0.4rem 0.7rem;border-radius:3px;cursor:pointer;
+  }
+  .drawer-lang .lang-btn.lang-active{color:var(--gold);border-color:var(--gold);}
+
+  /* EXPERIENCES */
+  .experiences{padding:2.5rem 0 2rem;height:auto;max-height:none;overflow:visible;}
+  .exp-header{padding:0 1.4rem;margin-bottom:1.5rem;flex-direction:column;align-items:flex-start;gap:0.8rem;}
+  .exp-grid{display:none !important;}
+  .exp-carousel-wrap{display:block !important;}
+  .exp-carousel{
+    display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    gap:3px;padding-left:1.4rem;padding-right:calc(1.4rem + 14vw);
+  }
+  .exp-carousel::-webkit-scrollbar{display:none;}
+  .exp-carousel .exp-card{flex:0 0 76vw;aspect-ratio:16/9;min-height:0;scroll-snap-align:start;position:relative;overflow:hidden;}
+  .exp-carousel .exp-card .exp-desc{opacity:1 !important;transform:none !important;}
+  .exp-carousel .exp-card .exp-partners-hint{display:none !important;}
+  .exp-carousel .exp-card img.exp-img-active{filter:brightness(0.75) saturate(0.85);}
+  .exp-carousel .exp-card .exp-overlay{background:linear-gradient(to top,rgba(15,12,8,0.82) 0%,rgba(15,12,8,0.15) 100%);justify-content:flex-start;padding-top:1.1rem;}
+  .exp-carousel .exp-card .exp-number{margin-bottom:0.15rem;}
+  .exp-carousel .exp-card .exp-title{font-size:1rem;margin-bottom:0.35rem;white-space:normal;}
+  .exp-carousel .exp-card .exp-desc{font-size:0.7rem;line-height:1.5;}
+  .exp-dots{display:flex;justify-content:center;gap:8px;margin-top:1.2rem;padding:0 1.4rem;}
+
+  /* PARTNERS + MAP */
+  .combined-section{overflow-x:hidden;width:100%;max-width:100vw;box-sizing:border-box;}
+  .combined-layout{display:flex !important;flex-direction:column;overflow-x:hidden;width:100%;}
+  .map-panel{
+    position:relative !important;top:0 !important;order:0;
+    height:33vh;min-height:200px;
+    width:100%;align-self:stretch;
+    flex-shrink:0;flex-grow:0;
+    border-left:none;border-bottom:1px solid var(--mist);overflow:hidden;
+    z-index:1;isolation:isolate;
+  }
+  #map{width:100%;height:33vh;min-height:200px;}
+  .combined-left{order:1;flex-shrink:1;width:100%;max-width:100%;box-sizing:border-box;overflow-x:hidden;
+                  display:flex;flex-direction:column;height:calc(100vh - 33vh - 52px);}
+  .combined-header{position:relative;top:auto;padding:0.4rem 1.4rem 0.4rem;gap:0.3rem;
+                    width:100%;max-width:100%;box-sizing:border-box;flex-shrink:0;}
+  .combined-header-text{display:none;}
+  .combined-cards{padding:0 0 2rem;width:100%;max-width:100%;box-sizing:border-box;
+                   flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .filter-bar{display:flex;flex-wrap:nowrap;width:100%;max-width:100%;justify-content:space-between;box-sizing:border-box;}
+  .filter-bar::-webkit-scrollbar{display:none;}
+  .filter-btn{flex:1 1 0;min-width:0;text-align:center;font-size:0.68rem;padding:0.55rem 0.1rem;letter-spacing:0;position:relative;white-space:nowrap;overflow:hidden;box-sizing:border-box;}
+  .filter-btn .filter-label{display:inline;font-size:0.62rem;letter-spacing:0;}
+  .filter-btn::after{display:none;}
+  .combined-cards{padding:0.6rem 0 3rem;width:100%;max-width:100%;box-sizing:border-box;}
+  .partners-grid{grid-template-columns:1fr;gap:0;width:100%;box-sizing:border-box;}
+  .partner-card{
+    display:grid;grid-template-columns:2fr 3fr;grid-template-rows:auto auto auto auto;
+    grid-template-areas:"tag name" "desc desc" "dist dist" "meta meta";
+    column-gap:0.6rem;row-gap:0;padding:0.55rem 1.1rem;
+    border-bottom:1px solid var(--mist);border-radius:0;cursor:pointer;align-items:start;
+    width:100%;max-width:100%;box-sizing:border-box;
+  }
+  .partner-card .partner-cat-tag{grid-area:tag;align-self:center;justify-self:start;margin-bottom:0;font-size:0.71rem;padding:0.18rem 0.5rem;width:auto;box-sizing:border-box;min-width:0;}
+  .partner-card .partner-name{grid-area:name;font-size:1.11rem;line-height:1.25;align-self:center;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .partner-card .partner-name::after{display:none;}
+  .partner-card .partner-desc{grid-area:desc;display:block;font-size:0.78rem;line-height:1.5;margin-top:0.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:1.5em;min-width:0;transition:max-height 0.35s ease,white-space 0s 0s;}
+  .partner-card.expanded .partner-desc{white-space:normal;overflow:visible;text-overflow:clip;max-height:20em;}
+  .partner-card .partner-dist{grid-area:dist;font-size:0.72rem;margin-top:0.3rem;padding-top:0.25rem;}
+  .partner-card .partner-meta{grid-area:meta;display:none;margin-top:0.35rem;padding-top:0.35rem;border-top:1px solid rgba(120,100,80,0.1);}
+  .partner-card.expanded .partner-meta{display:flex;}
+  .partner-card .partner-phone,.partner-card .partner-rating,.partner-card .partner-web{font-size:0.72rem;}
+
+  /* FOOTER */
+  footer{flex-direction:column;gap:1.4rem;text-align:center;padding:2rem 1.4rem;}
+  .footer-links{gap:1.2rem;flex-wrap:wrap;justify-content:center;}
+  footer p{text-align:center;}
+
+  /* GLOBAL */
+  .section-title{font-size:clamp(1.7rem,6vw,2.4rem) !important;}
+  #partners-h2{font-size:clamp(1.7rem,6vw,2.4rem) !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Pazo · Galicia</a>
+  <ul class="nav-links">
+    <li><a href="index.html#story" data-i18n="nav.estate">The Estate</a></li>
+    <li><a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="explore.html" data-i18n="nav.experiences">Experiences</a></li>
+    <li><a href="index.html#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
+    <li><a href="index.html#contact" data-i18n="nav.enquire">Enquire</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn lang-active" onclick="setLang('en')" title="English">
+      <img src="https://flagcdn.com/gb.svg" alt="English" width="22" height="16"> EN
+    </button>
+    <button class="lang-btn" onclick="setLang('es')" title="Español">
+      <img src="https://flagcdn.com/es.svg" alt="Español" width="22" height="16"> ES
+    </button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE DRAWER ── -->
+<ul class="nav-drawer" id="navDrawer" role="navigation">
+  <li><a href="index.html#story"    class="drawer-link" data-i18n="nav.estate">The Estate</a></li>
+  <li><a href="index.html#gallery"  class="drawer-link" data-i18n="nav.gallery">Gallery</a></li>
+  <li><a href="explore.html"        class="drawer-link" data-i18n="nav.experiences">Experiences</a></li>
+  <li><a href="index.html#weddings" class="drawer-link" data-i18n="nav.celebrations">Celebrations</a></li>
+  <li><a href="index.html#contact"  class="drawer-enquire" data-i18n="nav.enquire">Enquire</a></li>
+  <li class="drawer-lang">
+    <button class="lang-btn lang-active" onclick="setLang('en');closeDrawer()" title="English">
+      <img src="https://flagcdn.com/gb.svg" alt="English" width="20" height="14"> EN
+    </button>
+    <button class="lang-btn" onclick="setLang('es');closeDrawer()" title="Español">
+      <img src="https://flagcdn.com/es.svg" alt="Español" width="20" height="14"> ES
+    </button>
+  </li>
+</ul>
+
+<!-- ── EXPERIENCES ── -->
+<section class="experiences" id="experiences">
+<div class="exp-header reveal">
+<div>
+<span class="section-label" data-i18n="exp.label">What Awaits</span>
+<h2 class="section-title" style="color:var(--cream)" data-i18n-html="exp.h2">Curated <em style="color:var(--stone)">Experiences</em></h2>
+<p class="exp-intro body-text" data-i18n="exp.intro">Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.</p>
+</div>
+<a href="#partners" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;" data-i18n="exp.allpartners">View All Partners →</a>
+</div>
+<div class="exp-grid">
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/Events.jpg" alt="Elegant wedding banquet hall"/>
+<img loading="lazy" class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
+<div class="exp-overlay">
+<div class="exp-number">01</div>
+<div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+<div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.</div>
+<div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
+</div>
+</div>
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Albariño grapes on the vine"/>
+<img loading="lazy" class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
+<div class="exp-overlay">
+<div class="exp-number">02</div>
+<div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+<div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
+<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
+</div>
+</div>
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/Horseback.jpg" alt="Horseback riding through Galician forest"/>
+<img loading="lazy" class="exp-img" src="images/Horseback2.jpg" alt="Horse in Galician eucalyptus forest"/>
+<div class="exp-overlay">
+<div class="exp-number">03</div>
+<div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
+<div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.</div>
+<div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">3 equestrian partners within 11 km →</div>
+</div>
+</div>
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/pesca.jpg" alt="River fly fishing in Galician forest"/>
+<img loading="lazy" class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast Rías Baixas from above"/>
+<img loading="lazy" class="exp-img" src="images/game.jpg" alt="Game hunting in Galician countryside"/>
+<div class="exp-overlay">
+<div class="exp-number">04</div>
+<div class="exp-title" data-i18n="exp.fishing.title">Fishing and Game</div>
+<div class="exp-desc" data-i18n="exp.fishing.desc">Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia's rivers, or hunt for wild boar with local outfitters.</div>
+<div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">7 fishing and game partners →</div>
+</div>
+</div>
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Coastal hiking trail Galicia"/>
+<img loading="lazy" class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
+<div class="exp-overlay">
+<div class="exp-number">05</div>
+<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+<div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
+<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
+</div>
+</div>
+<div class="exp-card reveal">
+<img loading="lazy" class="exp-img exp-img-active" src="images/Corporate.jpg" alt="Outdoor corporate retreat in nature"/>
+<img loading="lazy" class="exp-img" src="images/Corporate2.jpg" alt="Indoor boardroom corporate event"/>
+<div class="exp-overlay">
+<div class="exp-number">06</div>
+<div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
+<div class="exp-desc" data-i18n="exp.corporate.desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.</div>
+<div class="exp-partners-hint" data-filter="all" data-i18n="exp.corporate.hint">Full curated itineraries on request →</div>
+</div>
+</div>
+</div>
+<!-- MOBILE carousel -->
+<div class="exp-carousel-wrap" id="expCarouselWrap">
+  <div class="exp-carousel" id="expCarousel">
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/Events.jpg" alt="Weddings"/>
+      <img class="exp-img" src="images/Events2.jpg" alt="Wedding table"/>
+      <div class="exp-overlay">
+        <div class="exp-number">01</div>
+        <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+        <div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds — one of Spain's most extraordinary celebration venues.</div>
+        <div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Wine and Gastronomy"/>
+      <img class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard"/>
+      <div class="exp-overlay">
+        <div class="exp-number">02</div>
+        <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+        <div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán.</div>
+        <div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/Horseback.jpg" alt="Horseback Riding"/>
+      <img class="exp-img" src="images/Horseback2.jpg" alt="Horse in forest"/>
+      <div class="exp-overlay">
+        <div class="exp-number">03</div>
+        <div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
+        <div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback.</div>
+        <div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">3 equestrian partners within 11 km →</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/pesca.jpg" alt="Fishing and Game"/>
+      <img class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast"/>
+      <div class="exp-overlay">
+        <div class="exp-number">04</div>
+        <div class="exp-title" data-i18n="exp.fishing.title">Fishing and Game</div>
+        <div class="exp-desc" data-i18n="exp.fishing.desc">Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia's rivers, or hunt for wild boar with local outfitters.</div>
+        <div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">7 fishing and game partners →</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Hiking and Nature"/>
+      <img class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones"/>
+      <div class="exp-overlay">
+        <div class="exp-number">05</div>
+        <div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+        <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures.</div>
+        <div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-img exp-img-active" src="images/Corporate.jpg" alt="Corporate Retreats"/>
+      <img class="exp-img" src="images/Corporate2.jpg" alt="Corporate indoor"/>
+      <div class="exp-overlay">
+        <div class="exp-number">06</div>
+        <div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
+        <div class="exp-desc" data-i18n="exp.corporate.desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom.</div>
+        <div class="exp-partners-hint" data-filter="all" data-i18n="exp.corporate.hint">Full curated itineraries on request →</div>
+      </div>
+    </div>
+  </div>
+  <div class="exp-dots" id="expDots">
+    <div class="exp-dot active" data-index="0"></div>
+    <div class="exp-dot" data-index="1"></div>
+    <div class="exp-dot" data-index="2"></div>
+    <div class="exp-dot" data-index="3"></div>
+    <div class="exp-dot" data-index="4"></div>
+    <div class="exp-dot" data-index="5"></div>
+  </div>
+</div>
+</section>
+
+<!-- ── PARTNERS + MAP ── -->
+<section class="combined-section" id="partners">
+<div class="combined-layout">
+<div class="combined-left">
+<div class="combined-header reveal">
+<div class="combined-header-text">
+<span class="section-label" data-i18n="partners.label">Local Partners</span>
+<h2 class="section-title" id="partners-h2">Our Curated <em>Experiences</em></h2>
+</div>
+<div class="filter-bar">
+<button class="filter-btn active" data-filter="all" data-i18n="filter.all">⊞ <span class="filter-label">All</span></button>
+<button class="filter-btn" data-filter="events" data-i18n="filter.events">💒 <span class="filter-label">Events</span></button>
+<button class="filter-btn" data-filter="wine" data-i18n="filter.wine">🍷 <span class="filter-label">Wine</span></button>
+<button class="filter-btn" data-filter="horseback" data-i18n="filter.horseback">🐴 <span class="filter-label">Horseback</span></button>
+<button class="filter-btn" data-filter="fishing" data-i18n="filter.fishing">🎣 <span class="filter-label">Fishing</span></button>
+<button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 <span class="filter-label">Hiking</span></button>
+</div>
+</div>
+<div class="combined-cards">
+<div class="partners-grid reveal" id="partners-grid">
+<!-- FISHING -->
+<div class="partner-card" data-cat="fishing" data-dist-km="5">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
+<div class="partner-name" data-partner-slug="rio-lerez">Río Lérez · Coto de Cutián</div>
+<div class="partner-dist">~5 km · Campo Lameiro</div>
+<div class="partner-desc" data-i18n="partner.lerez.desc">One of Galicia's finest trout rivers, running through ancient oak forest virtually on the estate's doorstep. The Cutián beat offers 5 daily permits on a first-come basis. A guide is not included — but we can help you arrange one.</div>
+<div class="partner-meta"><span class="partner-rating">🎣 Trout · Reo</span><a class="partner-web" href="https://www.depo.gal/es/-/permisos-de-pesca-no-coto-de-cutian" target="_blank">Permits via DEPO ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="12">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
+<div class="partner-name" data-partner-slug="rios-verdugo">Ríos Verdugo &amp; Oitavén · Coto de Soutomaior</div>
+<div class="partner-dist">~12 km · Soutomaior</div>
+<div class="partner-desc" data-i18n="partner.verdugo.desc">Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.</div>
+<div class="partner-meta"><span class="partner-rating">🎣 Trout · Barbel</span><a class="partner-web" href="https://www.facebook.com/pescadesoutomaior.sociedade/" target="_blank">Sociedad de Pesca ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="19">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="pescaturismo">Pescaturismo Cambados</div>
+<div class="partner-dist">~19 km · Cambados harbour</div>
+<div class="partner-desc" data-i18n="partner.pescaturismo.desc">Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34622347389">+34 622 34 73 89</a><a class="partner-web" href="https://www.pescaturismogalicia.com" target="_blank">pescaturismogalicia.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="19">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="escaparia">Escaparía</div>
+<div class="partner-dist">~19 km · Sanxenxo marina</div>
+<div class="partner-desc" data-i18n="partner.escaparia.desc">Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.9</span><a class="partner-phone" href="tel:+34669615361">+34 669 61 53 61</a><a class="partner-web" href="https://www.escaparia.com" target="_blank">escaparia.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="24">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="barco-latoja">Barco La Toja</div>
+<div class="partner-dist">~24 km · Isla de La Toja</div>
+<div class="partner-desc" data-i18n="partner.latoja.desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34609884650">+34 609 88 46 50</a><a class="partner-web" href="https://www.barcolatoja.com" target="_blank">barcolatoja.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="24">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="cruceiros">Cruceiros Rías Baixas</div>
+<div class="partner-dist">~24 km · O Grove</div>
+<div class="partner-desc" data-i18n="partner.cruceiros.desc">A large catamaran operation with 1,600+ reviews — the region's most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986731343">+34 986 73 13 43</a><a class="partner-web" href="https://www.crucerosriasbaixas.com" target="_blank">crucerosriasbaixas.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="fishing" data-dist-km="45">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.game">🎯 Game Hunting</span>
+<div class="partner-name" data-partner-slug="monteros-galaicos">Monteros Galaicos</div>
+<div class="partner-dist">~45 km · Tomiño &amp; ~58 km · San Cristóbal de Cea, Ourense</div>
+<div class="partner-desc" data-i18n="partner.monteros.desc">A Galician hunting association organising driven big game hunts — wild boar, deer, and roe deer — through the oak and chestnut forests of the Ourense interior. A deeply traditional Galician field sport, available to visiting guests with the Pazo's assistance in arranging permits and logistics.</div>
+<div class="partner-meta"><span class="partner-rating">🎯 Big Game · Driven Hunts</span><a class="partner-phone" href="tel:+34618784282">+34 618 78 42 82</a><a class="partner-web" href="https://www.instagram.com/monterosgalaicos" target="_blank">@monterosgalaicos ↗</a></div>
+</div>
+<!-- HIKING -->
+<div class="partner-card" data-cat="hiking" data-dist-km="5">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendero-poio">Sendero Litoral · Poio</div>
+<div class="partner-dist">~5 km · Poio</div>
+<div class="partner-desc" data-i18n="partner.poio.desc">A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 4.9 km · 1h · Easy</span><a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-poio" target="_blank">senderosazules.org ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="6">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="mountainpics">MountainPics Adventures</div>
+<div class="partner-dist">~6 km · Pontevedra city</div>
+<div class="partner-desc" data-i18n="partner.mountainpics.desc">Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34603560807">+34 603 56 08 07</a><a class="partner-web" href="https://mountainpics.es" target="_blank">mountainpics.es ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="10">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendeiro-azul">Sendeiro Azul do Río Verdugo</div>
+<div class="partner-dist">~10 km · Ponte Caldelas</div>
+<div class="partner-desc" data-i18n="partner.sendeiro.desc">An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 Blue Trail · All levels</span><a class="partner-web" href="https://www.senderosazules.org/sendeiro-azul-do-rio-verdugo-ponte-caldelas" target="_blank">senderosazules.org ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="14">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendero-marin">Ruta Montes y Playas · Marín</div>
+<div class="partner-dist">~14 km · Marín</div>
+<div class="partner-desc" data-i18n="partner.marin.desc">A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest — and a visit to the extraordinary Bronze Age petroglyphs of Mogor, one of the finest rock art sites in Europe.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 11 km · 3h · Easy–Medium</span><a class="partner-web" href="https://www.senderosazules.org/ruta-montes-y-playas-marin" target="_blank">senderosazules.org ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="15">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="rio-barosa">Parque Natural del Río Barosa · PR-G 105</div>
+<div class="partner-dist">~15 km · Barro</div>
+<div class="partner-desc" data-i18n="partner.barosa.desc">A short but enchanting circular walk through a protected river park on the Portuguese Camino. Seventeen historic water mills line the trail as the Barosa river tumbles over a dramatic 30-metre waterfall. Family-friendly and walkable year-round.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 3.2 km · 1h · Easy</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/ruta-circular-parque-natural-del-rio-barosa-via-pr-g-105" target="_blank">alltrails.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="20">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendero-sanxenxo">Sendero Litoral Sanxenxo–Portonovo</div>
+<div class="partner-dist">~20 km · Sanxenxo</div>
+<div class="partner-desc" data-i18n="partner.sanxenxo.desc">An 8.6 km coastal path between Sanxenxo and Portonovo tracing clifftop promenades, dune systems, and fishing village waterfronts — ending at the fish market lonja with views across the Ría.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 8.6 km · 2h 30 · Easy</span><a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-sanxenxo-portonovo-sanxenxo" target="_blank">senderosazules.org ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="20">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="cascada-segade">Cascada de Segade · Río Umia</div>
+<div class="partner-dist">~20 km · Caldas de Reis</div>
+<div class="partner-desc" data-i18n="partner.segade.desc">A riverside walk from the 19th-century botanical garden of Caldas de Reis to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 6.8 km · 1h 30 · Moderate</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/calda-de-reis-rio-umia-cascada-de-segade" target="_blank">alltrails.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="25">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendero-cabo-udra">Sendero Cabo Udra · Bueu</div>
+<div class="partner-dist">~25 km · Bueu</div>
+<div class="partner-desc" data-i18n="partner.cabudra.desc">An 11.3 km circular trail through a Natura 2000 reserve at Cabo Udra — dramatic Atlantic headland, diverse habitats, and an on-site Nature Interpretation Centre. The most wild and challenging of the local Blue Trails.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 11.3 km · 2h 45 · Medium</span><a class="partner-web" href="https://www.senderosazules.org/sendero-de-cabo-udra-bueu" target="_blank">senderosazules.org ↗</a></div>
+</div>
+<!-- HORSEBACK -->
+<div class="partner-card" data-cat="horseback" data-dist-km="6">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="hipica-appalaosa">Hípica Appalaosa</div>
+<div class="partner-dist">~6 km · Pontevedra</div>
+<div class="partner-desc" data-i18n="partner.appalaosa.desc">Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34697290355">+34 697 29 03 55</a><a class="partner-web" href="https://hipicaappalaoosa.com" target="_blank">hipicaappalaoosa.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="horseback" data-dist-km="9">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="o-casal">O Casal Equitación</div>
+<div class="partner-dist">~9 km · Salcedo</div>
+<div class="partner-desc" data-i18n="partner.ocasal.desc">Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.3</span><a class="partner-phone" href="tel:+34671077280">+34 671 07 72 80</a><a class="partner-web" href="https://equitacionocasal.com" target="_blank">equitacionocasal.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="horseback" data-dist-km="11">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="hipica-rabadeira">Hípica Rabadeira</div>
+<div class="partner-dist">~11 km · Puentecaldelas</div>
+<div class="partner-desc" data-i18n="partner.rabadeira.desc">The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34659131999">+34 659 13 19 99</a><a class="partner-web" href="http://www.asantiagoacaballo.com" target="_blank">asantiagoacaballo.com ↗</a></div>
+</div>
+<!-- WINE -->
+<div class="partner-card" data-cat="wine" data-dist-km="13">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="pazo-senorans">Pazo de Señorans</div>
+<div class="partner-dist">~13 km · Paradela</div>
+<div class="partner-desc" data-i18n="partner.senorans.desc">One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986715373">+34 986 71 53 73</a><a class="partner-web" href="http://pazodesenorans.com" target="_blank">pazodesenorans.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="13">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="terras-lantano">Terras de Lantaño</div>
+<div class="partner-dist">~13 km · Baceiro</div>
+<div class="partner-desc" data-i18n="partner.lantano.desc">A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34615646442">+34 615 64 64 42</a><a class="partner-web" href="https://www.terrasdelantano.com" target="_blank">terrasdelantano.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="14">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="mar-de-frades">Bodega Mar de Frades</div>
+<div class="partner-dist">~14 km · Val do Salnés</div>
+<div class="partner-desc" data-i18n="partner.marefrades.desc">An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.5</span><a class="partner-phone" href="tel:+34637479469">+34 637 47 94 69</a><a class="partner-web" href="https://mardefrades.es" target="_blank">mardefrades.es ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="15">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="vionta">Bodegas Vionta</div>
+<div class="partner-dist">~15 km · Meaño</div>
+<div class="partner-desc" data-i18n="partner.vionta.desc">A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986747566">+34 986 74 75 66</a><a class="partner-web" href="https://ferrerwines.com/vionta" target="_blank">ferrerwines.com/vionta ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="15">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="pazo-baion">Bodega Pazo Baión</div>
+<div class="partner-dist">~15 km · A Abelleira</div>
+<div class="partner-desc" data-i18n="partner.pazobaioon.desc">A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34636800234">+34 636 80 02 34</a><a class="partner-web" href="http://www.pazobaion.com" target="_blank">pazobaion.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="16">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="granbazan">Bodegas Granbazán</div>
+<div class="partner-dist">~16 km · Tremoedo</div>
+<div class="partner-desc" data-i18n="partner.granbazan.desc">One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986555562">+34 986 55 55 62</a><a class="partner-web" href="https://www.bodegasgranbazan.com/en" target="_blank">bodegasgranbazan.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="wine" data-dist-km="17">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="martin-codax">Bodegas Martín Códax</div>
+<div class="partner-dist">~17 km · Cambados</div>
+<div class="partner-desc" data-i18n="partner.martincodax.desc">One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986526040">+34 986 52 60 40</a><a class="partner-web" href="http://www.martincodax.com" target="_blank">martincodax.com ↗</a></div>
+</div>
+<!-- EVENTS -->
+<div class="partner-card" data-cat="events" data-dist-km="0">
+<span class="partner-cat-tag cat-events" data-i18n="pcat.events">💒 Weddings &amp; Events</span>
+<div class="partner-name" data-partner-slug="consejo-silvia">El Consejo de Silvia</div>
+<div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
+<div class="partner-desc" data-i18n="partner.silvia.desc">Silvia specialises in destination weddings and is experienced at coordinating international couples remotely — from Miami, China, and beyond. Methodical, warm, and universally praised.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34647032575">+34 647 03 25 75</a><a class="partner-web" href="http://elconsejodesilvia.com" target="_blank">elconsejodesilvia.com ↗</a></div>
+</div>
+<div class="partner-card" data-cat="events" data-dist-km="0">
+<span class="partner-cat-tag cat-events" data-i18n="pcat.events">💒 Weddings &amp; Events</span>
+<div class="partner-name" data-partner-slug="la-narunera">La Narunera</div>
+<div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
+<div class="partner-desc" data-i18n="partner.ainara.desc">Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer's dream — every event she designs is considered a visual masterpiece.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34657630414">+34 657 63 04 14</a><a class="partner-web" href="http://www.lanarunera.com" target="_blank">lanarunera.com ↗</a></div>
+</div>
+</div><!-- end partners-grid -->
+</div><!-- end combined-cards -->
+</div><!-- end combined-left -->
+<div class="map-panel">
+<div id="map"></div>
+</div>
+</div><!-- end combined-layout -->
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Pazo · Galicia, España</div>
+  <ul class="footer-links">
+    <li><a href="index.html#story" data-i18n="nav.estate">The Estate</a></li>
+    <li><a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="explore.html" data-i18n="nav.experiences">Experiences</a></li>
+    <li><a href="index.html#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
+    <li><a href="index.html#contact" data-i18n="nav.enquire">Enquire</a></li>
+  </ul>
+  <p style="font-size:0.55rem;font-weight:300;color:rgba(255,255,255,0.2);margin-top:0.5rem;letter-spacing:0.05em;">
+    Map © <a href="https://carto.com/" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">CARTO</a> · 
+    © <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">OpenStreetMap</a> contributors · 
+    Maps powered by <a href="https://leafletjs.com/" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">Leaflet</a>
+  </p>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+const PROPERTY = { lat: 42.470, lng: -8.595, name: 'Lugar a Mota · The Pazo', cat: 'property' };
+const PARTNERS = [
+  { slug:'rio-lerez',       lat:42.4830, lng:-8.5490, name:'Río Lérez · Coto de Cutián',           cat:'fishing',   subcatLabel:'🎣 River',        dist:'~5 km',  phone:'',              rating:'🎣 Trout' },
+  { slug:'rios-verdugo',    lat:42.3530, lng:-8.5640, name:'Ríos Verdugo & Oitavén · Coto de Soutomaior', cat:'fishing', subcatLabel:'🎣 River',   dist:'~12 km', phone:'',              rating:'🎣 Trout' },
+  { slug:'pescaturismo',    lat:42.5092, lng:-8.8170, name:'Pescaturismo Cambados',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~19 km', phone:'+34 622 34 73 89', rating:'★ 5.0' },
+  { slug:'escaparia',       lat:42.3989, lng:-8.8061, name:'Escaparía',               cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~19 km', phone:'+34 669 61 53 61', rating:'★ 4.9' },
+  { slug:'barco-latoja',    lat:42.4889, lng:-8.8500, name:'Barco La Toja',           cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~24 km', phone:'+34 609 88 46 50', rating:'★ 4.7' },
+  { slug:'cruceiros',       lat:42.4972, lng:-8.8636, name:'Cruceiros Rías Baixas',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~24 km', phone:'+34 986 73 13 43', rating:'★ 4.6' },
+  { slug:'mountainpics',    lat:42.4306, lng:-8.6430, name:'MountainPics Adventures', cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~6 km',  phone:'+34 603 56 08 07', rating:'★ 5.0' },
+  { slug:'sendeiro-azul',   lat:42.39123,lng:-8.49997,name:'Sendeiro Azul do Río Verdugo', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~10 km', phone:'',  rating:'🥾 Blue Trail' },
+  { slug:'sendero-poio',    lat:42.4410, lng:-8.6310, name:'Sendero Litoral · Poio',  cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~5 km',  phone:'',  rating:'🥾 4.9 km · Easy' },
+  { slug:'sendero-marin',   lat:42.3900, lng:-8.6960, name:'Ruta Montes y Playas · Marín', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~14 km', phone:'',  rating:'🥾 11 km · Easy–Med' },
+  { slug:'sendero-sanxenxo',lat:42.3910, lng:-8.8130, name:'Sendero Litoral Sanxenxo–Portonovo', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~20 km', phone:'', rating:'🥾 8.6 km · Easy' },
+  { slug:'sendero-cabo-udra',lat:42.3280,lng:-8.7940, name:'Sendero Cabo Udra · Bueu',cat:'hiking',   subcatLabel:'🥾 Hiking',       dist:'~25 km', phone:'',  rating:'🥾 11.3 km · Medium' },
+  { slug:'rio-barosa',      lat:42.5135, lng:-8.6390, name:'Parque Natural del Río Barosa · PR-G 105', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~15 km', phone:'', rating:'🥾 3.2 km · Easy' },
+  { slug:'cascada-segade',  lat:42.6020, lng:-8.6440, name:'Cascada de Segade · Río Umia', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~20 km', phone:'',  rating:'🥾 6.8 km · Moderate' },
+  { slug:'monteros-galaicos',lat:42.4667,lng:-7.9833, name:'Monteros Galaicos · San Cristóbal de Cea', cat:'fishing', subcatLabel:'🎯 Game Hunting', dist:'~58 km', phone:'+34 618 78 42 82', rating:'🎯 Big Game' },
+  { slug:'monteros-galaicos',lat:41.9919,lng:-8.7436, name:'Monteros Galaicos · Tomiño', cat:'fishing', subcatLabel:'🎯 Game Hunting', dist:'~45 km', phone:'+34 618 78 42 82', rating:'🎯 Big Game' },
+  { slug:'hipica-appalaosa',lat:42.4145, lng:-8.5957, name:'Hípica Appalaosa',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~6 km',  phone:'+34 697 29 03 55', rating:'★ 4.7' },
+  { slug:'o-casal',         lat:42.3986, lng:-8.6650, name:'O Casal Equitación',      cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~9 km',  phone:'+34 671 07 72 80', rating:'★ 4.3' },
+  { slug:'hipica-rabadeira',lat:42.3994, lng:-8.5044, name:'Hípica Rabadeira',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~11 km', phone:'+34 659 13 19 99', rating:'★ 5.0' },
+  { slug:'pazo-senorans',   lat:42.5471, lng:-8.7088, name:'Pazo de Señorans',        cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~13 km', phone:'+34 986 71 53 73', rating:'★ 4.8' },
+  { slug:'terras-lantano',  lat:42.5694, lng:-8.6871, name:'Terras de Lantaño',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~13 km', phone:'+34 615 64 64 42', rating:'★ 4.7' },
+  { slug:'mar-de-frades',   lat:42.5033, lng:-8.7490, name:'Bodega Mar de Frades',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~14 km', phone:'+34 637 47 94 69', rating:'★ 4.5' },
+  { slug:'vionta',          lat:42.4287, lng:-8.7637, name:'Bodegas Vionta',          cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~15 km', phone:'+34 986 74 75 66', rating:'★ 4.8' },
+  { slug:'pazo-baion',      lat:42.5629, lng:-8.7196, name:'Bodega Pazo Baión',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~15 km', phone:'+34 636 80 02 34', rating:'★ 4.7' },
+  { slug:'granbazan',       lat:42.5398, lng:-8.7866, name:'Bodegas Granbazán',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~16 km', phone:'+34 986 55 55 62', rating:'★ 4.8' },
+  { slug:'martin-codax',    lat:42.5201, lng:-8.7924, name:'Bodegas Martín Códax',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~17 km', phone:'+34 986 52 60 40', rating:'★ 4.6' },
+  { slug:'consejo-silvia',  lat:42.4715, lng:-8.5935, name:'El Consejo de Silvia',    cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 647 03 25 75', rating:'★ 5.0' },
+  { slug:'la-narunera',     lat:42.4685, lng:-8.5965, name:'La Narunera',             cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 657 63 04 14', rating:'★ 5.0' },
+];
+const CAT_CONFIG = {
+  property:  { color:'#3d5235', emoji:'🏰', label:'The Pazo' },
+  fishing:   { color:'#2a6b80', emoji:'🎣', label:'Fishing & Coast' },
+  hiking:    { color:'#3d5235', emoji:'🥾', label:'Hiking' },
+  horseback: { color:'#8a4a20', emoji:'🐴', label:'Horseback' },
+  wine:      { color:'#6b2a5a', emoji:'🍷', label:'Wine' },
+  events:    { color:'#2a3a6b', emoji:'💒', label:'Events' },
+};
+const POPUP_I18N = {
+  en: { fromPazo:'from the Pazo', yourEstate:'Your estate · Lugar a Mota, 9', thePazo:'The Pazo', atPazo:'At the Pazo', subcatLabels:{ '🎣 River':'🎣 River','🎣 Coastal':'🎣 Coastal','🎯 Game Hunting':'🎯 Game Hunting','🥾 Hiking':'🥾 Hiking','🐴 Horseback':'🐴 Horseback','🍷 Wine':'🍷 Wine','💒 Events':'💒 Events' }, ratings:{} },
+  es: { fromPazo:'desde el Pazo', yourEstate:'La finca · Lugar a Mota, 9', thePazo:'El Pazo', atPazo:'En el Pazo', subcatLabels:{ '🎣 River':'🎣 Río','🎣 Coastal':'🎣 Costa','🎯 Game Hunting':'🎯 Caza Mayor','🥾 Hiking':'🥾 Senderismo','🐴 Horseback':'🐴 Equitación','🍷 Wine':'🍷 Vino','💒 Events':'💒 Celebraciones' }, ratings:{ '🎣 Trout':'🎣 Trucha','🎣 Trout · Reo':'🎣 Trucha · Reo','🎣 Trout · Barbel':'🎣 Trucha · Barbo','🎯 Big Game':'🎯 Caza Mayor','🥾 Blue Trail':'🥾 Sendero Azul','🥾 3.2 km · Easy':'🥾 3,2 km · Fácil','🥾 4.9 km · Easy':'🥾 4,9 km · Fácil','🥾 6.8 km · Moderate':'🥾 6,8 km · Moderado','🥾 8.6 km · Easy':'🥾 8,6 km · Fácil','🥾 11 km · Easy–Med':'🥾 11 km · Fácil–Medio','🥾 11.3 km · Medium':'🥾 11,3 km · Medio' } }
+};
+function buildPartnerPopup(p,lang){ const cfg=CAT_CONFIG[p.cat];const t=POPUP_I18N[lang]||POPUP_I18N.en; const label=(t.subcatLabels[p.subcatLabel]||p.subcatLabel)||(cfg.emoji+' '+cfg.label); const rating=t.ratings[p.rating]||p.rating; const dist=p.dist==='At the Pazo'?t.atPazo:p.dist; return `<div class="popup-inner"><div class="popup-cat" style="color:${cfg.color}">${label}</div><div class="popup-name">${p.name}</div><div class="popup-dist">${dist} ${t.fromPazo} &nbsp;·&nbsp; ${rating}</div>${p.phone?`<div class="popup-phone">${p.phone}</div>`:''}</div>`; }
+function buildPropertyPopup(lang){ const t=POPUP_I18N[lang]||POPUP_I18N.en; return `<div class="popup-inner popup-property"><div class="popup-cat">${t.thePazo}</div><div class="popup-name">🏰 ${PROPERTY.name}</div><div class="popup-dist" style="color:#3d5235;font-weight:400">${t.yourEstate}</div></div>`; }
+function rebindPopups(lang){ propMarker.setPopupContent(buildPropertyPopup(lang)); PARTNERS.forEach(p=>{ const entries=markersBySlug[p.slug]||[]; entries.forEach(({marker,data})=>{ if(data.lat===p.lat&&data.lng===p.lng) marker.setPopupContent(buildPartnerPopup(p,lang)); }); }); }
+</script>
+<script>
+const TRANSLATIONS = {
+  en: {
+    'nav.back':'← The Estate','nav.experiences':'Experiences','nav.partners':'Partners',
+    'nav.estate':'The Estate','nav.gallery':'Gallery','nav.celebrations':'Celebrations','nav.enquire':'Enquire',
+    'exp.label':'What Awaits','exp.h2':'Curated <em style="color:var(--stone)">Experiences</em>',
+    'exp.intro':'Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.',
+    'exp.allpartners':'View All Partners →',
+    'exp.weddings.title':'Weddings & Celebrations','exp.weddings.desc':'The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.','exp.weddings.hint':'Full-service planning partners available →',
+    'exp.wine.title':'Wine & Gastronomy','exp.wine.desc':'Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.','exp.wine.hint':'7 partner wineries nearby →',
+    'exp.horse.title':'Horseback Riding','exp.horse.desc':'Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.','exp.horse.hint':'3 equestrian partners within 11 km →',
+    'exp.fishing.title':'Fishing and Game','exp.fishing.desc':'Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia\'s rivers, or hunt for wild boar with local outfitters.','exp.fishing.hint':'7 fishing and game partners →',
+    'exp.hiking.title':'Hiking & Nature','exp.hiking.desc':'Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.','exp.hiking.hint':'8 hiking trails & guided walks →',
+    'exp.corporate.title':'Corporate Retreats','exp.corporate.desc':'Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.','exp.corporate.hint':'Full curated itineraries on request →',
+    'partners.label':'Local Partners',
+    'filter.all':'⊞ All','filter.events':'💒 Events','filter.wine':'🍷 Wine','filter.horseback':'🐴 Horseback','filter.fishing':'🎣 Fishing','filter.hiking':'🥾 Hiking',
+    'pcat.river':'🎣 River','pcat.coastal':'🎣 Coastal','pcat.game':'🎯 Game Hunting','pcat.hiking':'🥾 Hiking','pcat.horseback':'🐴 Horseback','pcat.wine':'🍷 Wine','pcat.events':'💒 Weddings & Events',
+    'partner.atpazo':'At the Pazo',
+    'partner.lerez.desc':'One of Galicia\'s finest trout rivers, running through ancient oak forest virtually on the estate\'s doorstep.','partner.verdugo.desc':'Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge.','partner.pescaturismo.desc':'Shellfish harvesting experiences with the celebrated fisherwomen of Cambados.','partner.escaparia.desc':'Private boat charters to hidden Atlantic beaches. English-speaking captain Matt consistently earns raves.','partner.latoja.desc':'A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine.','partner.cruceiros.desc':'A large catamaran operation with 1,600+ reviews — the region\'s most popular group boat excursion.','partner.monteros.desc':'A Galician hunting association organising driven big game hunts through the oak and chestnut forests of the Ourense interior.','partner.poio.desc':'A 4.9 km easy coastal walk along the Ría de Pontevedra passing ancient water mills and the first oyster cultivation park on the Iberian peninsula.','partner.mountainpics.desc':'Pablo leads extraordinary guided hiking and adventure expeditions across Galicia.','partner.sendeiro.desc':'An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests — the first inland trail in Spain to earn Blue Trail certification.','partner.marin.desc':'A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest and Bronze Age petroglyphs.','partner.barosa.desc':'A short but enchanting circular walk through a protected river park with seventeen historic water mills and a dramatic 30-metre waterfall.','partner.sanxenxo.desc':'An 8.6 km coastal path tracing clifftop promenades, dune systems, and fishing village waterfronts.','partner.segade.desc':'A riverside walk to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.','partner.cabudra.desc':'An 11.3 km circular trail through a Natura 2000 reserve at Cabo Udra — dramatic Atlantic headland and diverse habitats.','partner.appalaosa.desc':'Forest trail rides through Galician countryside suitable for all abilities. Cholo and his team are renowned for their warmth and well-cared-for horses.','partner.ocasal.desc':'Natural horsemanship, equine therapy, trail rides, and farm animals — excellent for mindfulness retreats.','partner.rabadeira.desc':'The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey.','partner.senorans.desc':'One of the crown jewels of the Rías Baixas — a historic Pazo estate with English-speaking guides and extraordinary Albariño.','partner.lantano.desc':'A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere.','partner.marefrades.desc':'An internationally acclaimed producer with sweeping estuary views. Guided tours in English cited by Decanter.','partner.vionta.desc':'A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads universally praised tours.','partner.pazobaioon.desc':'A historic Pazo estate winery with stunning grounds. Guide Eugenia brings this exceptional Albariño estate to life.','partner.granbazan.desc':'One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews.','partner.martincodax.desc':'One of the most iconic Rías Baixas producers. Guided tours in excellent English with seafood pairings.','partner.silvia.desc':'Silvia specialises in destination weddings, experienced at coordinating international couples remotely. Methodical, warm, universally praised.','partner.ainara.desc':'Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer\'s dream.',
+  },
+  es: {
+    'nav.back':'← La Finca','nav.experiences':'Experiencias','nav.partners':'Colaboradores',
+    'nav.estate':'La Finca','nav.gallery':'Galería','nav.celebrations':'Celebraciones','nav.enquire':'Contacto',
+    'exp.label':'Lo Que Espera','exp.h2':'Experiencias <em style="color:var(--stone)">Seleccionadas</em>',
+    'exp.intro':'Cada estancia está moldeada por el entorno, la temporada y tus deseos. Cada experiencia se organiza con los mejores propietarios, guías y artesanos locales de Galicia.',
+    'exp.allpartners':'Ver Todos los Colaboradores →',
+    'exp.weddings.title':'Bodas y Celebraciones','exp.weddings.desc':'El patio empedrado, las galerías porticadas, la capilla, y los jardines hacen de esta finca uno de los espacios de celebración más extraordinarios de toda España.','exp.weddings.hint':'Colaboradores de planificación completa →',
+    'exp.wine.title':'Vino y Gastronomía','exp.wine.desc':'Visitas privadas y catas en las grandes bodegas de las Rías Baixas — Martín Códax, Pazo Baión, Señorans, Granbazán — combinadas con festines de productos gallegos de temporada.','exp.wine.hint':'7 bodegas colaboradoras cercanas →',
+    'exp.horse.title':'Rutas a Caballo','exp.horse.desc':'Paseos por el campo y los bosques gallegos, incluyendo el legendario Camino de Santiago a caballo — organizados con tres centros ecuestres de excelencia.','exp.horse.hint':'3 centros ecuestres a menos de 11 km →',
+    'exp.fishing.title':'Pesca y Caza','exp.fishing.desc':'Marisqueo con locales en las Rías, pesca de trucha en los ríos gallegos, o caza mayor con guías locales.','exp.fishing.hint':'7 colaboradores de pesca y caza →',
+    'exp.hiking.title':'Senderismo y Naturaleza','exp.hiking.desc':'Caminatas guiadas por bosques de robles, valles fluviales y acantilados costeros con Pablo de MountainPics Adventures — rutas para todos los niveles.','exp.hiking.hint':'8 rutas y paseos guiados →',
+    'exp.corporate.title':'Retiros Corporativos','exp.corporate.desc':'Retiros de liderazgo y experiencias de equipo en un entorno de historia genuina — privado, inspirador y como ninguna sala de reuniones. Combinado con senderismo, vino y excursiones costeras.','exp.corporate.hint':'Itinerarios completos a petición →',
+    'partners.label':'Colaboradores Locales',
+    'filter.all':'⊞ Todos','filter.events':'💒 Eventos','filter.wine':'🍷 Vino','filter.horseback':'🐴 Equitación','filter.fishing':'🎣 Pesca','filter.hiking':'🥾 Senderismo',
+    'pcat.river':'🎣 Río','pcat.coastal':'🎣 Costa','pcat.game':'🎯 Caza Mayor','pcat.hiking':'🥾 Senderismo','pcat.horseback':'🐴 Equitación','pcat.wine':'🍷 Vino','pcat.events':'💒 Bodas y Eventos',
+    'partner.atpazo':'En el Pazo',
+    'partner.lerez.desc':'Uno de los mejores ríos de trucha de Galicia, atravesando bosques de robles prácticamente a las puertas de la finca.','partner.verdugo.desc':'Dos ríos se unen en la espectacular Poza das Bestas bajo un puente colgante histórico.','partner.pescaturismo.desc':'Experiencias de marisqueo con las célebres mariscadoras de Cambados.','partner.escaparia.desc':'Chárteres privados a playas atlánticas escondidas. El capitán Matt habla inglés y tiene excelentes valoraciones.','partner.latoja.desc':'Una experiencia entrañable en barco mejillonero — crucero por los parques de bateas de O Grove con mejillones y vino local ilimitados.','partner.cruceiros.desc':'Una operación de catamarán con más de 1.600 reseñas — la excursión en barco más popular de la provincia.','partner.monteros.desc':'Una asociación de montería gallega que organiza batidas de caza mayor en los bosques de robles y castaños del interior de Ourense.','partner.poio.desc':'Un paseo costero fácil de 4,9 km a lo largo de la Ría de Pontevedra, pasando por molinos de agua y el primer parque de ostricultura de la península ibérica.','partner.mountainpics.desc':'Pablo guía extraordinarias expediciones de senderismo y aventura por toda Galicia.','partner.sendeiro.desc':'Ruta circular de 8–9 km siguiendo el río Verdugo a través de bosques de robles — la primera ruta interior de España en obtener la certificación Sendeiro Azul.','partner.marin.desc':'Una espectacular ruta de 11 km que une cinco playas Bandera Azul con bosque y petroglifos de la Edad del Bronce.','partner.barosa.desc':'Un corto pero encantador paseo circular por un parque fluvial protegido con diecisiete molinos históricos y una cascada de 30 metros.','partner.sanxenxo.desc':'Un camino costero de 8,6 km que recorre paseos marítimos de acantilados, sistemas dunares y frentes marítimos de pueblos pesqueros.','partner.segade.desc':'Un paseo fluvial hasta la espectacular Fervenza de Segade — una cascada de 30 metros con pozas naturales profundas, perfectas para bañarse en verano.','partner.cabudra.desc':'Ruta circular de 11,3 km por una reserva Natura 2000 en Cabo Udra — espectacular cabo atlántico y hábitats diversos.','partner.appalaosa.desc':'Paseos a caballo por el campo gallego para todos los niveles. Cholo y su equipo son conocidos por su calidez y sus caballos bien cuidados.','partner.ocasal.desc':'Equitación natural, terapia ecuestre, paseos y animales de granja — excelente para retiros de mindfulness.','partner.rabadeira.desc':'La experiencia ecuestre definitiva — el Camino de Santiago a caballo, un viaje de varios días único en la vida.','partner.senorans.desc':'Una de las joyas de las Rías Baixas — una histórica finca-bodega con guías angloparlantes y extraordinario Albariño.','partner.lantano.desc':'Una bodega familiar boutique con viñedos de Albariño de gran importancia histórica. Ambiente muy personal y artesanal.','partner.marefrades.desc':'Un productor de reconocimiento internacional con vistas panorámicas al estuario. Visitas guiadas en inglés citadas por Decanter.','partner.vionta.desc':'Una bodega en lo alto de una colina con vistas panorámicas espectaculares sobre las Rías. La guía Ursula lidera visitas universalmente elogiadas.','partner.pazobaioon.desc':'Una histórica bodega-pazo con terrenos impresionantes. La guía Eugenia da vida a esta excepcional finca de Albariño.','partner.granbazan.desc':'Una de las experiencias de vino mejor valoradas de la región — una finca de estilo château arquitectónicamente impresionante con 548 reseñas.','partner.martincodax.desc':'Uno de los productores más icónicos de las Rías Baixas. Visitas en excelente inglés con maridaje de marisco.','partner.silvia.desc':'Silvia está especializada en bodas de destino y tiene experiencia coordinando parejas internacionales de forma remota. Metódica, cálida y universalmente elogiada.','partner.ainara.desc':'Ainara crea celebraciones únicas, llenas de historia y con una atención al detalle extraordinaria. Un sueño para los fotógrafos.',
+  }
+};
+
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  try { localStorage.setItem('pazo_lang', lang); } catch(e) {}
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('lang-active', btn.getAttribute('onclick').includes(`'${lang}'`));
+  });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key].replace(/&amp;/g,'&').replace(/&nbsp;/g,'\u00a0');
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+  applyFilter(currentFilter || 'all');
+  if (typeof rebindPopups === 'function') rebindPopups(lang);
+}
+// Restore language from previous session
+try { const saved = localStorage.getItem('pazo_lang'); if (saved && TRANSLATIONS[saved]) setLang(saved); } catch(e) {}
+</script>
+<script>
+document.documentElement.classList.add('js-ready');
+
+function isMobile() { return window.innerWidth <= 768; }
+
+/* Reveal on scroll */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 90); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Experience grid image cycling */
+function advanceCard(card) {
+  const imgs = card.querySelectorAll('.exp-img');
+  if (imgs.length < 2) return;
+  const activeIdx = [...imgs].findIndex(i => i.classList.contains('exp-img-active'));
+  imgs[activeIdx].classList.remove('exp-img-active');
+  imgs[(activeIdx + 1) % imgs.length].classList.add('exp-img-active');
+}
+document.querySelectorAll('.exp-grid .exp-card').forEach((card, i) => {
+  setTimeout(() => { setInterval(() => advanceCard(card), 10000); }, i * 1667);
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.exp-partners-hint')) return;
+    advanceCard(card);
+    const wasActive = card.classList.contains('active');
+    document.querySelectorAll('.exp-grid .exp-card').forEach(c => c.classList.remove('active'));
+    if (!wasActive) card.classList.add('active');
+  });
+});
+document.querySelectorAll('.exp-grid .exp-partners-hint').forEach(hint => {
+  hint.addEventListener('click', () => {
+    applyFilter(hint.dataset.filter);
+    document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+/* Filter logic */
+const filterBtns = document.querySelectorAll('.filter-btn');
+let activeMarkers = [], activeCard = null, currentFilter = 'all';
+
+function applyFilter(f, scrollToMap) {
+  currentFilter = f;
+  const headingCfg = {
+    en: { all:'Our Curated <em>Experiences</em>', cats:{ fishing:'Fishing and Game', hiking:'Hiking', horseback:'Horseback', wine:'Wine', events:'Events' }, noSuffix:{events:true} },
+    es: { all:'Nuestras Experiencias <em>Seleccionadas</em>', cats:{ fishing:'Pesca y Caza', hiking:'Senderismo', horseback:'Equitación', wine:'Vino', events:'Eventos' }, noSuffix:{events:true} }
+  };
+  const cfg = headingCfg[currentLang] || headingCfg.en;
+  const label = cfg.cats[f];
+  const h2 = document.getElementById('partners-h2');
+  if (h2) h2.innerHTML = label
+    ? (cfg.noSuffix[f]
+        ? (currentLang==='es' ? `Nuestros <em>${label}</em>` : `Our Curated <em>${label}</em>`)
+        : (currentLang==='es' ? `Nuestras Experiencias de <em>${label}</em>` : `Our Curated <em>${label}</em> Experiences`))
+    : cfg.all;
+  if (activeCard) { activeCard.classList.remove('active'); activeCard = null; }
+  activeMarkers.forEach(({ marker, data }) => marker.setIcon(makeIcon(data.cat, false)));
+  activeMarkers = [];
+  filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  document.querySelectorAll('.partner-card').forEach(card => {
+    card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+  });
+  const grid = document.getElementById('partners-grid');
+  if (grid) {
+    [...grid.querySelectorAll('.partner-card')]
+      .sort((a, b) => Number(a.dataset.distKm) - Number(b.dataset.distKm))
+      .forEach(c => grid.appendChild(c));
+  }
+  if (typeof markersByCategory !== 'undefined') {
+    Object.entries(markersByCategory).forEach(([cat, markers]) => {
+      markers.forEach(m => {
+        if (f === 'all' || cat === f) { if (!map.hasLayer(m)) map.addLayer(m); }
+        else { if (map.hasLayer(m)) map.removeLayer(m); }
+      });
+    });
+    if (!map.hasLayer(propMarker)) map.addLayer(propMarker);
+    resetMapView();
+  }
+  if (isMobile() && scrollToMap) {
+    const section = document.querySelector('.map-panel') || document.getElementById('partners');
+    if (section) section.scrollIntoView({ behavior:'smooth', block:'start' });
+    const cards = document.querySelector('.combined-cards');
+    if (cards) setTimeout(() => { cards.scrollTop = 0; }, 300);
+  }
+}
+filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.dataset.filter, true)); });
+
+/* Map icons */
+function makeIcon(cat, isProperty, emojiOverride) {
+  const cfg = CAT_CONFIG[cat]; const s = isProperty ? 44 : 36; const icon = emojiOverride || cfg.emoji;
+  return L.divIcon({ className:'', html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${isProperty?'20px':'16px'};border:${isProperty?'3px solid #b8913a':'2px solid rgba(255,255,255,0.8)'};box-shadow:0 2px 8px rgba(0,0,0,0.35);cursor:pointer;">${icon}</div>`, iconSize:[s,s], iconAnchor:[s/2,s/2], popupAnchor:[0,-(s/2+4)] });
+}
+function makeIconHighlighted(cat, emojiOverride) {
+  const cfg = CAT_CONFIG[cat]; const icon = emojiOverride || cfg.emoji;
+  return L.divIcon({ className:'', html:`<div style="width:52px;height:52px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:22px;border:3px solid #b8913a;box-shadow:0 0 0 4px rgba(184,145,58,0.35),0 3px 12px rgba(0,0,0,0.45);cursor:pointer;">${icon}</div>`, iconSize:[52,52], iconAnchor:[26,26], popupAnchor:[0,-30] });
+}
+
+/* Map init */
+const map = L.map('map', {
+  zoomControl: true,
+  keyboard: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  touchZoom: false,
+  boxZoom: false,
+  attributionControl: false,
+}).setView([42.46, -8.72], 10);
+
+const PanControl = L.Control.extend({
+  options: { position: 'topright' },
+  onAdd: function() {
+    const c = L.DomUtil.create('div', 'leaflet-pan-control leaflet-bar');
+    c.style.cssText = 'display:grid;grid-template-columns:repeat(3,28px);grid-template-rows:repeat(3,28px);gap:1px;background:transparent;box-shadow:none;border:none;margin-top:4px;';
+    const panAmt = 80;
+    const cell = (row, col, html, title, dx, dy) => {
+      const b = L.DomUtil.create('a', '', c);
+      b.innerHTML = html; b.title = title; b.href = '#';
+      b.style.cssText = `grid-row:${row};grid-column:${col};width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;font-size:13px;cursor:pointer;color:#333;text-decoration:none;line-height:1;`;
+      L.DomEvent.on(b, 'click', L.DomEvent.stopPropagation)
+                .on(b, 'click', L.DomEvent.preventDefault)
+                .on(b, 'click', () => map.panBy([dx * panAmt, dy * panAmt]));
+      return b;
+    };
+    const empty = (row, col) => {
+      const d = L.DomUtil.create('div', '', c);
+      d.style.cssText = `grid-row:${row};grid-column:${col};width:28px;height:28px;`;
+      return d;
+    };
+    empty(1,1); cell(1,2,'▲','Pan north', 0,-1); empty(1,3);
+    cell(2,1,'◀','Pan west', -1, 0);
+    const mid = L.DomUtil.create('a','',c);
+    mid.innerHTML = '⊙'; mid.title = 'Reset view'; mid.href = '#';
+    mid.style.cssText='grid-row:2;grid-column:2;width:28px;height:28px;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;color:#333;text-decoration:none;line-height:1;';
+    L.DomEvent.on(mid,'click',L.DomEvent.stopPropagation)
+              .on(mid,'click',L.DomEvent.preventDefault)
+              .on(mid,'click',() => resetMapView());
+    cell(2,3,'▶','Pan east',  1, 0);
+    empty(3,1); cell(3,2,'▼','Pan south', 0, 1); empty(3,3);
+    return c;
+  }
+});
+new PanControl().addTo(map);
+[100,300,600,1200].forEach(ms => setTimeout(() => map.invalidateSize(), ms));
+let _resizeTimer;
+window.addEventListener('resize', () => { clearTimeout(_resizeTimer); _resizeTimer = setTimeout(() => map.invalidateSize(), 250); });
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(map);
+const propMarker = L.marker([PROPERTY.lat, PROPERTY.lng], { icon: makeIcon('property', true) }).addTo(map);
+propMarker.bindPopup(buildPropertyPopup('en'), { maxWidth:220 });
+const markersByCategory = {}, markersBySlug = {};
+PARTNERS.forEach(p => {
+  const partnerEmoji = p.subcatLabel ? [...p.subcatLabel][0] : null;
+  const m = L.marker([p.lat, p.lng], { icon: makeIcon(p.cat, false, partnerEmoji) });
+  m.bindPopup(buildPartnerPopup(p, 'en'), { maxWidth:240 }); m.addTo(map);
+  if (!markersByCategory[p.cat]) markersByCategory[p.cat] = [];
+  markersByCategory[p.cat].push(m);
+  if (!markersBySlug[p.slug]) markersBySlug[p.slug] = [];
+  markersBySlug[p.slug].push({ marker:m, data:p });
+});
+function resetMapView() {
+  map.invalidateSize(); map.closePopup();
+  const points = [[PROPERTY.lat, PROPERTY.lng]];
+  PARTNERS.forEach(p => { if (currentFilter === 'all' || p.cat === currentFilter) points.push([p.lat, p.lng]); });
+  map.fitBounds(L.latLngBounds(points), { padding:[48,48], maxZoom:12 });
+}
+
+/* Partner card clicks */
+document.querySelectorAll('.partner-card').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    if (isMobile()) {
+      const isExpanded = card.classList.contains('expanded');
+      document.querySelectorAll('.partner-card.expanded').forEach(c => c.classList.remove('expanded'));
+      if (!isExpanded) card.classList.add('expanded');
+    }
+    const slug = card.querySelector('[data-partner-slug]')?.dataset.partnerSlug;
+    if (!slug || !markersBySlug[slug]) return;
+    const entries = markersBySlug[slug];
+    if (activeCard === card) {
+      card.classList.remove('active');
+      activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false)); marker.closePopup(); });
+      activeCard = null; activeMarkers = []; resetMapView(); return;
+    }
+    if (activeCard) activeCard.classList.remove('active');
+    activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false)); });
+    activeCard = card; activeMarkers = entries; card.classList.add('active');
+    entries.forEach(({ marker, data }) => { marker.setIcon(makeIconHighlighted(data.cat, data.subcatLabel ? [...data.subcatLabel][0] : null)); });
+    const points = [[PROPERTY.lat, PROPERTY.lng], ...entries.map(({ data }) => [data.lat, data.lng])];
+    map.invalidateSize();
+    map.fitBounds(L.latLngBounds(points), { padding:[60,60], maxZoom:13 });
+    setTimeout(() => { entries.forEach(({ marker }) => marker.openPopup()); }, 420);
+  });
+});
+if (!map.hasLayer(propMarker)) map.addLayer(propMarker);
+
+applyFilter('all');
+
+/* Mobile experience carousel */
+function syncExpLayout() {
+  const grid = document.querySelector('.exp-grid');
+  const wrap = document.getElementById('expCarouselWrap');
+  if (!grid || !wrap) return;
+  if (isMobile()) { grid.style.display = 'none'; wrap.style.display = 'block'; }
+  else { grid.style.display = ''; wrap.style.display = 'none'; }
+}
+syncExpLayout();
+window.addEventListener('resize', syncExpLayout);
+
+/* Hamburger drawer */
+const hamburger = document.getElementById('hamburger');
+const navDrawer  = document.getElementById('navDrawer');
+function openDrawer() { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); navDrawer.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeDrawer() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); navDrawer.classList.remove('open'); document.body.style.overflow=''; }
+if (hamburger && navDrawer) {
+  hamburger.addEventListener('click', () => { navDrawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
+  document.querySelectorAll('.drawer-link, .drawer-enquire').forEach(link => { link.addEventListener('click', closeDrawer); });
+  navDrawer.addEventListener('click', (e) => { if (e.target === navDrawer) closeDrawer(); });
+}
+
+/* Carousel dots */
+const expCarousel = document.getElementById('expCarousel');
+const expDots = document.querySelectorAll('.exp-dot');
+if (expCarousel) {
+  expCarousel.addEventListener('scroll', () => {
+    if (!isMobile()) return;
+    const card = expCarousel.querySelector('.exp-card');
+    if (!card) return;
+    const cardW = card.offsetWidth + 3;
+    const idx = Math.min(Math.round(expCarousel.scrollLeft / cardW), expDots.length - 1);
+    expDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }, { passive:true });
+  expDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const card = expCarousel.querySelector('.exp-card');
+      if (!card) return;
+      expCarousel.scrollTo({ left: parseInt(dot.dataset.index) * (card.offsetWidth+3), behavior:'smooth' });
+    });
+  });
+  expCarousel.querySelectorAll('.exp-card').forEach(card => {
+    const hint = card.querySelector('.exp-partners-hint');
+    if (!hint) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      if (!isMobile()) return;
+      applyFilter(hint.dataset.filter, true);
+      document.getElementById('partners').scrollIntoView({ behavior:'smooth' });
+    });
+  });
+}
+
+/* Leaflet resize observer */
+const mapPanel = document.querySelector('.map-panel');
+if (mapPanel && typeof map !== 'undefined') {
+  const mapSizeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { setTimeout(() => map.invalidateSize(), 100); setTimeout(() => map.invalidateSize(), 400); }
+    });
+  }, { threshold:0.1 });
+  mapSizeObserver.observe(mapPanel);
+}
+</script>
+</body>
+</html>
