@@ -890,7 +890,7 @@ const PanControl = L.Control.extend({
     const cell = (row, col, html, title, dx, dy) => {
       const b = L.DomUtil.create('a', '', c);
       b.innerHTML = html; b.title = title; b.href = '#';
-      b.style.cssText = `grid-row:${row};grid-column:${col};width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;font-size:13px;cursor:pointer;color:#333;text-decoration:none;line-height:1;`;
+      b.style.cssText = `grid-row:${row};grid-column:${col};width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;font:bold 16px 'Lucida Console',Monaco,monospace;cursor:pointer;color:#333;text-decoration:none;line-height:1;`;
       L.DomEvent.on(b, 'click', L.DomEvent.stopPropagation)
                 .on(b, 'click', L.DomEvent.preventDefault)
                 .on(b, 'click', () => map.panBy([dx * panAmt, dy * panAmt]));
@@ -901,16 +901,16 @@ const PanControl = L.Control.extend({
       d.style.cssText = `grid-row:${row};grid-column:${col};width:28px;height:28px;`;
       return d;
     };
-    empty(1,1); cell(1,2,'▲','Pan north', 0,-1); empty(1,3);
-    cell(2,1,'◀','Pan west', -1, 0);
+    empty(1,1); cell(1,2,'↑','Pan north', 0,-1); empty(1,3);
+    cell(2,1,'←','Pan west', -1, 0);
     const mid = L.DomUtil.create('a','',c);
     mid.innerHTML = '⊙'; mid.title = 'Reset view'; mid.href = '#';
-    mid.style.cssText='grid-row:2;grid-column:2;width:28px;height:28px;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;color:#333;text-decoration:none;line-height:1;';
+    mid.style.cssText='grid-row:2;grid-column:2;width:28px;height:28px;background:white;border:2px solid rgba(0,0,0,0.2);border-radius:2px;display:flex;align-items:center;justify-content:center;font:bold 16px \'Lucida Console\',Monaco,monospace;cursor:pointer;color:#333;text-decoration:none;line-height:1;';
     L.DomEvent.on(mid,'click',L.DomEvent.stopPropagation)
               .on(mid,'click',L.DomEvent.preventDefault)
               .on(mid,'click',() => resetMapView());
-    cell(2,3,'▶','Pan east',  1, 0);
-    empty(3,1); cell(3,2,'▼','Pan south', 0, 1); empty(3,3);
+    cell(2,3,'→','Pan east',  1, 0);
+    empty(3,1); cell(3,2,'↓','Pan south', 0, 1); empty(3,3);
     return c;
   }
 });
