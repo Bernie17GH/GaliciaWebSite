@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Experiences &amp; Partners — A Galician Pazo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Cinzel:wght@400;600&amp;family=Jost:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 :root{--stone:#c4b49a;--moss:#3d5235;--earth:#7a6552;--cream:#f5f0e8;--ink:#1a1610;--gold:#b8913a;--mist:#ddd8ce;--ivy:#4a6b3a}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;}body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;overflow-y:scroll;}
@@ -234,61 +235,58 @@ footer p{width:100%;text-align:right;}
 </style>
 </head>
 <body>
-
 <!-- ── NAV ── -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo">Pazo · Galicia</a>
-  <ul class="nav-links">
-    <li><a href="index.html#story" data-i18n="nav.estate">The Estate</a></li>
-    <li><a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a></li>
-    <li><a href="explore.html" data-i18n="nav.experiences">Experiences</a></li>
-    <li><a href="index.html#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
-    <li><a href="index.html#contact" data-i18n="nav.enquire">Enquire</a></li>
-  </ul>
-  <div class="lang-switcher">
-    <button class="lang-btn lang-active" onclick="setLang('en')" title="English">
-      <img src="https://flagcdn.com/gb.svg" alt="English" width="22" height="16"> EN
+<a class="nav-logo" href="index.html">Pazo · Galicia</a>
+<ul class="nav-links">
+<li><a data-i18n="nav.estate" href="index.html#story">The Estate</a></li>
+<li><a data-i18n="nav.gallery" href="index.html#gallery">Gallery</a></li>
+<li><a data-i18n="nav.experiences" href="explore.html">Experiences</a></li>
+<li><a data-i18n="nav.celebrations" href="index.html#weddings">Celebrations</a></li>
+<li><a data-i18n="nav.enquire" href="index.html#contact">Enquire</a></li>
+</ul>
+<div class="lang-switcher">
+<button class="lang-btn lang-active" onclick="setLang('en')" title="English">
+<img alt="English" height="16" src="https://flagcdn.com/gb.svg" width="22"/> EN
     </button>
-    <button class="lang-btn" onclick="setLang('es')" title="Español">
-      <img src="https://flagcdn.com/es.svg" alt="Español" width="22" height="16"> ES
+<button class="lang-btn" onclick="setLang('es')" title="Español">
+<img alt="Español" height="16" src="https://flagcdn.com/es.svg" width="22"/> ES
     </button>
-  </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="nav-hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</button>
 </nav>
-
 <!-- ── MOBILE DRAWER ── -->
 <ul class="nav-drawer" id="navDrawer" role="navigation">
-  <li><a href="index.html#story"    class="drawer-link" data-i18n="nav.estate">The Estate</a></li>
-  <li><a href="index.html#gallery"  class="drawer-link" data-i18n="nav.gallery">Gallery</a></li>
-  <li><a href="explore.html"        class="drawer-link" data-i18n="nav.experiences">Experiences</a></li>
-  <li><a href="index.html#weddings" class="drawer-link" data-i18n="nav.celebrations">Celebrations</a></li>
-  <li><a href="index.html#contact"  class="drawer-enquire" data-i18n="nav.enquire">Enquire</a></li>
-  <li class="drawer-lang">
-    <button class="lang-btn lang-active" onclick="setLang('en');closeDrawer()" title="English">
-      <img src="https://flagcdn.com/gb.svg" alt="English" width="20" height="14"> EN
+<li><a class="drawer-link" data-i18n="nav.estate" href="index.html#story">The Estate</a></li>
+<li><a class="drawer-link" data-i18n="nav.gallery" href="index.html#gallery">Gallery</a></li>
+<li><a class="drawer-link" data-i18n="nav.experiences" href="explore.html">Experiences</a></li>
+<li><a class="drawer-link" data-i18n="nav.celebrations" href="index.html#weddings">Celebrations</a></li>
+<li><a class="drawer-enquire" data-i18n="nav.enquire" href="index.html#contact">Enquire</a></li>
+<li class="drawer-lang">
+<button class="lang-btn lang-active" onclick="setLang('en');closeDrawer()" title="English">
+<img alt="English" height="14" src="https://flagcdn.com/gb.svg" width="20"/> EN
     </button>
-    <button class="lang-btn" onclick="setLang('es');closeDrawer()" title="Español">
-      <img src="https://flagcdn.com/es.svg" alt="Español" width="20" height="14"> ES
+<button class="lang-btn" onclick="setLang('es');closeDrawer()" title="Español">
+<img alt="Español" height="14" src="https://flagcdn.com/es.svg" width="20"/> ES
     </button>
-  </li>
+</li>
 </ul>
-
 <!-- ── EXPERIENCES ── -->
 <section class="experiences" id="experiences">
 <div class="exp-header reveal">
 <div>
 <span class="section-label" data-i18n="exp.label">What Awaits</span>
-<h2 class="section-title" style="color:var(--cream)" data-i18n-html="exp.h2">Curated <em style="color:var(--stone)">Experiences</em></h2>
+<h2 class="section-title" data-i18n-html="exp.h2" style="color:var(--cream)">Curated <em style="color:var(--stone)">Experiences</em></h2>
 <p class="exp-intro body-text" data-i18n="exp.intro">Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.</p>
 </div>
-<a href="#partners" class="exp-allpartners-link" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;" data-i18n="exp.allpartners">View All Partners →</a>
+<a class="exp-allpartners-link" data-i18n="exp.allpartners" href="#partners" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(184,145,58,0.4);padding-bottom:0.2rem;">View All Partners →</a>
 </div>
 <div class="exp-grid">
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Events.jpg" alt="Elegant wedding banquet hall"/>
-<img loading="lazy" class="exp-img" src="images/Events2.jpg" alt="Candlelit rustic wedding table setting"/>
+<img alt="Elegant wedding banquet hall" class="exp-img exp-img-active" loading="lazy" src="images/Events.jpg"/>
+<img alt="Candlelit rustic wedding table setting" class="exp-img" loading="lazy" src="images/Events2.jpg"/>
 <div class="exp-overlay">
 <div class="exp-number">01</div>
 <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
@@ -297,49 +295,49 @@ footer p{width:100%;text-align:right;}
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Albariño grapes on the vine"/>
-<img loading="lazy" class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard rows"/>
+<img alt="Albariño grapes on the vine" class="exp-img exp-img-active" loading="lazy" src="images/Wine.jpeg"/>
+<img alt="Galician vineyard rows" class="exp-img" loading="lazy" src="images/Wine2.jpeg"/>
 <div class="exp-overlay">
 <div class="exp-number">02</div>
 <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
-<div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.</div>
-<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
+<div class="exp-desc" data-i18n="exp.wine.desc">From boutique Ribeira do Ulla bodegas on the estate's doorstep to the great Rías Baixas estates at Martín Códax, Pazo Baión and Granbazán, paired with feasts of Galician produce.</div>
+<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">10 partner wineries nearby →</div>
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Horseback.jpg" alt="Horseback riding through Galician forest"/>
-<img loading="lazy" class="exp-img" src="images/Horseback2.jpg" alt="Horse in Galician eucalyptus forest"/>
+<img alt="Horseback riding through Galician forest" class="exp-img exp-img-active" loading="lazy" src="images/Horseback.jpg"/>
+<img alt="Horse in Galician eucalyptus forest" class="exp-img" loading="lazy" src="images/Horseback2.jpg"/>
 <div class="exp-overlay">
 <div class="exp-number">03</div>
 <div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
-<div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.</div>
-<div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">3 equestrian partners within 11 km →</div>
+<div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with five outstanding local centres.</div>
+<div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">5 equestrian partners from 5 km →</div>
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/pesca.jpg" alt="River fly fishing in Galician forest"/>
-<img loading="lazy" class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast Rías Baixas from above"/>
-<img loading="lazy" class="exp-img" src="images/game.jpg" alt="Game hunting in Galician countryside"/>
+<img alt="River fly fishing in Galician forest" class="exp-img exp-img-active" loading="lazy" src="images/pesca.jpg"/>
+<img alt="Atlantic coast Rías Baixas from above" class="exp-img" loading="lazy" src="images/pesca2.jpg"/>
+<img alt="Game hunting in Galician countryside" class="exp-img" loading="lazy" src="images/game.jpg"/>
 <div class="exp-overlay">
 <div class="exp-number">04</div>
 <div class="exp-title" data-i18n="exp.fishing.title">Fishing and Game</div>
-<div class="exp-desc" data-i18n="exp.fishing.desc">Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia's rivers, or hunt for wild boar with local outfitters.</div>
+<div class="exp-desc" data-i18n="exp.fishing.desc">Cast for Atlantic salmon on the Río Ulla — just 4 km away — join locals harvesting shellfish in the Rías, or hunt wild boar with local outfitters.</div>
 <div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">7 fishing and game partners →</div>
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Coastal hiking trail Galicia"/>
-<img loading="lazy" class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones Sendeiro Azul"/>
+<img alt="Coastal hiking trail Galicia" class="exp-img exp-img-active" loading="lazy" src="images/Hiking.jpeg"/>
+<img alt="River stepping stones Sendeiro Azul" class="exp-img" loading="lazy" src="images/Hiking2.jpg"/>
 <div class="exp-overlay">
 <div class="exp-number">05</div>
-<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
+<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Cycling</div>
 <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.</div>
-<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
+<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">15 hiking, cycling &amp; guided walks →</div>
 </div>
 </div>
 <div class="exp-card reveal">
-<img loading="lazy" class="exp-img exp-img-active" src="images/Corporate.jpg" alt="Outdoor corporate retreat in nature"/>
-<img loading="lazy" class="exp-img" src="images/Corporate2.jpg" alt="Indoor boardroom corporate event"/>
+<img alt="Outdoor corporate retreat in nature" class="exp-img exp-img-active" loading="lazy" src="images/Corporate.jpg"/>
+<img alt="Indoor boardroom corporate event" class="exp-img" loading="lazy" src="images/Corporate2.jpg"/>
 <div class="exp-overlay">
 <div class="exp-number">06</div>
 <div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
@@ -350,79 +348,78 @@ footer p{width:100%;text-align:right;}
 </div>
 <!-- MOBILE carousel -->
 <div class="exp-carousel-wrap" id="expCarouselWrap">
-  <div class="exp-carousel" id="expCarousel">
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Events.jpg" alt="Weddings"/>
-      <img class="exp-img" src="images/Events2.jpg" alt="Wedding table"/>
-      <div class="exp-overlay">
-        <div class="exp-number">01</div>
-        <div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
-        <div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds — one of Spain's most extraordinary celebration venues.</div>
-        <div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
-      </div>
-    </div>
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Wine.jpeg" alt="Wine and Gastronomy"/>
-      <img class="exp-img" src="images/Wine2.jpeg" alt="Galician vineyard"/>
-      <div class="exp-overlay">
-        <div class="exp-number">02</div>
-        <div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
-        <div class="exp-desc" data-i18n="exp.wine.desc">Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán.</div>
-        <div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">7 partner wineries nearby →</div>
-      </div>
-    </div>
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Horseback.jpg" alt="Horseback Riding"/>
-      <img class="exp-img" src="images/Horseback2.jpg" alt="Horse in forest"/>
-      <div class="exp-overlay">
-        <div class="exp-number">03</div>
-        <div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
-        <div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback.</div>
-        <div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">3 equestrian partners within 11 km →</div>
-      </div>
-    </div>
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/pesca.jpg" alt="Fishing and Game"/>
-      <img class="exp-img" src="images/pesca2.jpg" alt="Atlantic coast"/>
-      <div class="exp-overlay">
-        <div class="exp-number">04</div>
-        <div class="exp-title" data-i18n="exp.fishing.title">Fishing and Game</div>
-        <div class="exp-desc" data-i18n="exp.fishing.desc">Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia's rivers, or hunt for wild boar with local outfitters.</div>
-        <div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">7 fishing and game partners →</div>
-      </div>
-    </div>
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Hiking.jpeg" alt="Hiking and Nature"/>
-      <img class="exp-img" src="images/Hiking2.jpg" alt="River stepping stones"/>
-      <div class="exp-overlay">
-        <div class="exp-number">05</div>
-        <div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Nature</div>
-        <div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures.</div>
-        <div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">8 hiking trails &amp; guided walks →</div>
-      </div>
-    </div>
-    <div class="exp-card">
-      <img class="exp-img exp-img-active" src="images/Corporate.jpg" alt="Corporate Retreats"/>
-      <img class="exp-img" src="images/Corporate2.jpg" alt="Corporate indoor"/>
-      <div class="exp-overlay">
-        <div class="exp-number">06</div>
-        <div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
-        <div class="exp-desc" data-i18n="exp.corporate.desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom.</div>
-        <div class="exp-partners-hint" data-filter="all" data-i18n="exp.corporate.hint">Full curated itineraries on request →</div>
-      </div>
-    </div>
-  </div>
-  <div class="exp-dots" id="expDots">
-    <div class="exp-dot active" data-index="0"></div>
-    <div class="exp-dot" data-index="1"></div>
-    <div class="exp-dot" data-index="2"></div>
-    <div class="exp-dot" data-index="3"></div>
-    <div class="exp-dot" data-index="4"></div>
-    <div class="exp-dot" data-index="5"></div>
-  </div>
+<div class="exp-carousel" id="expCarousel">
+<div class="exp-card">
+<img alt="Weddings" class="exp-img exp-img-active" src="images/Events.jpg"/>
+<img alt="Wedding table" class="exp-img" src="images/Events2.jpg"/>
+<div class="exp-overlay">
+<div class="exp-number">01</div>
+<div class="exp-title" data-i18n="exp.weddings.title">Weddings &amp; Celebrations</div>
+<div class="exp-desc" data-i18n="exp.weddings.desc">The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds — one of Spain's most extraordinary celebration venues.</div>
+<div class="exp-partners-hint" data-filter="events" data-i18n="exp.weddings.hint">Full-service planning partners available →</div>
+</div>
+</div>
+<div class="exp-card">
+<img alt="Wine and Gastronomy" class="exp-img exp-img-active" src="images/Wine.jpeg"/>
+<img alt="Galician vineyard" class="exp-img" src="images/Wine2.jpeg"/>
+<div class="exp-overlay">
+<div class="exp-number">02</div>
+<div class="exp-title" data-i18n="exp.wine.title">Wine &amp; Gastronomy</div>
+<div class="exp-desc" data-i18n="exp.wine.desc">From boutique Ribeira do Ulla bodegas on the estate's doorstep to the great Rías Baixas estates at Martín Códax, Pazo Baión and Granbazán.</div>
+<div class="exp-partners-hint" data-filter="wine" data-i18n="exp.wine.hint">10 partner wineries nearby →</div>
+</div>
+</div>
+<div class="exp-card">
+<img alt="Horseback Riding" class="exp-img exp-img-active" src="images/Horseback.jpg"/>
+<img alt="Horse in forest" class="exp-img" src="images/Horseback2.jpg"/>
+<div class="exp-overlay">
+<div class="exp-number">03</div>
+<div class="exp-title" data-i18n="exp.horse.title">Horseback Riding</div>
+<div class="exp-desc" data-i18n="exp.horse.desc">Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback.</div>
+<div class="exp-partners-hint" data-filter="horseback" data-i18n="exp.horse.hint">5 equestrian partners from 5 km →</div>
+</div>
+</div>
+<div class="exp-card">
+<img alt="Fishing and Game" class="exp-img exp-img-active" src="images/pesca.jpg"/>
+<img alt="Atlantic coast" class="exp-img" src="images/pesca2.jpg"/>
+<div class="exp-overlay">
+<div class="exp-number">04</div>
+<div class="exp-title" data-i18n="exp.fishing.title">Fishing and Game</div>
+<div class="exp-desc" data-i18n="exp.fishing.desc">Cast for Atlantic salmon on the Río Ulla — just 4 km away — join locals harvesting shellfish in the Rías, or hunt wild boar with local outfitters.</div>
+<div class="exp-partners-hint" data-filter="fishing" data-i18n="exp.fishing.hint">7 fishing and game partners →</div>
+</div>
+</div>
+<div class="exp-card">
+<img alt="Hiking and Nature" class="exp-img exp-img-active" src="images/Hiking.jpeg"/>
+<img alt="River stepping stones" class="exp-img" src="images/Hiking2.jpg"/>
+<div class="exp-overlay">
+<div class="exp-number">05</div>
+<div class="exp-title" data-i18n="exp.hiking.title">Hiking &amp; Cycling</div>
+<div class="exp-desc" data-i18n="exp.hiking.desc">Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures.</div>
+<div class="exp-partners-hint" data-filter="hiking" data-i18n="exp.hiking.hint">15 hiking, cycling &amp; guided walks →</div>
+</div>
+</div>
+<div class="exp-card">
+<img alt="Corporate Retreats" class="exp-img exp-img-active" src="images/Corporate.jpg"/>
+<img alt="Corporate indoor" class="exp-img" src="images/Corporate2.jpg"/>
+<div class="exp-overlay">
+<div class="exp-number">06</div>
+<div class="exp-title" data-i18n="exp.corporate.title">Corporate Retreats</div>
+<div class="exp-desc" data-i18n="exp.corporate.desc">Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom.</div>
+<div class="exp-partners-hint" data-filter="all" data-i18n="exp.corporate.hint">Full curated itineraries on request →</div>
+</div>
+</div>
+</div>
+<div class="exp-dots" id="expDots">
+<div class="exp-dot active" data-index="0"></div>
+<div class="exp-dot" data-index="1"></div>
+<div class="exp-dot" data-index="2"></div>
+<div class="exp-dot" data-index="3"></div>
+<div class="exp-dot" data-index="4"></div>
+<div class="exp-dot" data-index="5"></div>
+</div>
 </div>
 </section>
-
 <!-- ── PARTNERS + MAP ── -->
 <section class="combined-section" id="partners">
 <div class="combined-layout">
@@ -438,190 +435,15 @@ footer p{width:100%;text-align:right;}
 <button class="filter-btn" data-filter="wine" data-i18n="filter.wine">🍷 <span class="filter-label">Wine</span></button>
 <button class="filter-btn" data-filter="horseback" data-i18n="filter.horseback">🐴 <span class="filter-label">Horseback</span></button>
 <button class="filter-btn" data-filter="fishing" data-i18n="filter.fishing">🎣 <span class="filter-label">Fishing</span></button>
-<button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 <span class="filter-label">Hiking</span></button>
+<button class="filter-btn" data-filter="hiking" data-i18n="filter.hiking">🥾 <span class="filter-label">Hiking & Cycling</span></button>
 </div>
 </div>
 <div class="combined-cards">
 <div class="partners-grid reveal" id="partners-grid">
 <!-- FISHING -->
-<div class="partner-card" data-cat="fishing" data-dist-km="5">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
-<div class="partner-name" data-partner-slug="rio-lerez">Río Lérez · Coto de Cutián</div>
-<div class="partner-dist">~5 km · Campo Lameiro</div>
-<div class="partner-desc" data-i18n="partner.lerez.desc">One of Galicia's finest trout rivers, running through ancient oak forest virtually on the estate's doorstep. The Cutián beat offers 5 daily permits on a first-come basis. A guide is not included — but we can help you arrange one.</div>
-<div class="partner-meta"><span class="partner-rating">🎣 Trout · Reo</span><a class="partner-web" href="https://www.depo.gal/es/-/permisos-de-pesca-no-coto-de-cutian" target="_blank">Permits via DEPO ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="12">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
-<div class="partner-name" data-partner-slug="rios-verdugo">Ríos Verdugo &amp; Oitavén · Coto de Soutomaior</div>
-<div class="partner-dist">~12 km · Soutomaior</div>
-<div class="partner-desc" data-i18n="partner.verdugo.desc">Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.</div>
-<div class="partner-meta"><span class="partner-rating">🎣 Trout · Barbel</span><a class="partner-web" href="https://www.facebook.com/pescadesoutomaior.sociedade/" target="_blank">Sociedad de Pesca ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="19">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
-<div class="partner-name" data-partner-slug="pescaturismo">Pescaturismo Cambados</div>
-<div class="partner-dist">~19 km · Cambados harbour</div>
-<div class="partner-desc" data-i18n="partner.pescaturismo.desc">Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.</div>
-<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34622347389">+34 622 34 73 89</a><a class="partner-web" href="https://www.pescaturismogalicia.com" target="_blank">pescaturismogalicia.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="19">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
-<div class="partner-name" data-partner-slug="escaparia">Escaparía</div>
-<div class="partner-dist">~19 km · Sanxenxo marina</div>
-<div class="partner-desc" data-i18n="partner.escaparia.desc">Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.9</span><a class="partner-phone" href="tel:+34669615361">+34 669 61 53 61</a><a class="partner-web" href="https://www.escaparia.com" target="_blank">escaparia.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="24">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
-<div class="partner-name" data-partner-slug="barco-latoja">Barco La Toja</div>
-<div class="partner-dist">~24 km · Isla de La Toja</div>
-<div class="partner-desc" data-i18n="partner.latoja.desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34609884650">+34 609 88 46 50</a><a class="partner-web" href="https://www.barcolatoja.com" target="_blank">barcolatoja.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="24">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
-<div class="partner-name" data-partner-slug="cruceiros">Cruceiros Rías Baixas</div>
-<div class="partner-dist">~24 km · O Grove</div>
-<div class="partner-desc" data-i18n="partner.cruceiros.desc">A large catamaran operation with 1,600+ reviews — the region's most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986731343">+34 986 73 13 43</a><a class="partner-web" href="https://www.crucerosriasbaixas.com" target="_blank">crucerosriasbaixas.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="fishing" data-dist-km="45">
-<span class="partner-cat-tag cat-fishing" data-i18n="pcat.game">🎯 Game Hunting</span>
-<div class="partner-name" data-partner-slug="monteros-galaicos">Monteros Galaicos</div>
-<div class="partner-dist">~45 km · Tomiño &amp; ~58 km · San Cristóbal de Cea, Ourense</div>
-<div class="partner-desc" data-i18n="partner.monteros.desc">A Galician hunting association organising driven big game hunts — wild boar, deer, and roe deer — through the oak and chestnut forests of the Ourense interior. A deeply traditional Galician field sport, available to visiting guests with the Pazo's assistance in arranging permits and logistics.</div>
-<div class="partner-meta"><span class="partner-rating">🎯 Big Game · Driven Hunts</span><a class="partner-phone" href="tel:+34618784282">+34 618 78 42 82</a><a class="partner-web" href="https://www.instagram.com/monterosgalaicos" target="_blank">@monterosgalaicos ↗</a></div>
-</div>
 <!-- HIKING -->
-<div class="partner-card" data-cat="hiking" data-dist-km="5">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="sendero-poio">Sendero Litoral · Poio</div>
-<div class="partner-dist">~5 km · Poio</div>
-<div class="partner-desc" data-i18n="partner.poio.desc">A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 4.9 km · 1h · Easy</span><a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-poio" target="_blank">senderosazules.org ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="6">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="mountainpics">MountainPics Adventures</div>
-<div class="partner-dist">~6 km · Pontevedra city</div>
-<div class="partner-desc" data-i18n="partner.mountainpics.desc">Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.</div>
-<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34603560807">+34 603 56 08 07</a><a class="partner-web" href="https://mountainpics.es" target="_blank">mountainpics.es ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="10">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="sendeiro-azul">Sendeiro Azul do Río Verdugo</div>
-<div class="partner-dist">~10 km · Ponte Caldelas</div>
-<div class="partner-desc" data-i18n="partner.sendeiro.desc">An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 Blue Trail · All levels</span><a class="partner-web" href="https://www.senderosazules.org/sendeiro-azul-do-rio-verdugo-ponte-caldelas" target="_blank">senderosazules.org ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="14">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="sendero-marin">Ruta Montes y Playas · Marín</div>
-<div class="partner-dist">~14 km · Marín</div>
-<div class="partner-desc" data-i18n="partner.marin.desc">A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest — and a visit to the extraordinary Bronze Age petroglyphs of Mogor, one of the finest rock art sites in Europe.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 11 km · 3h · Easy–Medium</span><a class="partner-web" href="https://www.senderosazules.org/ruta-montes-y-playas-marin" target="_blank">senderosazules.org ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="15">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="rio-barosa">Parque Natural del Río Barosa · PR-G 105</div>
-<div class="partner-dist">~15 km · Barro</div>
-<div class="partner-desc" data-i18n="partner.barosa.desc">A short but enchanting circular walk through a protected river park on the Portuguese Camino. Seventeen historic water mills line the trail as the Barosa river tumbles over a dramatic 30-metre waterfall. Family-friendly and walkable year-round.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 3.2 km · 1h · Easy</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/ruta-circular-parque-natural-del-rio-barosa-via-pr-g-105" target="_blank">alltrails.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="20">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="sendero-sanxenxo">Sendero Litoral Sanxenxo–Portonovo</div>
-<div class="partner-dist">~20 km · Sanxenxo</div>
-<div class="partner-desc" data-i18n="partner.sanxenxo.desc">An 8.6 km coastal path between Sanxenxo and Portonovo tracing clifftop promenades, dune systems, and fishing village waterfronts — ending at the fish market lonja with views across the Ría.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 8.6 km · 2h 30 · Easy</span><a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-sanxenxo-portonovo-sanxenxo" target="_blank">senderosazules.org ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="20">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="cascada-segade">Cascada de Segade · Río Umia</div>
-<div class="partner-dist">~20 km · Caldas de Reis</div>
-<div class="partner-desc" data-i18n="partner.segade.desc">A riverside walk from the 19th-century botanical garden of Caldas de Reis to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 6.8 km · 1h 30 · Moderate</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/calda-de-reis-rio-umia-cascada-de-segade" target="_blank">alltrails.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="hiking" data-dist-km="25">
-<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
-<div class="partner-name" data-partner-slug="sendero-cabo-udra">Sendero Cabo Udra · Bueu</div>
-<div class="partner-dist">~25 km · Bueu</div>
-<div class="partner-desc" data-i18n="partner.cabudra.desc">An 11.3 km circular trail through a Natura 2000 reserve at Cabo Udra — dramatic Atlantic headland, diverse habitats, and an on-site Nature Interpretation Centre. The most wild and challenging of the local Blue Trails.</div>
-<div class="partner-meta"><span class="partner-rating">🥾 11.3 km · 2h 45 · Medium</span><a class="partner-web" href="https://www.senderosazules.org/sendero-de-cabo-udra-bueu" target="_blank">senderosazules.org ↗</a></div>
-</div>
 <!-- HORSEBACK -->
-<div class="partner-card" data-cat="horseback" data-dist-km="6">
-<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
-<div class="partner-name" data-partner-slug="hipica-appalaosa">Hípica Appalaosa</div>
-<div class="partner-dist">~6 km · Pontevedra</div>
-<div class="partner-desc" data-i18n="partner.appalaosa.desc">Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34697290355">+34 697 29 03 55</a><a class="partner-web" href="https://hipicaappalaoosa.com" target="_blank">hipicaappalaoosa.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="horseback" data-dist-km="9">
-<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
-<div class="partner-name" data-partner-slug="o-casal">O Casal Equitación</div>
-<div class="partner-dist">~9 km · Salcedo</div>
-<div class="partner-desc" data-i18n="partner.ocasal.desc">Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.3</span><a class="partner-phone" href="tel:+34671077280">+34 671 07 72 80</a><a class="partner-web" href="https://equitacionocasal.com" target="_blank">equitacionocasal.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="horseback" data-dist-km="11">
-<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
-<div class="partner-name" data-partner-slug="hipica-rabadeira">Hípica Rabadeira</div>
-<div class="partner-dist">~11 km · Puentecaldelas</div>
-<div class="partner-desc" data-i18n="partner.rabadeira.desc">The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.</div>
-<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34659131999">+34 659 13 19 99</a><a class="partner-web" href="http://www.asantiagoacaballo.com" target="_blank">asantiagoacaballo.com ↗</a></div>
-</div>
 <!-- WINE -->
-<div class="partner-card" data-cat="wine" data-dist-km="13">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="pazo-senorans">Pazo de Señorans</div>
-<div class="partner-dist">~13 km · Paradela</div>
-<div class="partner-desc" data-i18n="partner.senorans.desc">One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986715373">+34 986 71 53 73</a><a class="partner-web" href="http://pazodesenorans.com" target="_blank">pazodesenorans.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="13">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="terras-lantano">Terras de Lantaño</div>
-<div class="partner-dist">~13 km · Baceiro</div>
-<div class="partner-desc" data-i18n="partner.lantano.desc">A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34615646442">+34 615 64 64 42</a><a class="partner-web" href="https://www.terrasdelantano.com" target="_blank">terrasdelantano.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="14">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="mar-de-frades">Bodega Mar de Frades</div>
-<div class="partner-dist">~14 km · Val do Salnés</div>
-<div class="partner-desc" data-i18n="partner.marefrades.desc">An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.5</span><a class="partner-phone" href="tel:+34637479469">+34 637 47 94 69</a><a class="partner-web" href="https://mardefrades.es" target="_blank">mardefrades.es ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="15">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="vionta">Bodegas Vionta</div>
-<div class="partner-dist">~15 km · Meaño</div>
-<div class="partner-desc" data-i18n="partner.vionta.desc">A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986747566">+34 986 74 75 66</a><a class="partner-web" href="https://ferrerwines.com/vionta" target="_blank">ferrerwines.com/vionta ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="15">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="pazo-baion">Bodega Pazo Baión</div>
-<div class="partner-dist">~15 km · A Abelleira</div>
-<div class="partner-desc" data-i18n="partner.pazobaioon.desc">A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34636800234">+34 636 80 02 34</a><a class="partner-web" href="http://www.pazobaion.com" target="_blank">pazobaion.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="16">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="granbazan">Bodegas Granbazán</div>
-<div class="partner-dist">~16 km · Tremoedo</div>
-<div class="partner-desc" data-i18n="partner.granbazan.desc">One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986555562">+34 986 55 55 62</a><a class="partner-web" href="https://www.bodegasgranbazan.com/en" target="_blank">bodegasgranbazan.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="wine" data-dist-km="17">
-<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
-<div class="partner-name" data-partner-slug="martin-codax">Bodegas Martín Códax</div>
-<div class="partner-dist">~17 km · Cambados</div>
-<div class="partner-desc" data-i18n="partner.martincodax.desc">One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.</div>
-<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986526040">+34 986 52 60 40</a><a class="partner-web" href="http://www.martincodax.com" target="_blank">martincodax.com ↗</a></div>
-</div>
 <!-- EVENTS -->
 <div class="partner-card" data-cat="events" data-dist-km="0">
 <span class="partner-cat-tag cat-events" data-i18n="pcat.events">💒 Weddings &amp; Events</span>
@@ -629,15 +451,251 @@ footer p{width:100%;text-align:right;}
 <div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
 <div class="partner-desc" data-i18n="partner.silvia.desc">Silvia specialises in destination weddings and is experienced at coordinating international couples remotely — from Miami, China, and beyond. Methodical, warm, and universally praised.</div>
 <div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34647032575">+34 647 03 25 75</a><a class="partner-web" href="http://elconsejodesilvia.com" target="_blank">elconsejodesilvia.com ↗</a></div>
-</div>
-<div class="partner-card" data-cat="events" data-dist-km="0">
+</div><div class="partner-card" data-cat="events" data-dist-km="0">
 <span class="partner-cat-tag cat-events" data-i18n="pcat.events">💒 Weddings &amp; Events</span>
 <div class="partner-name" data-partner-slug="la-narunera">La Narunera</div>
 <div class="partner-dist" data-i18n="partner.atpazo">At the Pazo</div>
 <div class="partner-desc" data-i18n="partner.ainara.desc">Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer's dream — every event she designs is considered a visual masterpiece.</div>
 <div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34657630414">+34 657 63 04 14</a><a class="partner-web" href="http://www.lanarunera.com" target="_blank">lanarunera.com ↗</a></div>
+</div><div class="partner-card" data-cat="events" data-dist-km="1">
+<span class="partner-cat-tag cat-events" data-i18n="pcat.gardens">🌿 Gardens</span>
+<div class="partner-name" data-partner-slug="pazo-de-oca">Pazo de Oca</div>
+<div class="partner-dist">~1.4 km · Oca, A Estrada</div>
+<div class="partner-desc" data-i18n="partner.pazodeoca.desc">The "Versailles of Galicia" — a baroque estate with eight hectares of extraordinary gardens, granite waterways, and ancient camellias, owned by the Casa Ducal de Medinaceli Foundation. Open year-round. A natural complement to any wedding or celebration stay at the Pazo.</div>
+<div class="partner-meta"><a class="partner-phone" href="tel:+34986587435">+34 986 58 74 35</a><a class="partner-web" href="https://fundacionmedinaceli.org/en/monuments/pazo-de-oca/" target="_blank">fundacionmedinaceli.org ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="4">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
+<div class="partner-name" data-partner-slug="rio-ulla">Río Ulla · Cotos de Salmón</div>
+<div class="partner-dist">~4–12 km · A Estrada</div>
+<div class="partner-desc" data-i18n="partner.ulla.desc">One of Galicia's great salmon rivers runs virtually on the estate's doorstep. Five dedicated beats — Ximonde, Santeles, Sinde, Pontevea, and Couso — lie between 4 and 12 km away. Salmon and reo season runs May–July. Permits via the Xunta; we can help arrange guides and licences.</div>
+<div class="partner-meta"><span class="partner-rating">🎣 Salmon · Reo · Trout</span><a class="partner-web" href="https://www.turismo.aestrada.gal/en/deporte-en/pesca-en/" target="_blank">Turismo A Estrada ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="42">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="pescaturismo">Pescaturismo Cambados</div>
+<div class="partner-dist">~42 km · Cambados harbour</div>
+<div class="partner-desc" data-i18n="partner.pescaturismo.desc">Shellfish harvesting experiences with the celebrated fisherwomen of Cambados — a deeply authentic, hands-on glimpse into Galician coastal culture.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34622347389">+34 622 34 73 89</a><a class="partner-web" href="https://www.pescaturismogalicia.com" target="_blank">pescaturismogalicia.com ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="45">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.river">🎣 River</span>
+<div class="partner-name" data-partner-slug="rios-verdugo">Ríos Verdugo &amp; Oitavén · Coto de Soutomaior</div>
+<div class="partner-dist">~45 km · Soutomaior</div>
+<div class="partner-desc" data-i18n="partner.verdugo.desc">Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge — trout, barbel, and eel in pools beloved by local anglers for generations. Permits via the Xunta. We can help arrange a guide for the full experience.</div>
+<div class="partner-meta"><span class="partner-rating">🎣 Trout · Barbel</span><a class="partner-web" href="https://www.facebook.com/pescadesoutomaior.sociedade/" target="_blank">Sociedad de Pesca ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="46">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="barco-latoja">Barco La Toja</div>
+<div class="partner-dist">~46 km · Isla de La Toja</div>
+<div class="partner-desc" data-i18n="partner.latoja.desc">A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine. One of the most reviewed tourism experiences in the province.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34609884650">+34 609 88 46 50</a><a class="partner-web" href="https://www.barcolatoja.com" target="_blank">barcolatoja.com ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="46">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="cruceiros">Cruceiros Rías Baixas</div>
+<div class="partner-dist">~46 km · O Grove</div>
+<div class="partner-desc" data-i18n="partner.cruceiros.desc">A large catamaran operation with 1,600+ reviews — the region's most popular group boat excursion. Mussels, paella, and local wine served on board with views of the estuary.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986731343">+34 986 73 13 43</a><a class="partner-web" href="https://www.crucerosriasbaixas.com" target="_blank">crucerosriasbaixas.com ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="46">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.game">🎯 Game Hunting</span>
+<div class="partner-name" data-partner-slug="monteros-galaicos">Monteros Galaicos</div>
+<div class="partner-dist">~88 km · Tomiño &amp; ~46 km · San Cristóbal de Cea, Ourense</div>
+<div class="partner-desc" data-i18n="partner.monteros.desc">A Galician hunting association organising driven big game hunts — wild boar, deer, and roe deer — through the oak and chestnut forests of the Ourense interior. A deeply traditional Galician field sport, available to visiting guests with the Pazo's assistance in arranging permits and logistics.</div>
+<div class="partner-meta"><span class="partner-rating">🎯 Big Game · Driven Hunts</span><a class="partner-phone" href="tel:+34618784282">+34 618 78 42 82</a><a class="partner-web" href="https://www.instagram.com/monterosgalaicos" target="_blank">@monterosgalaicos ↗</a></div>
+</div><div class="partner-card" data-cat="fishing" data-dist-km="50">
+<span class="partner-cat-tag cat-fishing" data-i18n="pcat.coastal">🎣 Coastal</span>
+<div class="partner-name" data-partner-slug="escaparia">Escaparía</div>
+<div class="partner-dist">~50 km · Sanxenxo marina</div>
+<div class="partner-desc" data-i18n="partner.escaparia.desc">Private boat charters to hidden Atlantic beaches in the Aldan estuary. English-speaking captain Matt consistently earns raves — ideal for international guests.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.9</span><a class="partner-phone" href="tel:+34669615361">+34 669 61 53 61</a><a class="partner-web" href="https://www.escaparia.com" target="_blank">escaparia.com ↗</a></div>
+<div class="partner-card" data-cat="hiking" data-dist-km="4">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="ximonde-pontevea">Senda Ximonde–Pontevea · Río Ulla</div>
+<div class="partner-dist">~4 km · Ximonde</div>
+<div class="partner-desc" data-i18n="partner.ximondepont.desc">A beautiful easy riverside walk along the Río Ulla starting at Ximonde — one of Galicia's most celebrated salmon beats — and following the riverbank through ancient oak woodland to the medieval bridge of Pontevea. Waterfalls, old mills, and dramatic river scenery throughout.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 4.5 km · Easy</span><a class="partner-web" href="https://www.turismo.gal/recurso/-/detalle/33815/pr-g-36-sendeiro-de-san-xoan-da-cova?langId=en_US" target="_blank">turismo.gal ↗</a></div>
 </div>
-</div><!-- end partners-grid -->
+<div class="partner-card" data-cat="hiking" data-dist-km="6">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="areal-berres">Areal de Berres · Paseo Fluvial Ulla</div>
+<div class="partner-dist">~6 km · Berres, A Estrada</div>
+<div class="partner-desc" data-i18n="partner.arealberres.desc">A magical 8.7 km riverside walk along the Río Ulla starting at O Areal de Berres — a unique recreation area filled with hand-carved stone sculptures created by local artist José Manuel Gañete. Ancient riparian forest, natural swimming in the river, and one of Galicia's most enchanting spots for the Midsummer solstice celebration.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 8.7 km · Easy</span><a class="partner-web" href="https://www.caminandoentresenderos.com/paseo-fluvial-berres-ulla-a-estrada/" target="_blank">Trail guide ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="10">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="monte-xesteiras">PR-G 136 · Monte Xesteiras</div>
+<div class="partner-dist">~10 km · A Estrada / Cuntis</div>
+<div class="partner-desc" data-i18n="partner.xesteiras.desc">A spectacular 14 km circular trail (PR-G 136) climbing Monte Xesteiras (716 m) through ancient cork oak groves, carballeiras, and muleteer paths. From the summit: panoramic views over the Rías Baixas, the Ulla estuary, Santiago de Compostela, and beyond. Also features unique stone formations, historic chapels, and restored water mills.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 14 km · Moderate · 4 hrs</span><a class="partner-web" href="https://www.santiagoturismo.com/senderos/ruta-de-as-canteiras-da-pedra-mona" target="_blank">Trail guide ↗</a></div>
+</div>
+</div><div class="partner-card" data-cat="hiking" <div class="partner-card" data-cat="hiking" data-dist-km="5">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="golfariz-mills">Muíños de Golfariz · Pardemarín</div>
+<div class="partner-dist">~5 km · Pardemarín, A Estrada</div>
+<div class="partner-desc" data-i18n="partner.golfariz.desc">A magical 3 km circular trail through the restored historic mills of Golfariz, lovingly signposted in carved stone by a local craftsman. Riparian forest, wooden walkways, and a series of beautifully preserved water mills make this one of A Estrada's most charming short walks — ideal for all ages.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 3 km · Easy</span><a class="partner-web" href="https://www.turismo.aestrada.gal/en/senderismo/ruta-de-los-molinos-de-golfariz-en/" target="_blank">Trail guide ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="5">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="callobre-waterfall">Fervenza de Callobre · Río Curantes</div>
+<div class="partner-dist">~5 km · Callobre, A Estrada</div>
+<div class="partner-desc" data-i18n="partner.callobre.desc">A short, enchanting circular trail (3.7 km) along the Río Curantes to the hidden Fervenza de Callobre — a dramatic 7-metre waterfall set in a magical valley of ancient mills, granite pools, and riparian woodland. Wooden walkways and bridges guide you through. One of A Estrada's best-kept secrets.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 3.7 km · Easy</span><a class="partner-web" href="https://www.turismo.aestrada.gal/en/senderismo/ruta-de-la-fervenza-de-callobre-en/" target="_blank">Trail guide ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="11">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="ferveza-ferveda">Fervenza de Férveda · Silleda</div>
+<div class="partner-dist">~11 km · Escuadro, Silleda</div>
+<div class="partner-desc" data-i18n="partner.ferveda.desc">A short and beautiful 2.7 km linear trail through ancient woodland to the spectacular Fervenza de Férveda. Along the way pass six historic waterwheels, a traditional washing place, and rich Atlantic forest. The last 200 metres descend steeply to the base of the waterfall — entirely worth it.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 2.7 km · Easy</span><a class="partner-web" href="https://www.santiagoturismo.com/senderos/sendero-de-la-fervenza-de-ferveda" target="_blank">Trail guide ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="11">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="fervenza-toxa">Fervenza do Toxa · Silleda</div>
+<div class="partner-dist">~11 km · Silleda</div>
+<div class="partner-desc" data-i18n="partner.toxa.desc">The highest free-fall waterfall in Galicia — more than 70 metres — plunging through one of the most dramatic river gorges in the region. A well-marked 2.5 km path drops through chestnut, oak, and cork forest to the plunge pool. Can be extended to a full 12 km circular route taking in the medieval Monastery of Carboeiro and the river beach of A Carixa.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 2.5 km · Easy (12 km full loop)</span><a class="partner-web" href="https://www.santiagoturismo.com/senderos/sendero-del-deza" target="_blank">Trail guide ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="25">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="cascada-segade">Cascada de Segade · Río Umia</div>
+<div class="partner-dist">~25 km · Caldas de Reis</div>
+<div class="partner-desc" data-i18n="partner.segade.desc">A riverside walk from the 19th-century botanical garden of Caldas de Reis to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 6.8 km · 1h 30 · Moderate</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/calda-de-reis-rio-umia-cascada-de-segade" target="_blank">alltrails.com ↗</a></div>
+</div><div class="partner-card" data-cat="hiking" data-dist-km="32">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="rio-barosa">Parque Natural del Río Barosa · PR-G 105</div>
+<div class="partner-dist">~32 km · Barro</div>
+<div class="partner-desc" data-i18n="partner.barosa.desc">A short but enchanting circular walk through a protected river park on the Portuguese Camino. Seventeen historic water mills line the trail as the Barosa river tumbles over a dramatic 30-metre waterfall. Family-friendly and walkable year-round.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 3.2 km · 1h · Easy</span><a class="partner-web" href="https://www.alltrails.com/trail/spain/pontevedra/ruta-circular-parque-natural-del-rio-barosa-via-pr-g-105" target="_blank">alltrails.com ↗</a></div>
+</div><div class="partner-card" data-cat="hiking" data-dist-km="38">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendero-poio">Sendero Litoral · Poio</div>
+<div class="partner-dist">~38 km · Poio</div>
+<div class="partner-desc" data-i18n="partner.poio.desc">A 4.9 km easy coastal walk along the Ría de Pontevedra passing the Parque da Memoria, the oystercatcher estuary of Reiboa, ancient water mills, and the first oyster cultivation park on the Iberian peninsula. Superb birdwatching throughout.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 4.9 km · 1h · Easy</span><a class="partner-web" href="https://www.senderosazules.org/sendero-litoral-poio" target="_blank">senderosazules.org ↗</a></div>
+</div><div class="partner-card" data-cat="hiking" data-dist-km="39">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="sendeiro-azul">Sendeiro Azul do Río Verdugo</div>
+<div class="partner-dist">~39 km · Ponte Caldelas</div>
+<div class="partner-desc" data-i18n="partner.sendeiro.desc">An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests, stepping-stone crossings, old mills, and a river beach at A Calzada. The first inland trail in Spain to earn Blue Trail certification from ADEAC.</div>
+<div class="partner-meta"><span class="partner-rating">🥾 Blue Trail · All levels</span><a class="partner-web" href="https://www.senderosazules.org/sendeiro-azul-do-rio-verdugo-ponte-caldelas" target="_blank">senderosazules.org ↗</a></div>
+<div class="partner-card" data-cat="hiking" data-dist-km="9">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.mtb">🚴 MTB</span>
+<div class="partner-name" data-partner-slug="ruta-salmon-mtb">Ruta BTT do Salmón · A Estrada</div>
+<div class="partner-dist">~9 km · A Estrada town</div>
+<div class="partner-desc" data-i18n="partner.rutasalmon.desc">A Estrada's legendary annual MTB event route — now in its 26th year — organised by the local BikEstrada club. The 40 km circular circuit starts from the town, passes the Río Ulla salmon beats at Ximonde, crosses the iconic hanging bridge, and winds through forest tracks and Galician hill villages with 700 m of elevation. The GPS track from the 2019 edition is available on Wikiloc and rideable year-round.</div>
+<div class="partner-meta"><span class="partner-rating">🚴 38 km · MTB · Low–Intermediate · ~4 hrs</span><a class="partner-web" href="https://www.wikiloc.com/mountain-biking-trails/a-estrada-ruta-salmon-2019-37015558" target="_blank">Wikiloc 2019 track ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="0">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.roadbike">🚴 Road Bike</span>
+<div class="partner-name" data-partner-slug="gundian-riobo">Santa María Magdalena &amp; Mirador de Gundián</div>
+<div class="partner-dist">~4 km · Riobó, A Estrada</div>
+<div class="partner-desc" data-i18n="partner.gundian.desc">A beautiful road cycling route starting from Riobó — just 4 km from the estate — climbing to the Iglesia de Santa María Magdalena and the spectacular Mirador de Gundián. The viewpoint looks directly down onto the dramatic Río Ulla gorge and the iconic 19th-century stone railway viaduct, one of the most photographed landmarks in Galicia. Quiet rural roads throughout.</div>
+<div class="partner-meta"><span class="partner-rating">🚴 Road Bike · Short–Medium</span><a class="partner-web" href="https://www.wikiloc.com/cycling-trails/iglesia-de-santa-maria-magdalena-y-mirador-de-gundian-desde-riobo-159771140" target="_blank">Wikiloc track ↗</a></div>
+</div>
+<div class="partner-card" data-cat="hiking" data-dist-km="37">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.mtb">🚴 MTB Centre</span>
+<div class="partner-name" data-partner-slug="btt-salnes">Centro BTT O Salnés · Meis</div>
+<div class="partner-dist">~37 km · Meis, O Salnés</div>
+<div class="partner-desc" data-i18n="partner.bttsalnes.desc">Galicia's first and most popular official MTB centre, with 10 fully signposted routes for all levels radiating from the Campo de Golf de Meis. Routes range from a gentle 6.8 km family circuit to demanding 15 km mountain loops around Monte Castrove with panoramic views of the Rías Baixas. Bike hire, wash-down, showers, and tourism information on site.</div>
+<div class="partner-meta"><span class="partner-rating">🚴 6.8–15 km · 10 routes · All levels</span><a class="partner-web" href="https://www.turismo.gal/que-facer/centros-btt/centro-btt-do-salnes" target="_blank">turismo.gal ↗</a></div>
+</div>
+</div><div class="partner-card" data-cat="hiking" data-dist-km="40">
+<span class="partner-cat-tag cat-hiking" data-i18n="pcat.hiking">🥾 Hiking</span>
+<div class="partner-name" data-partner-slug="mountainpics">MountainPics Adventures</div>
+<div class="partner-dist">~40 km · Pontevedra city</div>
+<div class="partner-desc" data-i18n="partner.mountainpics.desc">Pablo leads extraordinary guided hiking and adventure expeditions across Galicia. A perfect fit for team-building excursions, nature wellness days, and multi-day itineraries.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34603560807">+34 603 56 08 07</a><a class="partner-web" href="https://mountainpics.es" target="_blank">mountainpics.es ↗</a></div>
+</div><div class="partner-card" data-cat="horseback" data-dist-km="5">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="la-torre">Club Hípico La Torre</div>
+<div class="partner-dist">~5 km · A Estrada</div>
+<div class="partner-desc" data-i18n="partner.latorre.desc">The closest equestrian centre to the estate — just 5 km away in A Estrada itself. Eloy and Óscar offer trail rides and lessons for all levels, with beautifully cared-for horses and an exceptional family atmosphere. Ideal for all ages including young children.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.9</span><a class="partner-web" href="tel:+34656804344">+34 656 80 43 44</a></div>
+</div><div class="partner-card" data-cat="horseback" data-dist-km="13">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="as-verias">Centro Ecuestre As Verias</div>
+<div class="partner-dist">~13 km · Toiriz</div>
+<div class="partner-desc" data-i18n="partner.asverias.desc">A beautiful equestrian centre 13 km from the estate, set in an idyllic Galician landscape where horses roam freely in spacious paddocks. Trail rides through stunning countryside for all abilities.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-web" href="tel:+34616693177">+34 616 69 31 77</a></div>
+</div><div class="partner-card" data-cat="horseback" data-dist-km="39">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="hipica-appalaosa">Hípica Appalaosa</div>
+<div class="partner-dist">~39 km · Pontevedra</div>
+<div class="partner-desc" data-i18n="partner.appalaosa.desc">Forest trail rides through Galician countryside suitable for all abilities, from first-timers to experienced riders. Cholo and his team are renowned for their warmth and well-cared-for horses.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34697290355">+34 697 29 03 55</a><a class="partner-web" href="https://hipicaappalaoosa.com" target="_blank">hipicaappalaoosa.com ↗</a></div>
+</div><div class="partner-card" data-cat="horseback" data-dist-km="39">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="hipica-rabadeira">Hípica Rabadeira</div>
+<div class="partner-dist">~39 km · Puentecaldelas</div>
+<div class="partner-desc" data-i18n="partner.rabadeira.desc">The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey. Guide Rafa is celebrated by every guest he leads.</div>
+<div class="partner-meta"><span class="partner-rating">★ 5.0</span><a class="partner-phone" href="tel:+34659131999">+34 659 13 19 99</a><a class="partner-web" href="http://www.asantiagoacaballo.com" target="_blank">asantiagoacaballo.com ↗</a></div>
+</div><div class="partner-card" data-cat="horseback" data-dist-km="44">
+<span class="partner-cat-tag cat-horseback" data-i18n="pcat.horseback">🐴 Horseback</span>
+<div class="partner-name" data-partner-slug="o-casal">O Casal Equitación</div>
+<div class="partner-dist">~44 km · Salcedo</div>
+<div class="partner-desc" data-i18n="partner.ocasal.desc">Natural horsemanship, equine therapy, trail rides, and farm animals. A wellness-focused equestrian centre — excellent for mindfulness retreats and family experiences.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.3</span><a class="partner-phone" href="tel:+34671077280">+34 671 07 72 80</a><a class="partner-web" href="https://equitacionocasal.com" target="_blank">equitacionocasal.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="7">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="maria-manuela">Enoturismo María Manuela</div>
+<div class="partner-dist">~7 km · Pousada, Boqueixón</div>
+<div class="partner-desc" data-i18n="partner.mariamanuela.desc">A boutique Ribeira do Ulla Albariño bodega — right in our own subzone — with treehouse cabin stays hidden in an oak forest above the vines. Guided vineyard tours, tastings, and harvest experiences. The most intimate and distinctive wine visit in the area.</div>
+<div class="partner-meta"><a class="partner-phone" href="tel:+34981191181">+34 981 19 11 81</a><a class="partner-web" href="https://mariamanuelaenoturismo.com" target="_blank">mariamanuelaenoturismo.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="9">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="castrobrey">Adegas Castrobrey</div>
+<div class="partner-dist">~9 km · Camanzo, Vila de Cruces</div>
+<div class="partner-desc" data-i18n="partner.castrobrey.desc">A family winery — now in its third generation — on the Río Ulla in Camanzo, making traditional Albariño (Señorío de Cruces) and Galician liqueurs from 12 hectares on granite soils. Visits by appointment; English-speaking contact available.</div>
+<div class="partner-meta"><a class="partner-phone" href="tel:+34986583643">+34 986 58 36 43</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="13">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="casa-do-sol">Bodega Casa do Sol</div>
+<div class="partner-dist">~13 km · San Xulián de Sales, Vedra</div>
+<div class="partner-desc" data-i18n="partner.casadosol.desc">A Ribeira do Ulla Albariño bodega within a 15th-century Pazo owned by the Condes de Castelo — traditional methods, estate-grown grapes, and natural yeasts. Open Mon–Fri for visits; calling ahead is recommended and we are happy to arrange this for guests.</div>
+<div class="partner-meta"><a class="partner-phone" href="tel:+34981511634">+34 981 511 634</a><a class="partner-web" href="https://casadosol.es" target="_blank">casadosol.es ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="30">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="terras-lantano">Terras de Lantaño</div>
+<div class="partner-dist">~30 km · Baceiro</div>
+<div class="partner-desc" data-i18n="partner.lantano.desc">A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere — ideal for curated small-group experiences with a sense of genuine discovery.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34615646442">+34 615 64 64 42</a><a class="partner-web" href="https://www.terrasdelantano.com" target="_blank">terrasdelantano.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="33">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="pazo-senorans">Pazo de Señorans</div>
+<div class="partner-dist">~33 km · Paradela</div>
+<div class="partner-desc" data-i18n="partner.senorans.desc">One of the crown jewels of the Rías Baixas — a historic Pazo estate that also hosts weddings and large events. English-speaking guides and extraordinary Albariño.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986715373">+34 986 71 53 73</a><a class="partner-web" href="http://pazodesenorans.com" target="_blank">pazodesenorans.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="33">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="pazo-baion">Bodega Pazo Baión</div>
+<div class="partner-dist">~33 km · A Abelleira</div>
+<div class="partner-desc" data-i18n="partner.pazobaioon.desc">A historic Pazo estate winery with stunning grounds and consistently praised tours. Guide Eugenia brings this exceptional Albariño estate to life for guests at every level.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.7</span><a class="partner-phone" href="tel:+34636800234">+34 636 80 02 34</a><a class="partner-web" href="http://www.pazobaion.com" target="_blank">pazobaion.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="38">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="granbazan">Bodegas Granbazán</div>
+<div class="partner-dist">~38 km · Tremoedo</div>
+<div class="partner-desc" data-i18n="partner.granbazan.desc">One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews. Also a wedding and event venue; a natural cross-referral partner.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986555562">+34 986 55 55 62</a><a class="partner-web" href="https://www.bodegasgranbazan.com/en" target="_blank">bodegasgranbazan.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="39">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="mar-de-frades">Bodega Mar de Frades</div>
+<div class="partner-dist">~39 km · Val do Salnés</div>
+<div class="partner-desc" data-i18n="partner.marefrades.desc">An internationally acclaimed producer on Finca Valiñas with sweeping estuary views. Guided tours in English with guide Sandra, cited by Decanter for outstanding quality.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.5</span><a class="partner-phone" href="tel:+34637479469">+34 637 47 94 69</a><a class="partner-web" href="https://mardefrades.es" target="_blank">mardefrades.es ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="40">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="martin-codax">Bodegas Martín Códax</div>
+<div class="partner-dist">~40 km · Cambados</div>
+<div class="partner-desc" data-i18n="partner.martincodax.desc">One of the most iconic and internationally recognised Rías Baixas producers. Guided tours in excellent English with seafood pairings — a flagship experience for wine-focused guests.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.6</span><a class="partner-phone" href="tel:+34986526040">+34 986 52 60 40</a><a class="partner-web" href="http://www.martincodax.com" target="_blank">martincodax.com ↗</a></div>
+</div><div class="partner-card" data-cat="wine" data-dist-km="45">
+<span class="partner-cat-tag cat-wine" data-i18n="pcat.wine">🍷 Wine</span>
+<div class="partner-name" data-partner-slug="vionta">Bodegas Vionta</div>
+<div class="partner-dist">~45 km · Meaño</div>
+<div class="partner-desc" data-i18n="partner.vionta.desc">A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads tours praised universally for their warmth and depth of knowledge.</div>
+<div class="partner-meta"><span class="partner-rating">★ 4.8</span><a class="partner-phone" href="tel:+34986747566">+34 986 74 75 66</a><a class="partner-web" href="https://ferrerwines.com/vionta" target="_blank">ferrerwines.com/vionta ↗</a></div>
+</div></div><!-- end partners-grid -->
 </div><!-- end combined-cards -->
 </div><!-- end combined-left -->
 <div class="map-panel">
@@ -645,56 +703,67 @@ footer p{width:100%;text-align:right;}
 </div>
 </div><!-- end combined-layout -->
 </section>
-
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">Pazo · Galicia, España</div>
-  <ul class="footer-links">
-    <li><a href="index.html#story" data-i18n="nav.estate">The Estate</a></li>
-    <li><a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a></li>
-    <li><a href="explore.html" data-i18n="nav.experiences">Experiences</a></li>
-    <li><a href="index.html#weddings" data-i18n="nav.celebrations">Celebrations</a></li>
-    <li><a href="index.html#contact" data-i18n="nav.enquire">Enquire</a></li>
-  </ul>
-  <p style="font-size:0.55rem;font-weight:300;color:rgba(255,255,255,0.2);margin-top:0.5rem;letter-spacing:0.05em;">
-    Map © <a href="https://carto.com/" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">CARTO</a> · 
-    © <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">OpenStreetMap</a> contributors · 
-    Maps powered by <a href="https://leafletjs.com/" target="_blank" style="color:rgba(255,255,255,0.25);text-decoration:none;">Leaflet</a>
-  </p>
+<div class="footer-logo">Pazo · Galicia, España</div>
+<ul class="footer-links">
+<li><a data-i18n="nav.estate" href="index.html#story">The Estate</a></li>
+<li><a data-i18n="nav.gallery" href="index.html#gallery">Gallery</a></li>
+<li><a data-i18n="nav.experiences" href="explore.html">Experiences</a></li>
+<li><a data-i18n="nav.celebrations" href="index.html#weddings">Celebrations</a></li>
+<li><a data-i18n="nav.enquire" href="index.html#contact">Enquire</a></li>
+</ul>
+<p style="font-size:0.55rem;font-weight:300;color:rgba(255,255,255,0.2);margin-top:0.5rem;letter-spacing:0.05em;">
+    Map © <a href="https://carto.com/" style="color:rgba(255,255,255,0.25);text-decoration:none;" target="_blank">CARTO</a> · 
+    © <a href="https://www.openstreetmap.org/copyright" style="color:rgba(255,255,255,0.25);text-decoration:none;" target="_blank">OpenStreetMap</a> contributors · 
+    Maps powered by <a href="https://leafletjs.com/" style="color:rgba(255,255,255,0.25);text-decoration:none;" target="_blank">Leaflet</a>
+</p>
 </footer>
-
 <!-- ── SCRIPTS ── -->
-<script>
-const PROPERTY = { lat: 42.470, lng: -8.595, name: 'Lugar a Mota · The Pazo', cat: 'property' };
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const PROPERTY = { lat: 42.738927, lng: -8.401997, name: 'Lugar a Mota · The Pazo', cat: 'property' };
 const PARTNERS = [
-  { slug:'rio-lerez',       lat:42.4830, lng:-8.5490, name:'Río Lérez · Coto de Cutián',           cat:'fishing',   subcatLabel:'🎣 River',        dist:'~5 km',  phone:'',              rating:'🎣 Trout' },
-  { slug:'rios-verdugo',    lat:42.3530, lng:-8.5640, name:'Ríos Verdugo & Oitavén · Coto de Soutomaior', cat:'fishing', subcatLabel:'🎣 River',   dist:'~12 km', phone:'',              rating:'🎣 Trout' },
-  { slug:'pescaturismo',    lat:42.5092, lng:-8.8170, name:'Pescaturismo Cambados',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~19 km', phone:'+34 622 34 73 89', rating:'★ 5.0' },
-  { slug:'escaparia',       lat:42.3989, lng:-8.8061, name:'Escaparía',               cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~19 km', phone:'+34 669 61 53 61', rating:'★ 4.9' },
-  { slug:'barco-latoja',    lat:42.4889, lng:-8.8500, name:'Barco La Toja',           cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~24 km', phone:'+34 609 88 46 50', rating:'★ 4.7' },
-  { slug:'cruceiros',       lat:42.4972, lng:-8.8636, name:'Cruceiros Rías Baixas',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~24 km', phone:'+34 986 73 13 43', rating:'★ 4.6' },
-  { slug:'mountainpics',    lat:42.4306, lng:-8.6430, name:'MountainPics Adventures', cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~6 km',  phone:'+34 603 56 08 07', rating:'★ 5.0' },
-  { slug:'sendeiro-azul',   lat:42.39123,lng:-8.49997,name:'Sendeiro Azul do Río Verdugo', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~10 km', phone:'',  rating:'🥾 Blue Trail' },
-  { slug:'sendero-poio',    lat:42.4410, lng:-8.6310, name:'Sendero Litoral · Poio',  cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~5 km',  phone:'',  rating:'🥾 4.9 km · Easy' },
-  { slug:'sendero-marin',   lat:42.3900, lng:-8.6960, name:'Ruta Montes y Playas · Marín', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~14 km', phone:'',  rating:'🥾 11 km · Easy–Med' },
-  { slug:'sendero-sanxenxo',lat:42.3910, lng:-8.8130, name:'Sendero Litoral Sanxenxo–Portonovo', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~20 km', phone:'', rating:'🥾 8.6 km · Easy' },
-  { slug:'sendero-cabo-udra',lat:42.3280,lng:-8.7940, name:'Sendero Cabo Udra · Bueu',cat:'hiking',   subcatLabel:'🥾 Hiking',       dist:'~25 km', phone:'',  rating:'🥾 11.3 km · Medium' },
-  { slug:'rio-barosa',      lat:42.5135, lng:-8.6390, name:'Parque Natural del Río Barosa · PR-G 105', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~15 km', phone:'', rating:'🥾 3.2 km · Easy' },
-  { slug:'cascada-segade',  lat:42.6020, lng:-8.6440, name:'Cascada de Segade · Río Umia', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~20 km', phone:'',  rating:'🥾 6.8 km · Moderate' },
-  { slug:'monteros-galaicos',lat:42.4667,lng:-7.9833, name:'Monteros Galaicos · San Cristóbal de Cea', cat:'fishing', subcatLabel:'🎯 Game Hunting', dist:'~58 km', phone:'+34 618 78 42 82', rating:'🎯 Big Game' },
+  { slug:'rio-ulla',        lat:42.7230, lng:-8.4510, name:'Río Ulla · Cotos de Salmón',            cat:'fishing',   subcatLabel:'🎣 River',        dist:'~4 km',   phone:'',              rating:'🎣 Salmon · Reo' },
+  { slug:'rios-verdugo',    lat:42.3530, lng:-8.5640, name:'Ríos Verdugo & Oitavén · Coto de Soutomaior', cat:'fishing', subcatLabel:'🎣 River',   dist:'~88 km', phone:'',              rating:'🎣 Trout' },
+  { slug:'pescaturismo',    lat:42.5092, lng:-8.8170, name:'Pescaturismo Cambados',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~42 km', phone:'+34 622 34 73 89', rating:'★ 5.0' },
+  { slug:'escaparia',       lat:42.3989, lng:-8.8061, name:'Escaparía',               cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~50 km', phone:'+34 669 61 53 61', rating:'★ 4.9' },
+  { slug:'barco-latoja',    lat:42.4889, lng:-8.8500, name:'Barco La Toja',           cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~46 km', phone:'+34 609 88 46 50', rating:'★ 4.7' },
+  { slug:'cruceiros',       lat:42.4972, lng:-8.8636, name:'Cruceiros Rías Baixas',   cat:'fishing',   subcatLabel:'🎣 Coastal',      dist:'~46 km', phone:'+34 986 73 13 43', rating:'★ 4.6' },
+    { slug:'ruta-salmon-mtb', lat:42.690567, lng:-8.485623, name:'Ruta BTT do Salmón · A Estrada', cat:'hiking', subcatLabel:'🚴 MTB', dist:'~9 km', phone:'', rating:'🚴 38 km · MTB' },
+  { slug:'gundian-riobo', lat:42.755, lng:-8.445, name:'Santa María Magdalena & Mirador de Gundián', cat:'hiking', subcatLabel:'🚴 Road Bike', dist:'~4 km', phone:'', rating:'🚴 Road Bike' },
+  { slug:'btt-salnes',         lat:42.490, lng:-8.710,      name:'Centro BTT O Salnés · Meis',   cat:'hiking', subcatLabel:'🚴 MTB Centre', dist:'~37 km',  phone:'+34 986 68 09 42', rating:'🚴 10 routes' },
+  { slug:'mountainpics',    lat:42.4306, lng:-8.6430, name:'MountainPics Adventures', cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~40 km',  phone:'+34 603 56 08 07', rating:'★ 5.0' },
+  { slug:'sendeiro-azul',   lat:42.39123,lng:-8.49997,name:'Sendeiro Azul do Río Verdugo', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~39 km', phone:'',  rating:'🥾 Blue Trail' },
+  { slug:'sendero-poio',    lat:42.4410, lng:-8.6310, name:'Sendero Litoral · Poio',  cat:'hiking',    subcatLabel:'🥾 Hiking',       dist:'~38 km',  phone:'',  rating:'🥾 4.9 km · Easy' },
+  { slug:'rio-barosa',      lat:42.5135, lng:-8.6390, name:'Parque Natural del Río Barosa · PR-G 105', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~32 km', phone:'', rating:'🥾 3.2 km · Easy' },
+    { slug:'ximonde-pontevea', lat:42.723, lng:-8.451, name:'Senda Ximonde–Pontevea',           cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~4 km',  phone:'', rating:'🥾 4.5 km · Easy' },
+  { slug:'areal-berres',     lat:42.795, lng:-8.405, name:'Areal de Berres · Paseo Fluvial',  cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~6 km',  phone:'', rating:'🥾 8.7 km · Easy' },
+  { slug:'monte-xesteiras',  lat:42.667, lng:-8.465, name:'PR-G 136 · Monte Xesteiras',       cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~10 km', phone:'', rating:'🥾 14 km · Moderate' },
+    { slug:'golfariz-mills',    lat:42.735, lng:-8.338, name:'Muíños de Golfariz · Pardemarín', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~5 km',  phone:'', rating:'🥾 3 km · Easy' },
+  { slug:'callobre-waterfall', lat:42.694, lng:-8.427, name:'Fervenza de Callobre · Río Curantes', cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~5 km',  phone:'', rating:'🥾 3.7 km · Easy' },
+  { slug:'ferveza-ferveda',    lat:42.728, lng:-8.267, name:'Fervenza de Férveda · Silleda',       cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~11 km', phone:'', rating:'🥾 2.7 km · Easy' },
+  { slug:'fervenza-toxa',      lat:42.710, lng:-8.270, name:'Fervenza do Toxa · Silleda',          cat:'hiking', subcatLabel:'🥾 Hiking', dist:'~11 km', phone:'', rating:'🥾 2.5 km · Easy' },
+  { slug:'cascada-segade',  lat:42.6020, lng:-8.6440, name:'Cascada de Segade · Río Umia', cat:'hiking', subcatLabel:'🥾 Hiking',    dist:'~56 km', phone:'',  rating:'🥾 6.8 km · Moderate' },
+  { slug:'monteros-galaicos',lat:42.4667,lng:-7.9833, name:'Monteros Galaicos · San Cristóbal de Cea', cat:'fishing', subcatLabel:'🎯 Game Hunting', dist:'~46 km', phone:'+34 618 78 42 82', rating:'🎯 Big Game' },
   { slug:'monteros-galaicos',lat:41.9919,lng:-8.7436, name:'Monteros Galaicos · Tomiño', cat:'fishing', subcatLabel:'🎯 Game Hunting', dist:'~45 km', phone:'+34 618 78 42 82', rating:'🎯 Big Game' },
-  { slug:'hipica-appalaosa',lat:42.4145, lng:-8.5957, name:'Hípica Appalaosa',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~6 km',  phone:'+34 697 29 03 55', rating:'★ 4.7' },
-  { slug:'o-casal',         lat:42.3986, lng:-8.6650, name:'O Casal Equitación',      cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~9 km',  phone:'+34 671 07 72 80', rating:'★ 4.3' },
-  { slug:'hipica-rabadeira',lat:42.3994, lng:-8.5044, name:'Hípica Rabadeira',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~11 km', phone:'+34 659 13 19 99', rating:'★ 5.0' },
-  { slug:'pazo-senorans',   lat:42.5471, lng:-8.7088, name:'Pazo de Señorans',        cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~13 km', phone:'+34 986 71 53 73', rating:'★ 4.8' },
-  { slug:'terras-lantano',  lat:42.5694, lng:-8.6871, name:'Terras de Lantaño',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~13 km', phone:'+34 615 64 64 42', rating:'★ 4.7' },
-  { slug:'mar-de-frades',   lat:42.5033, lng:-8.7490, name:'Bodega Mar de Frades',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~14 km', phone:'+34 637 47 94 69', rating:'★ 4.5' },
-  { slug:'vionta',          lat:42.4287, lng:-8.7637, name:'Bodegas Vionta',          cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~15 km', phone:'+34 986 74 75 66', rating:'★ 4.8' },
-  { slug:'pazo-baion',      lat:42.5629, lng:-8.7196, name:'Bodega Pazo Baión',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~15 km', phone:'+34 636 80 02 34', rating:'★ 4.7' },
-  { slug:'granbazan',       lat:42.5398, lng:-8.7866, name:'Bodegas Granbazán',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~16 km', phone:'+34 986 55 55 62', rating:'★ 4.8' },
-  { slug:'martin-codax',    lat:42.5201, lng:-8.7924, name:'Bodegas Martín Códax',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~17 km', phone:'+34 986 52 60 40', rating:'★ 4.6' },
-  { slug:'consejo-silvia',  lat:42.4715, lng:-8.5935, name:'El Consejo de Silvia',    cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 647 03 25 75', rating:'★ 5.0' },
-  { slug:'la-narunera',     lat:42.4685, lng:-8.5965, name:'La Narunera',             cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 657 63 04 14', rating:'★ 5.0' },
+    { slug:'la-torre',        lat:42.729137, lng:-8.459293, name:'Club Hípico La Torre',         cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~5 km',   phone:'+34 656 80 43 44', rating:'★ 4.9' },
+  { slug:'as-verias',       lat:42.697148, lng:-8.251956, name:'Centro Ecuestre As Verias',    cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~13 km',  phone:'+34 616 69 31 77', rating:'★ 5.0' },
+  { slug:'hipica-appalaosa',lat:42.4145, lng:-8.5957, name:'Hípica Appalaosa',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~39 km',  phone:'+34 697 29 03 55', rating:'★ 4.7' },
+  { slug:'o-casal',         lat:42.3986, lng:-8.6650, name:'O Casal Equitación',      cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~44 km',  phone:'+34 671 07 72 80', rating:'★ 4.3' },
+  { slug:'hipica-rabadeira',lat:42.3994, lng:-8.5044, name:'Hípica Rabadeira',        cat:'horseback', subcatLabel:'🐴 Horseback',    dist:'~39 km', phone:'+34 659 13 19 99', rating:'★ 5.0' },
+  { slug:'maria-manuela',   lat:42.800,  lng:-8.405,  name:'Enoturismo María Manuela', cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~7 km',  phone:'+34 981 19 11 81', rating:'' },
+  { slug:'castrobrey',      lat:42.726,  lng:-8.297,  name:'Adegas Castrobrey',        cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~9 km',  phone:'+34 986 58 36 43', rating:'' },
+  { slug:'casa-do-sol',     lat:42.855,  lng:-8.443,  name:'Bodega Casa do Sol',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~13 km', phone:'+34 981 511 634',  rating:'' },
+  { slug:'pazo-senorans',   lat:42.5471, lng:-8.7088, name:'Pazo de Señorans',        cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~33 km', phone:'+34 986 71 53 73', rating:'★ 4.8' },
+  { slug:'terras-lantano',  lat:42.5694, lng:-8.6871, name:'Terras de Lantaño',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~30 km', phone:'+34 615 64 64 42', rating:'★ 4.7' },
+  { slug:'mar-de-frades',   lat:42.5033, lng:-8.7490, name:'Bodega Mar de Frades',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~39 km', phone:'+34 637 47 94 69', rating:'★ 4.5' },
+  { slug:'vionta',          lat:42.4287, lng:-8.7637, name:'Bodegas Vionta',          cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~45 km', phone:'+34 986 74 75 66', rating:'★ 4.8' },
+  { slug:'pazo-baion',      lat:42.5629, lng:-8.7196, name:'Bodega Pazo Baión',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~33 km', phone:'+34 636 80 02 34', rating:'★ 4.7' },
+  { slug:'granbazan',       lat:42.5398, lng:-8.7866, name:'Bodegas Granbazán',       cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~38 km', phone:'+34 986 55 55 62', rating:'★ 4.8' },
+  { slug:'martin-codax',    lat:42.5201, lng:-8.7924, name:'Bodegas Martín Códax',    cat:'wine',      subcatLabel:'🍷 Wine',         dist:'~40 km', phone:'+34 986 52 60 40', rating:'★ 4.6' },
+  { slug:'consejo-silvia',  lat:42.738927, lng:-8.401997, name:'El Consejo de Silvia',    cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 647 03 25 75', rating:'★ 5.0' },
+  { slug:'la-narunera',     lat:42.738927, lng:-8.401997, name:'La Narunera',             cat:'events',    subcatLabel:'💒 Events',       dist:'At the Pazo', phone:'+34 657 63 04 14', rating:'★ 5.0' },
+  { slug:'pazo-de-oca',     lat:42.7494,   lng:-8.3944,   name:'Pazo de Oca',             cat:'events',    subcatLabel:'🌿 Gardens',      dist:'~1.4 km',     phone:'+34 986 58 74 35', rating:'' },
 ];
 const CAT_CONFIG = {
   property:  { color:'#3d5235', emoji:'🏰', label:'The Pazo' },
@@ -706,7 +775,7 @@ const CAT_CONFIG = {
 };
 const POPUP_I18N = {
   en: { fromPazo:'from the Pazo', yourEstate:'Your estate · Lugar a Mota, 9', thePazo:'The Pazo', atPazo:'At the Pazo', subcatLabels:{ '🎣 River':'🎣 River','🎣 Coastal':'🎣 Coastal','🎯 Game Hunting':'🎯 Game Hunting','🥾 Hiking':'🥾 Hiking','🐴 Horseback':'🐴 Horseback','🍷 Wine':'🍷 Wine','💒 Events':'💒 Events' }, ratings:{} },
-  es: { fromPazo:'desde el Pazo', yourEstate:'La finca · Lugar a Mota, 9', thePazo:'El Pazo', atPazo:'En el Pazo', subcatLabels:{ '🎣 River':'🎣 Río','🎣 Coastal':'🎣 Costa','🎯 Game Hunting':'🎯 Caza Mayor','🥾 Hiking':'🥾 Senderismo','🐴 Horseback':'🐴 Equitación','🍷 Wine':'🍷 Vino','💒 Events':'💒 Celebraciones' }, ratings:{ '🎣 Trout':'🎣 Trucha','🎣 Trout · Reo':'🎣 Trucha · Reo','🎣 Trout · Barbel':'🎣 Trucha · Barbo','🎯 Big Game':'🎯 Caza Mayor','🥾 Blue Trail':'🥾 Sendero Azul','🥾 3.2 km · Easy':'🥾 3,2 km · Fácil','🥾 4.9 km · Easy':'🥾 4,9 km · Fácil','🥾 6.8 km · Moderate':'🥾 6,8 km · Moderado','🥾 8.6 km · Easy':'🥾 8,6 km · Fácil','🥾 11 km · Easy–Med':'🥾 11 km · Fácil–Medio','🥾 11.3 km · Medium':'🥾 11,3 km · Medio' } }
+  es: { fromPazo:'desde el Pazo', yourEstate:'La finca · Lugar a Mota, 9', thePazo:'El Pazo', atPazo:'En el Pazo', subcatLabels:{ '🎣 River':'🎣 Río','🎣 Coastal':'🎣 Costa','🎯 Game Hunting':'🎯 Caza Mayor','🥾 Hiking':'🥾 Senderismo','🐴 Horseback':'🐴 Equitación','🍷 Wine':'🍷 Vino','💒 Events':'💒 Celebraciones' }, ratings:{ '🎣 Trout':'🎣 Trucha','🎣 Salmon · Reo':'🎣 Salmón · Reo','🎣 Trout · Reo':'🎣 Trucha · Reo','🎣 Trout · Barbel':'🎣 Trucha · Barbo','🎯 Big Game':'🎯 Caza Mayor','🥾 Blue Trail':'🥾 Sendero Azul','🥾 3.2 km · Easy':'🥾 3,2 km · Fácil','🥾 4.9 km · Easy':'🥾 4,9 km · Fácil','🥾 6.8 km · Moderate':'🥾 6,8 km · Moderado','🥾 8.6 km · Easy':'🥾 8,6 km · Fácil','🥾 11 km · Easy–Med':'🥾 11 km · Fácil–Medio','🥾 11.3 km · Medium':'🥾 11,3 km · Medio' } }
 };
 function buildPartnerPopup(p,lang){ const cfg=CAT_CONFIG[p.cat];const t=POPUP_I18N[lang]||POPUP_I18N.en; const label=(t.subcatLabels[p.subcatLabel]||p.subcatLabel)||(cfg.emoji+' '+cfg.label); const rating=t.ratings[p.rating]||p.rating; const dist=p.dist==='At the Pazo'?t.atPazo:p.dist; return `<div class="popup-inner"><div class="popup-cat" style="color:${cfg.color}">${label}</div><div class="popup-name">${p.name}</div><div class="popup-dist">${dist} ${t.fromPazo} &nbsp;·&nbsp; ${rating}</div>${p.phone?`<div class="popup-phone">${p.phone}</div>`:''}</div>`; }
 function buildPropertyPopup(lang){ const t=POPUP_I18N[lang]||POPUP_I18N.en; return `<div class="popup-inner popup-property"><div class="popup-cat">${t.thePazo}</div><div class="popup-name">🏰 ${PROPERTY.name}</div><div class="popup-dist" style="color:#3d5235;font-weight:400">${t.yourEstate}</div></div>`; }
@@ -721,16 +790,16 @@ const TRANSLATIONS = {
     'exp.intro':'Every stay is shaped by the surrounding land, the current season, and you. Each experience is crafted in partnership with the finest local proprietors, guides, and artisans of Galicia.',
     'exp.allpartners':'View All Partners →',
     'exp.weddings.title':'Weddings & Celebrations','exp.weddings.desc':'The cobbled courtyard, colonnaded galleries, on-site chapel, and sweeping grounds make this one of the most extraordinary celebration venues in all of Spain.','exp.weddings.hint':'Full-service planning partners available →',
-    'exp.wine.title':'Wine & Gastronomy','exp.wine.desc':'Private tours and tastings at the great Rías Baixas bodegas — Martín Códax, Pazo Baión, Señorans, Granbazán — paired with feasts of local Galician produce back at the estate.','exp.wine.hint':'7 partner wineries nearby →',
-    'exp.horse.title':'Horseback Riding','exp.horse.desc':'Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with three outstanding local centres.','exp.horse.hint':'3 equestrian partners within 11 km →',
+    'exp.wine.title':'Wine & Gastronomy','exp.wine.desc':'From boutique Ribeira do Ulla bodegas on the estate\'s doorstep — including a bodega in a 15th-century pazo just 13 km away — to the great Rías Baixas estates at Martín Códax, Pazo Baión, and Granbazán, paired with feasts of Galician produce back at the estate.','exp.wine.hint':'10 partner wineries nearby →','partner.mariamanuela.desc':'A boutique Ribeira do Ulla Albariño bodega — right in our own subzone — with treehouse cabin stays hidden in an oak forest above the vines. Guided vineyard tours, tastings, and harvest experiences. The most intimate and distinctive wine visit in the area.','partner.castrobrey.desc':'A family winery — now in its third generation — on the Río Ulla in Camanzo, making traditional Albariño (Señorío de Cruces) and Galician liqueurs from 12 hectares on granite soils. Visits by appointment; English-speaking contact available.','partner.casadosol.desc':'A Ribeira do Ulla Albariño bodega within a 15th-century Pazo owned by the Condes de Castelo — traditional methods, estate-grown grapes, and natural yeasts. Open Mon–Fri for visits; calling ahead is recommended and we are happy to arrange this for guests.',
+    'exp.horse.title':'Horseback Riding','exp.horse.desc':'Trail rides through the Galician countryside and ancient forests, including the legendary Camino de Santiago on horseback — arranged with five outstanding local centres.','exp.horse.hint':'5 equestrian partners from 5 km →',
     'exp.fishing.title':'Fishing and Game','exp.fishing.desc':'Join locals harvesting shellfish in the Rías, fly fish for trout on Galicia\'s rivers, or hunt for wild boar with local outfitters.','exp.fishing.hint':'7 fishing and game partners →',
-    'exp.hiking.title':'Hiking & Nature','exp.hiking.desc':'Guided walks through ancient oak forests, river valleys, and coastal cliffs with 5-star local guide Pablo of MountainPics Adventures — routes tailored to every level.','exp.hiking.hint':'8 hiking trails & guided walks →',
+    'exp.hiking.title':'Hiking & Cycling','exp.hiking.desc':'Explore the valleys, forests, and mountains around the estate on foot or by bike — from easy riverside trails to challenging MTB circuits and scenic road cycling routes through the Galician interior.','exp.hiking.hint':'15 hiking, cycling & guided walks →',
     'exp.corporate.title':'Corporate Retreats','exp.corporate.desc':'Leadership offsites and team experiences in a setting of genuine history — private, inspiring, and unlike any boardroom. Combined with hiking, wine, and coastal excursions.','exp.corporate.hint':'Full curated itineraries on request →',
     'partners.label':'Local Partners',
-    'filter.all':'⊞ All','filter.events':'💒 Events','filter.wine':'🍷 Wine','filter.horseback':'🐴 Horseback','filter.fishing':'🎣 Fishing','filter.hiking':'🥾 Hiking',
-    'pcat.river':'🎣 River','pcat.coastal':'🎣 Coastal','pcat.game':'🎯 Game Hunting','pcat.hiking':'🥾 Hiking','pcat.horseback':'🐴 Horseback','pcat.wine':'🍷 Wine','pcat.events':'💒 Weddings & Events',
+    'filter.all':'⊞ All','filter.events':'💒 Events','filter.wine':'🍷 Wine','filter.horseback':'🐴 Horseback','filter.fishing':'🎣 Fishing','filter.hiking':'🥾 Hiking & Cycling',
+    'pcat.river':'🎣 River','pcat.coastal':'🎣 Coastal','pcat.game':'🎯 Game Hunting','pcat.hiking':'🥾 Hiking','pcat.mtb':'🚴 MTB','pcat.roadbike':'🚴 Road Bike','pcat.horseback':'🐴 Horseback','pcat.wine':'🍷 Wine','pcat.events':'💒 Weddings & Events','pcat.gardens':'🌿 Gardens',
     'partner.atpazo':'At the Pazo',
-    'partner.lerez.desc':'One of Galicia\'s finest trout rivers, running through ancient oak forest virtually on the estate\'s doorstep.','partner.verdugo.desc':'Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge.','partner.pescaturismo.desc':'Shellfish harvesting experiences with the celebrated fisherwomen of Cambados.','partner.escaparia.desc':'Private boat charters to hidden Atlantic beaches. English-speaking captain Matt consistently earns raves.','partner.latoja.desc':'A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine.','partner.cruceiros.desc':'A large catamaran operation with 1,600+ reviews — the region\'s most popular group boat excursion.','partner.monteros.desc':'A Galician hunting association organising driven big game hunts through the oak and chestnut forests of the Ourense interior.','partner.poio.desc':'A 4.9 km easy coastal walk along the Ría de Pontevedra passing ancient water mills and the first oyster cultivation park on the Iberian peninsula.','partner.mountainpics.desc':'Pablo leads extraordinary guided hiking and adventure expeditions across Galicia.','partner.sendeiro.desc':'An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests — the first inland trail in Spain to earn Blue Trail certification.','partner.marin.desc':'A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest and Bronze Age petroglyphs.','partner.barosa.desc':'A short but enchanting circular walk through a protected river park with seventeen historic water mills and a dramatic 30-metre waterfall.','partner.sanxenxo.desc':'An 8.6 km coastal path tracing clifftop promenades, dune systems, and fishing village waterfronts.','partner.segade.desc':'A riverside walk to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.','partner.cabudra.desc':'An 11.3 km circular trail through a Natura 2000 reserve at Cabo Udra — dramatic Atlantic headland and diverse habitats.','partner.appalaosa.desc':'Forest trail rides through Galician countryside suitable for all abilities. Cholo and his team are renowned for their warmth and well-cared-for horses.','partner.ocasal.desc':'Natural horsemanship, equine therapy, trail rides, and farm animals — excellent for mindfulness retreats.','partner.rabadeira.desc':'The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey.','partner.senorans.desc':'One of the crown jewels of the Rías Baixas — a historic Pazo estate with English-speaking guides and extraordinary Albariño.','partner.lantano.desc':'A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere.','partner.marefrades.desc':'An internationally acclaimed producer with sweeping estuary views. Guided tours in English cited by Decanter.','partner.vionta.desc':'A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads universally praised tours.','partner.pazobaioon.desc':'A historic Pazo estate winery with stunning grounds. Guide Eugenia brings this exceptional Albariño estate to life.','partner.granbazan.desc':'One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews.','partner.martincodax.desc':'One of the most iconic Rías Baixas producers. Guided tours in excellent English with seafood pairings.','partner.silvia.desc':'Silvia specialises in destination weddings, experienced at coordinating international couples remotely. Methodical, warm, universally praised.','partner.ainara.desc':'Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer\'s dream.',
+    'partner.ulla.desc':'One of Galicia\'s great salmon rivers runs virtually on the estate\'s doorstep. Five beats — Ximonde, Santeles, Sinde, Pontevea, and Couso — lie just 4–12 km away. Salmon and reo season runs May–July.','partner.verdugo.desc':'Two rivers meet at the spectacular Poza das Bestas beneath a historic hanging bridge.','partner.pescaturismo.desc':'Shellfish harvesting experiences with the celebrated fisherwomen of Cambados.','partner.escaparia.desc':'Private boat charters to hidden Atlantic beaches. English-speaking captain Matt consistently earns raves.','partner.latoja.desc':'A beloved mussel boat experience — cruise the raft farms of O Grove with unlimited mussels and local wine.','partner.cruceiros.desc':'A large catamaran operation with 1,600+ reviews — the region\'s most popular group boat excursion.','partner.monteros.desc':'A Galician hunting association organising driven big game hunts through the oak and chestnut forests of the Ourense interior.','partner.poio.desc':'A 4.9 km easy coastal walk along the Ría de Pontevedra passing ancient water mills and the first oyster cultivation park on the Iberian peninsula.','partner.rutasalmon.desc':'A Estrada\'s legendary annual MTB circuit — now in its 26th year, run by BikEstrada club. The 40 km loop starts from the town, passes the salmon beats at Ximonde and the iconic hanging bridge, and winds through forest and hill villages with 700 m of elevation. The 2019 GPS track is available on Wikiloc and rideable year-round.','partner.gundian.desc':'A road cycling route from Riobó (4 km) climbing to the Iglesia de Santa María Magdalena and the spectacular Mirador de Gundián — a viewpoint directly over the dramatic Río Ulla gorge and its iconic stone railway viaduct. Quiet rural roads throughout.','partner.bttsalnes.desc':'Galicia\'s first and most popular official MTB centre with 10 signposted routes for all levels. Bike hire, wash-down, showers and information on site. 37 km from the estate.','partner.mountainpics.desc':'Pablo leads extraordinary guided hiking and adventure expeditions across Galicia.','partner.sendeiro.desc':'An 8–9 km circular trail hugging the Verdugo riverbank through ancient oak forests — the first inland trail in Spain to earn Blue Trail certification.','partner.marin.desc':'A spectacular 11 km route linking five Blue Flag beaches with ancient hilltop forest and Bronze Age petroglyphs.','partner.barosa.desc':'A short but enchanting circular walk through a protected river park with seventeen historic water mills and a dramatic 30-metre waterfall.','partner.sanxenxo.desc':'An 8.6 km coastal path tracing clifftop promenades, dune systems, and fishing village waterfronts.','partner.golfariz.desc':'A magical 3 km circular trail through restored historic mills signposted in carved stone by a local craftsman. Riparian forest, wooden walkways and beautifully preserved water mills make this one of A Estrada\'s most charming short walks.','partner.callobre.desc':'A short enchanting circular trail (3.7 km) along the Río Curantes to the hidden Fervenza de Callobre — a dramatic 7-metre waterfall set in a valley of ancient mills, granite pools, and riparian woodland.','partner.ferveda.desc':'A beautiful 2.7 km trail through ancient woodland to the Fervenza de Férveda, passing six historic waterwheels and rich Atlantic forest.','partner.toxa.desc':'The highest free-fall waterfall in Galicia — over 70 metres — in a dramatic river gorge. A well-marked 2.5 km path descends through cork and oak forest to the plunge pool. Extendable to a 12 km loop via the medieval Monastery of Carboeiro.','partner.ximondepont.desc':'A beautiful easy riverside walk from Ximonde — one of Galicia\'s great salmon beats — along the Río Ulla through ancient oak woodland to the medieval bridge of Pontevea. Waterfalls, mills, and dramatic river scenery.','partner.arealberres.desc':'A magical 8.7 km riverside walk along the Río Ulla at O Areal de Berres — a unique area filled with hand-carved stone sculptures by local artist José Manuel Gañete. Ancient forest, natural river swimming, and a legendary Midsummer celebration.','partner.xesteiras.desc':'A spectacular 14 km circular trail (PR-G 136) climbing Monte Xesteiras (716 m) through cork oak groves and ancient paths. Summit views span the Rías Baixas, the Ulla estuary, and Santiago de Compostela. Historic chapels, stone formations, and restored water mills throughout.','partner.segade.desc':'A riverside walk to the spectacular Fervenza de Segade — a 30-metre waterfall with deep natural pools, perfect for swimming in summer.','partner.cabudra.desc':'An 11.3 km circular trail through a Natura 2000 reserve at Cabo Udra — dramatic Atlantic headland and diverse habitats.','partner.latorre.desc':'The closest equestrian centre to the estate — just 5 km away in A Estrada. Eloy and Óscar lead trail rides and lessons for all levels, with beautifully cared-for horses and a warm family atmosphere.','partner.asverias.desc':'A beautiful centre 13 km from the estate set in idyllic Galician countryside, where horses roam freely in spacious paddocks. Trail rides for all abilities in a spectacular natural setting.','partner.appalaosa.desc':'Forest trail rides through Galician countryside suitable for all abilities. Cholo and his team are renowned for their warmth and well-cared-for horses.','partner.latorre.desc':'El centro ecuestre más cercano a la finca — a solo 5 km en A Estrada. Eloy y Óscar ofrecen rutas y clases para todos los niveles, con caballos muy bien cuidados y un ambiente familiar excepcional.','partner.asverias.desc':'Un precioso centro a 13 km de la finca, en un paisaje gallego idílico donde los caballos campan en libertad en amplias praderas. Rutas para todos los niveles en un entorno natural espectacular.','partner.ocasal.desc':'Natural horsemanship, equine therapy, trail rides, and farm animals — excellent for mindfulness retreats.','partner.rabadeira.desc':'The premier horseback experience — offering the Camino de Santiago on horseback, a once-in-a-lifetime multi-day journey.','partner.senorans.desc':'One of the crown jewels of the Rías Baixas — a historic Pazo estate with English-speaking guides and extraordinary Albariño.','partner.lantano.desc':'A boutique family winery with historically significant Albariño vines. Very personal, artisanal atmosphere.','partner.marefrades.desc':'An internationally acclaimed producer with sweeping estuary views. Guided tours in English cited by Decanter.','partner.vionta.desc':'A hilltop winery with spectacular panoramic views over the Rías. English-speaking guide Ursula leads universally praised tours.','partner.pazobaioon.desc':'A historic Pazo estate winery with stunning grounds. Guide Eugenia brings this exceptional Albariño estate to life.','partner.granbazan.desc':'One of the highest-rated wine experiences in the region — an architecturally striking château-style estate with 548 reviews.','partner.martincodax.desc':'One of the most iconic Rías Baixas producers. Guided tours in excellent English with seafood pairings.','partner.silvia.desc':'Silvia specialises in destination weddings, experienced at coordinating international couples remotely. Methodical, warm, universally praised.','partner.ainara.desc':'Ainara creates bespoke, story-driven celebrations with extraordinary attention to detail. A photographer\'s dream.','partner.pazodeoca.desc':'The "Versailles of Galicia" — a baroque estate with eight hectares of extraordinary gardens, granite waterways, and ancient camellias, owned by the Casa Ducal de Medinaceli Foundation. Open year-round. A natural complement to any wedding or celebration stay at the Pazo.',
   },
   es: {
     'nav.back':'← La Finca','nav.experiences':'Experiencias','nav.partners':'Colaboradores',
@@ -739,16 +808,16 @@ const TRANSLATIONS = {
     'exp.intro':'Cada estancia está moldeada por el entorno, la temporada y tus deseos. Cada experiencia se organiza con los mejores propietarios, guías y artesanos locales de Galicia.',
     'exp.allpartners':'Ver Todos los Colaboradores →',
     'exp.weddings.title':'Bodas y Celebraciones','exp.weddings.desc':'El patio empedrado, las galerías porticadas, la capilla, y los jardines hacen de esta finca uno de los espacios de celebración más extraordinarios de toda España.','exp.weddings.hint':'Colaboradores de planificación completa →',
-    'exp.wine.title':'Vino y Gastronomía','exp.wine.desc':'Visitas privadas y catas en las grandes bodegas de las Rías Baixas — Martín Códax, Pazo Baión, Señorans, Granbazán — combinadas con festines de productos gallegos de temporada.','exp.wine.hint':'7 bodegas colaboradoras cercanas →',
-    'exp.horse.title':'Rutas a Caballo','exp.horse.desc':'Paseos por el campo y los bosques gallegos, incluyendo el legendario Camino de Santiago a caballo — organizados con tres centros ecuestres de excelencia.','exp.horse.hint':'3 centros ecuestres a menos de 11 km →',
-    'exp.fishing.title':'Pesca y Caza','exp.fishing.desc':'Marisqueo con locales en las Rías, pesca de trucha en los ríos gallegos, o caza mayor con guías locales.','exp.fishing.hint':'7 colaboradores de pesca y caza →',
-    'exp.hiking.title':'Senderismo y Naturaleza','exp.hiking.desc':'Caminatas guiadas por bosques de robles, valles fluviales y acantilados costeros con Pablo de MountainPics Adventures — rutas para todos los niveles.','exp.hiking.hint':'8 rutas y paseos guiados →',
+    'exp.wine.title':'Vino y Gastronomía','exp.wine.desc':'Desde bodegas boutique de la Ribeira do Ulla a pasos de la finca — incluyendo una bodega en un pazo del siglo XV a solo 13 km — hasta las grandes fincas de las Rías Baixas en Martín Códax, Pazo Baión y Granbazán, combinadas con festines de productos gallegos de temporada.','exp.wine.hint':'10 bodegas colaboradoras cercanas →','partner.mariamanuela.desc':'Una bodega boutique de Albariño Ribeira do Ulla — en nuestra propia subzona — con alojamiento en cabañas en los árboles escondidas en un bosque de robles sobre los viñedos. Visitas guiadas, catas y experiencias de vendimia. La visita vinícola más íntima y singular de la zona.','partner.castrobrey.desc':'Bodega familiar — ya en su tercera generación — a orillas del Río Ulla en Camanzo, elaborando Albariño tradicional (Señorío de Cruces) y licores gallegos de 12 hectáreas sobre suelo granítico. Visitas con cita previa; hay contacto angloparlante disponible.','partner.casadosol.desc':'Una bodega de Albariño Ribeira do Ulla en un pazo del siglo XV propiedad de los Condes de Castelo — métodos tradicionales, uva propia y levaduras naturales. Abierta de lunes a viernes para visitas; se recomienda llamar antes, y estaremos encantados de organizarlo para nuestros huéspedes.',
+    'exp.horse.title':'Rutas a Caballo','exp.horse.desc':'Paseos por el campo y los bosques gallegos, incluyendo el legendario Camino de Santiago a caballo — organizados con tres centros ecuestres de excelencia.','exp.horse.hint':'5 centros ecuestres desde 5 km →',
+    'exp.fishing.title':'Pesca y Caza','exp.fishing.desc':'Pesca de salmón atlántico en el Río Ulla — a solo 4 km — marisqueo en las Rías, o caza mayor con guías locales.','exp.fishing.hint':'7 colaboradores de pesca y caza →',
+    'exp.hiking.title':'Senderismo y Ciclismo','exp.hiking.desc':'Explora los valles, bosques y montañas alrededor de la finca a pie o en bicicleta — desde senderos fluviales fáciles hasta exigentes circuitos de BTT y rutas de ciclismo de carretera por el interior gallego.','exp.hiking.hint':'15 rutas de senderismo, ciclismo y paseos guiados →',
     'exp.corporate.title':'Retiros Corporativos','exp.corporate.desc':'Retiros de liderazgo y experiencias de equipo en un entorno de historia genuina — privado, inspirador y como ninguna sala de reuniones. Combinado con senderismo, vino y excursiones costeras.','exp.corporate.hint':'Itinerarios completos a petición →',
     'partners.label':'Colaboradores Locales',
-    'filter.all':'⊞ Todos','filter.events':'💒 Eventos','filter.wine':'🍷 Vino','filter.horseback':'🐴 Equitación','filter.fishing':'🎣 Pesca','filter.hiking':'🥾 Senderismo',
-    'pcat.river':'🎣 Río','pcat.coastal':'🎣 Costa','pcat.game':'🎯 Caza Mayor','pcat.hiking':'🥾 Senderismo','pcat.horseback':'🐴 Equitación','pcat.wine':'🍷 Vino','pcat.events':'💒 Bodas y Eventos',
+    'filter.all':'⊞ Todos','filter.events':'💒 Eventos','filter.wine':'🍷 Vino','filter.horseback':'🐴 Equitación','filter.fishing':'🎣 Pesca','filter.hiking':'🥾 Senderismo y Ciclismo',
+    'pcat.river':'🎣 Río','pcat.coastal':'🎣 Costa','pcat.game':'🎯 Caza Mayor','pcat.hiking':'🥾 Senderismo','pcat.mtb':'🚴 BTT','pcat.roadbike':'🚴 Carretera','pcat.horseback':'🐴 Equitación','pcat.wine':'🍷 Vino','pcat.events':'💒 Bodas y Eventos','pcat.gardens':'🌿 Jardines',
     'partner.atpazo':'En el Pazo',
-    'partner.lerez.desc':'Uno de los mejores ríos de trucha de Galicia, atravesando bosques de robles prácticamente a las puertas de la finca.','partner.verdugo.desc':'Dos ríos se unen en la espectacular Poza das Bestas bajo un puente colgante histórico.','partner.pescaturismo.desc':'Experiencias de marisqueo con las célebres mariscadoras de Cambados.','partner.escaparia.desc':'Chárteres privados a playas atlánticas escondidas. El capitán Matt habla inglés y tiene excelentes valoraciones.','partner.latoja.desc':'Una experiencia entrañable en barco mejillonero — crucero por los parques de bateas de O Grove con mejillones y vino local ilimitados.','partner.cruceiros.desc':'Una operación de catamarán con más de 1.600 reseñas — la excursión en barco más popular de la provincia.','partner.monteros.desc':'Una asociación de montería gallega que organiza batidas de caza mayor en los bosques de robles y castaños del interior de Ourense.','partner.poio.desc':'Un paseo costero fácil de 4,9 km a lo largo de la Ría de Pontevedra, pasando por molinos de agua y el primer parque de ostricultura de la península ibérica.','partner.mountainpics.desc':'Pablo guía extraordinarias expediciones de senderismo y aventura por toda Galicia.','partner.sendeiro.desc':'Ruta circular de 8–9 km siguiendo el río Verdugo a través de bosques de robles — la primera ruta interior de España en obtener la certificación Sendeiro Azul.','partner.marin.desc':'Una espectacular ruta de 11 km que une cinco playas Bandera Azul con bosque y petroglifos de la Edad del Bronce.','partner.barosa.desc':'Un corto pero encantador paseo circular por un parque fluvial protegido con diecisiete molinos históricos y una cascada de 30 metros.','partner.sanxenxo.desc':'Un camino costero de 8,6 km que recorre paseos marítimos de acantilados, sistemas dunares y frentes marítimos de pueblos pesqueros.','partner.segade.desc':'Un paseo fluvial hasta la espectacular Fervenza de Segade — una cascada de 30 metros con pozas naturales profundas, perfectas para bañarse en verano.','partner.cabudra.desc':'Ruta circular de 11,3 km por una reserva Natura 2000 en Cabo Udra — espectacular cabo atlántico y hábitats diversos.','partner.appalaosa.desc':'Paseos a caballo por el campo gallego para todos los niveles. Cholo y su equipo son conocidos por su calidez y sus caballos bien cuidados.','partner.ocasal.desc':'Equitación natural, terapia ecuestre, paseos y animales de granja — excelente para retiros de mindfulness.','partner.rabadeira.desc':'La experiencia ecuestre definitiva — el Camino de Santiago a caballo, un viaje de varios días único en la vida.','partner.senorans.desc':'Una de las joyas de las Rías Baixas — una histórica finca-bodega con guías angloparlantes y extraordinario Albariño.','partner.lantano.desc':'Una bodega familiar boutique con viñedos de Albariño de gran importancia histórica. Ambiente muy personal y artesanal.','partner.marefrades.desc':'Un productor de reconocimiento internacional con vistas panorámicas al estuario. Visitas guiadas en inglés citadas por Decanter.','partner.vionta.desc':'Una bodega en lo alto de una colina con vistas panorámicas espectaculares sobre las Rías. La guía Ursula lidera visitas universalmente elogiadas.','partner.pazobaioon.desc':'Una histórica bodega-pazo con terrenos impresionantes. La guía Eugenia da vida a esta excepcional finca de Albariño.','partner.granbazan.desc':'Una de las experiencias de vino mejor valoradas de la región — una finca de estilo château arquitectónicamente impresionante con 548 reseñas.','partner.martincodax.desc':'Uno de los productores más icónicos de las Rías Baixas. Visitas en excelente inglés con maridaje de marisco.','partner.silvia.desc':'Silvia está especializada en bodas de destino y tiene experiencia coordinando parejas internacionales de forma remota. Metódica, cálida y universalmente elogiada.','partner.ainara.desc':'Ainara crea celebraciones únicas, llenas de historia y con una atención al detalle extraordinaria. Un sueño para los fotógrafos.',
+    'partner.ulla.desc':'Uno de los grandes ríos salmoneros de Galicia pasa prácticamente a las puertas de la finca. Cinco cotos — Ximonde, Santeles, Sinde, Pontevea y Couso — están a solo 4–12 km. La temporada de salmón y reo es de mayo a julio.','partner.verdugo.desc':'Dos ríos se unen en la espectacular Poza das Bestas bajo un puente colgante histórico.','partner.pescaturismo.desc':'Experiencias de marisqueo con las célebres mariscadoras de Cambados.','partner.escaparia.desc':'Chárteres privados a playas atlánticas escondidas. El capitán Matt habla inglés y tiene excelentes valoraciones.','partner.latoja.desc':'Una experiencia entrañable en barco mejillonero — crucero por los parques de bateas de O Grove con mejillones y vino local ilimitados.','partner.cruceiros.desc':'Una operación de catamarán con más de 1.600 reseñas — la excursión en barco más popular de la provincia.','partner.monteros.desc':'Una asociación de montería gallega que organiza batidas de caza mayor en los bosques de robles y castaños del interior de Ourense.','partner.poio.desc':'Un paseo costero fácil de 4,9 km a lo largo de la Ría de Pontevedra, pasando por molinos de agua y el primer parque de ostricultura de la península ibérica.','partner.rutasalmon.desc':'A Estrada\'s legendary annual MTB circuit — now in its 26th year, run by BikEstrada club. The 40 km loop starts from the town, passes the salmon beats at Ximonde and the iconic hanging bridge, and winds through forest and hill villages with 700 m of elevation. The 2019 GPS track is available on Wikiloc and rideable year-round.','partner.gundian.desc':'A road cycling route from Riobó (4 km) climbing to the Iglesia de Santa María Magdalena and the spectacular Mirador de Gundián — a viewpoint directly over the dramatic Río Ulla gorge and its iconic stone railway viaduct. Quiet rural roads throughout.','partner.bttsalnes.desc':'Galicia\'s first and most popular official MTB centre with 10 signposted routes for all levels. Bike hire, wash-down, showers and information on site. 37 km from the estate.','partner.rutasalmon.desc':'El legendario circuito anual de BTT de A Estrada — ya en su 26ª edición, organizado por el club BikEstrada. El recorrido circular de 40 km parte del pueblo, pasa por los cotos salmoneros de Ximonde y el icónico puente colgante, y recorre pistas forestales y aldeas gallegas con 700 m de desnivel. El track GPS de 2019 está disponible en Wikiloc.','partner.gundian.desc':'Una ruta de ciclismo de carretera desde Riobó (4 km) que sube a la Iglesia de Santa María Magdalena y el espectacular Mirador de Gundián — un mirador directamente sobre el dramático desfiladero del río Ulla y su icónico viaducto ferroviario de piedra. Carreteras rurales tranquilas en todo el recorrido.','partner.bttsalnes.desc':'El primer y más popular centro BTT oficial de Galicia, con 10 rutas señalizadas para todos los niveles. Alquiler de bicis, zona de lavado, duchas e información turística in situ. A 37 km de la finca.','partner.mountainpics.desc':'Pablo guía extraordinarias expediciones de senderismo y aventura por toda Galicia.','partner.sendeiro.desc':'Ruta circular de 8–9 km siguiendo el río Verdugo a través de bosques de robles — la primera ruta interior de España en obtener la certificación Sendeiro Azul.','partner.marin.desc':'Una espectacular ruta de 11 km que une cinco playas Bandera Azul con bosque y petroglifos de la Edad del Bronce.','partner.barosa.desc':'Un corto pero encantador paseo circular por un parque fluvial protegido con diecisiete molinos históricos y una cascada de 30 metros.','partner.sanxenxo.desc':'Un camino costero de 8,6 km que recorre paseos marítimos de acantilados, sistemas dunares y frentes marítimos de pueblos pesqueros.','partner.golfariz.desc':'A magical 3 km circular trail through restored historic mills signposted in carved stone by a local craftsman. Riparian forest, wooden walkways and beautifully preserved water mills make this one of A Estrada\'s most charming short walks.','partner.callobre.desc':'A short enchanting circular trail (3.7 km) along the Río Curantes to the hidden Fervenza de Callobre — a dramatic 7-metre waterfall set in a valley of ancient mills, granite pools, and riparian woodland.','partner.ferveda.desc':'A beautiful 2.7 km trail through ancient woodland to the Fervenza de Férveda, passing six historic waterwheels and rich Atlantic forest.','partner.toxa.desc':'The highest free-fall waterfall in Galicia — over 70 metres — in a dramatic river gorge. A well-marked 2.5 km path descends through cork and oak forest to the plunge pool. Extendable to a 12 km loop via the medieval Monastery of Carboeiro.','partner.ximondepont.desc':'A beautiful easy riverside walk from Ximonde — one of Galicia\'s great salmon beats — along the Río Ulla through ancient oak woodland to the medieval bridge of Pontevea. Waterfalls, mills, and dramatic river scenery.','partner.arealberres.desc':'A magical 8.7 km riverside walk along the Río Ulla at O Areal de Berres — a unique area filled with hand-carved stone sculptures by local artist José Manuel Gañete. Ancient forest, natural river swimming, and a legendary Midsummer celebration.','partner.xesteiras.desc':'A spectacular 14 km circular trail (PR-G 136) climbing Monte Xesteiras (716 m) through cork oak groves and ancient paths. Summit views span the Rías Baixas, the Ulla estuary, and Santiago de Compostela. Historic chapels, stone formations, and restored water mills throughout.','partner.golfariz.desc':'A magical 3 km circular trail through restored historic mills signposted in carved stone by a local craftsman. Riparian forest, wooden walkways and beautifully preserved water mills make this one of A Estrada\'s most charming short walks.','partner.callobre.desc':'A short enchanting circular trail (3.7 km) along the Río Curantes to the hidden Fervenza de Callobre — a dramatic 7-metre waterfall set in a valley of ancient mills, granite pools, and riparian woodland.','partner.ferveda.desc':'A beautiful 2.7 km trail through ancient woodland to the Fervenza de Férveda, passing six historic waterwheels and rich Atlantic forest.','partner.toxa.desc':'The highest free-fall waterfall in Galicia — over 70 metres — in a dramatic river gorge. A well-marked 2.5 km path descends through cork and oak forest to the plunge pool. Extendable to a 12 km loop via the medieval Monastery of Carboeiro.','partner.golfariz.desc':'Una mágica ruta circular de 3 km por los molinos históricos restaurados de Golfariz, señalizados en piedra tallada por un artesano local. Bosque de ribera, pasarelas de madera y molinos perfectamente conservados.','partner.callobre.desc':'Una corta y encantadora ruta circular (3,7 km) por el río Curantes hasta la Fervenza de Callobre — una dramática cascada de 7 metros en un valle de molinos antiguos y bosque de ribera.','partner.ferveda.desc':'Una hermosa ruta de 2,7 km por bosque atlántico hasta la Fervenza de Férveda, pasando por seis ruedas de agua históricas y rica vegetación autóctona.','partner.toxa.desc':'La cascada más alta de Galicia en caída libre — más de 70 metros — en una dramática garganta fluvial. Un sendero bien señalizado de 2,5 km desciende por bosque de alcornoque y roble hasta la poza. Se puede ampliar a 12 km pasando por el monasterio medieval de Carboeiro.','partner.ximondepont.desc':'Un hermoso paseo fácil desde Ximonde — uno de los grandes cotos salmoneros de Galicia — siguiendo el río Ulla a través de robledales hasta el puente medieval de Pontevea. Cascadas, molinos y paisajes fluviales impresionantes.','partner.arealberres.desc':'Un mágico paseo fluvial de 8,7 km por el río Ulla en el Areal de Berres — un espacio único con esculturas en piedra talladas a mano por el artista local José Manuel Gañete. Bosque de ribera autóctono, baño en el río y una legendaria celebración de San Juan.','partner.xesteiras.desc':'Una espectacular ruta circular de 14 km (PR-G 136) que sube al Monte Xesteiras (716 m) a través de sobreirais y viejos caminos de arrieros. Desde la cima: vistas panorámicas a las Rías Baixas, el estuario del Ulla y Santiago de Compostela. Capillas históricas, formaciones rocosas singulares y molinos restaurados.','partner.segade.desc':'Un paseo fluvial hasta la espectacular Fervenza de Segade — una cascada de 30 metros con pozas naturales profundas, perfectas para bañarse en verano.','partner.cabudra.desc':'Ruta circular de 11,3 km por una reserva Natura 2000 en Cabo Udra — espectacular cabo atlántico y hábitats diversos.','partner.latorre.desc':'The closest equestrian centre to the estate — just 5 km away in A Estrada. Eloy and Óscar lead trail rides and lessons for all levels, with beautifully cared-for horses and a warm family atmosphere.','partner.asverias.desc':'A beautiful centre 13 km from the estate set in idyllic Galician countryside, where horses roam freely in spacious paddocks. Trail rides for all abilities in a spectacular natural setting.','partner.appalaosa.desc':'Paseos a caballo por el campo gallego para todos los niveles. Cholo y su equipo son conocidos por su calidez y sus caballos bien cuidados.','partner.latorre.desc':'El centro ecuestre más cercano a la finca — a solo 5 km en A Estrada. Eloy y Óscar ofrecen rutas y clases para todos los niveles, con caballos muy bien cuidados y un ambiente familiar excepcional.','partner.asverias.desc':'Un precioso centro a 13 km de la finca, en un paisaje gallego idílico donde los caballos campan en libertad en amplias praderas. Rutas para todos los niveles en un entorno natural espectacular.','partner.ocasal.desc':'Equitación natural, terapia ecuestre, paseos y animales de granja — excelente para retiros de mindfulness.','partner.rabadeira.desc':'La experiencia ecuestre definitiva — el Camino de Santiago a caballo, un viaje de varios días único en la vida.','partner.senorans.desc':'Una de las joyas de las Rías Baixas — una histórica finca-bodega con guías angloparlantes y extraordinario Albariño.','partner.lantano.desc':'Una bodega familiar boutique con viñedos de Albariño de gran importancia histórica. Ambiente muy personal y artesanal.','partner.marefrades.desc':'Un productor de reconocimiento internacional con vistas panorámicas al estuario. Visitas guiadas en inglés citadas por Decanter.','partner.vionta.desc':'Una bodega en lo alto de una colina con vistas panorámicas espectaculares sobre las Rías. La guía Ursula lidera visitas universalmente elogiadas.','partner.pazobaioon.desc':'Una histórica bodega-pazo con terrenos impresionantes. La guía Eugenia da vida a esta excepcional finca de Albariño.','partner.granbazan.desc':'Una de las experiencias de vino mejor valoradas de la región — una finca de estilo château arquitectónicamente impresionante con 548 reseñas.','partner.martincodax.desc':'Uno de los productores más icónicos de las Rías Baixas. Visitas en excelente inglés con maridaje de marisco.','partner.silvia.desc':'Silvia está especializada en bodas de destino y tiene experiencia coordinando parejas internacionales de forma remota. Metódica, cálida y universalmente elogiada.','partner.ainara.desc':'Ainara crea celebraciones únicas, llenas de historia y con una atención al detalle extraordinaria. Un sueño para los fotógrafos.','partner.pazodeoca.desc':'El "Versalles gallego" — una finca barroca con ocho hectáreas de jardines extraordinarios, cursos de agua en granito y camelias centenarias, propiedad de la Fundación Casa Ducal de Medinaceli. Abierto todo el año. Un complemento natural para cualquier boda o estancia de celebración en el Pazo.',
   }
 };
 
@@ -844,8 +913,8 @@ let activeMarkers = [], activeCard = null, currentFilter = 'all';
 function applyFilter(f, scrollToMap) {
   currentFilter = f;
   const headingCfg = {
-    en: { all:'Our Curated <em>Experiences</em>', cats:{ fishing:'Fishing and Game', hiking:'Hiking', horseback:'Horseback', wine:'Wine', events:'Events' }, noSuffix:{events:true} },
-    es: { all:'Nuestras Experiencias <em>Seleccionadas</em>', cats:{ fishing:'Pesca y Caza', hiking:'Senderismo', horseback:'Equitación', wine:'Vino', events:'Eventos' }, noSuffix:{events:true} }
+    en: { all:'Our Curated <em>Experiences</em>', cats:{ fishing:'Fishing and Game', hiking:'Hiking & Cycling', horseback:'Horseback', wine:'Wine', events:'Events' }, noSuffix:{events:true} },
+    es: { all:'Nuestras Experiencias <em>Seleccionadas</em>', cats:{ fishing:'Pesca y Caza', hiking:'Senderismo y Ciclismo', horseback:'Equitación', wine:'Vino', events:'Eventos' }, noSuffix:{events:true} }
   };
   const cfg = headingCfg[currentLang] || headingCfg.en;
   const label = cfg.cats[f];
@@ -911,7 +980,7 @@ const map = L.map('map', {
   touchZoom: false,
   boxZoom: false,
   attributionControl: false,
-}).setView([42.46, -8.72], 10);
+}).setView([42.738927, -8.401997], 10);
 
 const PanControl = L.Control.extend({
   options: { position: 'topright' },
@@ -1086,13 +1155,4 @@ if (expCarousel) {
 /* Leaflet resize observer */
 const mapPanel = document.querySelector('.map-panel');
 if (mapPanel && typeof map !== 'undefined') {
-  const mapSizeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { setTimeout(() => map.invalidateSize(), 100); setTimeout(() => map.invalidateSize(), 400); }
-    });
-  }, { threshold:0.1 });
-  mapSizeObserver.observe(mapPanel);
-}
-</script>
-</body>
-</html>
+  const mapSizeObserver = new IntersectionObserver
