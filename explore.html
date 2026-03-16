@@ -720,7 +720,7 @@ footer p{width:100%;text-align:right;}
 </p>
 </footer>
 <!-- ── SCRIPTS ── -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const PROPERTY = { lat: 42.738927, lng: -8.401997, name: 'Lugar a Mota · The Pazo', cat: 'property' };
 const PARTNERS = [
   { slug:'rio-ulla',        lat:42.7230, lng:-8.4510, name:'Río Ulla · Cotos de Salmón',            cat:'fishing',   subcatLabel:'🎣 River',        dist:'~4 km',   phone:'',              rating:'🎣 Salmon · Reo' },
@@ -1155,4 +1155,13 @@ if (expCarousel) {
 /* Leaflet resize observer */
 const mapPanel = document.querySelector('.map-panel');
 if (mapPanel && typeof map !== 'undefined') {
-  const mapSizeObserver = new IntersectionObserver
+  const mapSizeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { setTimeout(() => map.invalidateSize(), 100); setTimeout(() => map.invalidateSize(), 400); }
+    });
+  }, { threshold:0.1 });
+  mapSizeObserver.observe(mapPanel);
+}
+</script>
+</body>
+</html>
