@@ -689,7 +689,11 @@ if (galleryGrid && galleryDots.length) {
     const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth + 3 || 1;
     const current = Math.min(Math.round(galleryGrid.scrollLeft / itemW), galleryCount - 1);
     const next = (current + 1) % galleryCount;
-    galleryGrid.scrollTo({ left: next * itemW, behavior: 'smooth' });
+    if (next === 0) {
+      galleryGrid.scrollTo({ left: 0, behavior: 'instant' });
+    } else {
+      galleryGrid.scrollTo({ left: next * itemW, behavior: 'smooth' });
+    }
   }
 
   let galleryAutoTimer = setInterval(galleryAdvance, 3000);
@@ -733,7 +737,11 @@ if (detailCarousel && detailDots.length) {
     const itemW = detailCarousel.querySelector('.detail-image')?.offsetWidth || 1;
     const current = Math.min(Math.round(detailCarousel.scrollLeft / itemW), detailCount - 1);
     const next = (current + 1) % detailCount;
-    detailCarousel.scrollTo({ left: next * itemW, behavior: 'smooth' });
+    if (next === 0) {
+      detailCarousel.scrollTo({ left: 0, behavior: 'instant' });
+    } else {
+      detailCarousel.scrollTo({ left: next * itemW, behavior: 'smooth' });
+    }
   }
 
   let detailAutoTimer = setInterval(detailAdvance, 3000);
