@@ -317,9 +317,9 @@
 <div class="g-item g3"><img loading="lazy" src="images/valley-view.png" alt="View from the estate over the valley"/></div>
 <div class="g-item g4"><img loading="lazy" src="images/heraldic-fountain.jpg" alt="Heraldic stone fountain"/></div>
 <div class="g-item g5"><img loading="lazy" src="images/green-meadow.png" alt="Green meadows and forest hills"/></div>
-<div class="g-item g6"><img loading="lazy" src="images/cellar-barrels.jpg" alt="The Pazo's vaulted stone cellar with oak barrels"/></div>
+<div class="g-item g6"><img loading="lazy" src="images/patio-columns.jpg" alt="The colonnaded patio with patterned stone floor"/></div>
 <div class="g-item g7"><img loading="lazy" src="images/balcony-view.jpg" alt="The stone gallery balcony with valley views beyond"/></div>
-<div class="g-item g8"><img loading="lazy" src="images/patio-columns.jpg" alt="The colonnaded patio with patterned stone floor"/></div>
+<div class="g-item g8"><img loading="lazy" src="images/cellar-barrels.jpg" alt="The Pazo's vaulted stone cellar with oak barrels"/></div>
 </div>
 <div class="gallery-dots" id="galleryDots">
   <div class="gallery-dot active" data-index="0"></div>
@@ -631,7 +631,7 @@ function isMobile() { return window.innerWidth <= 768; }
 
 /* Gallery pagination dots */
 const galleryGrid = document.getElementById('galleryGrid');
-const galleryDots = document.querySelectorAll('.gallery-dot');
+const galleryDots = document.querySelectorAll('#galleryDots .gallery-dot');
 if (galleryGrid && galleryDots.length) {
   const galleryCount = galleryDots.length;
   let galleryUserScrolling = false, galleryPauseTimer;
