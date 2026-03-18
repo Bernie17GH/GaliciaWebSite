@@ -133,10 +133,10 @@
 
   /* -- DETAILS -------------------------------------------- */
   .details { grid-template-columns: 1fr; grid-template-rows: unset; }
-  .detail-text { padding:2.5rem 1.4rem; order:1; grid-row:unset; grid-column:unset; }
+  .detail-text { padding:2.5rem 1.4rem; order:2; grid-row:unset; grid-column:unset; }
   .detail-img-carousel {
     display:flex !important; overflow-x:scroll; scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none; order:2;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none; order:0;
   }
   .detail-img-carousel::-webkit-scrollbar { display:none; }
   .detail-img-carousel .detail-image,
@@ -147,7 +147,7 @@
   }
   .detail-img-dots {
     display:flex; justify-content:center; gap:8px;
-    padding:1rem 0 0.5rem; order:3;
+    padding:1rem 0 0.5rem; order:1;
   }
 
   /* -- SEASONS -------------------------------------------- */
