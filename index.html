@@ -682,15 +682,18 @@ const galleryGrid = document.getElementById('galleryGrid');
 const galleryDots = document.querySelectorAll('.gallery-dot');
 if (galleryGrid && galleryDots.length) {
   const galleryCount = galleryDots.length;
-  let galleryUserScrolling = false, galleryPauseTimer;
+  let galleryUserScrolling = false, galleryPauseTimer, galleryWrapping = false;
 
   function galleryAdvance() {
     if (!isMobile() || galleryUserScrolling) return;
-    const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth + 3 || 1;
+    const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth || 1;
     const current = Math.min(Math.round(galleryGrid.scrollLeft / itemW), galleryCount - 1);
     const next = (current + 1) % galleryCount;
     if (next === 0) {
-      galleryGrid.scrollTo({ left: 0, behavior: 'instant' });
+      galleryWrapping = true;
+      galleryGrid.scrollLeft = 0;
+      galleryDots.forEach((d, i) => d.classList.toggle('active', i === 0));
+      setTimeout(() => { galleryWrapping = false; }, 100);
     } else {
       galleryGrid.scrollTo({ left: next * itemW, behavior: 'smooth' });
     }
@@ -699,8 +702,8 @@ if (galleryGrid && galleryDots.length) {
   let galleryAutoTimer = setInterval(galleryAdvance, 3000);
 
   galleryGrid.addEventListener('scroll', () => {
-    if (!isMobile()) return;
-    const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth + 3 || 1;
+    if (!isMobile() || galleryWrapping) return;
+    const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth || 1;
     const idx = Math.min(Math.round(galleryGrid.scrollLeft / itemW), galleryCount - 1);
     galleryDots.forEach((d, i) => d.classList.toggle('active', i === idx));
   }, { passive: true });
@@ -720,7 +723,7 @@ if (galleryGrid && galleryDots.length) {
 
   galleryDots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth + 3 || 1;
+      const itemW = galleryGrid.querySelector('.g-item')?.offsetWidth || 1;
       galleryGrid.scrollTo({ left: parseInt(dot.dataset.index) * itemW, behavior: 'smooth' });
     });
   });
