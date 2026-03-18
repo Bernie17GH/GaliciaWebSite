@@ -991,12 +991,17 @@ filterBtns.forEach(btn => { btn.addEventListener('click', () => applyFilter(btn.
 
 /* Map icons */
 function makeIcon(cat, isProperty, emojiOverride) {
-  const cfg = CAT_CONFIG[cat]; const s = isProperty ? 44 : 36; const icon = emojiOverride || cfg.emoji;
-  return L.divIcon({ className:'', html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${isProperty?'20px':'16px'};border:${isProperty?'3px solid #b8913a':'2px solid rgba(255,255,255,0.8)'};box-shadow:0 2px 8px rgba(0,0,0,0.35);cursor:pointer;">${icon}</div>`, iconSize:[s,s], iconAnchor:[s/2,s/2], popupAnchor:[0,-(s/2+4)] });
+  const cfg = CAT_CONFIG[cat]; const icon = emojiOverride || cfg.emoji;
+  const mobile = isMobile();
+  const s = isProperty ? (mobile ? Math.round(44*0.75) : 44) : (mobile ? Math.round(36*0.5) : 36);
+  const fs = isProperty ? (mobile ? '15px' : '20px') : (mobile ? '8px' : '16px');
+  const border = isProperty ? `3px solid #b8913a` : `2px solid rgba(255,255,255,0.8)`;
+  return L.divIcon({ className:'', html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${fs};border:${border};box-shadow:0 2px 8px rgba(0,0,0,0.35);cursor:pointer;">${icon}</div>`, iconSize:[s,s], iconAnchor:[s/2,s/2], popupAnchor:[0,-(s/2+4)] });
 }
 function makeIconHighlighted(cat, emojiOverride) {
   const cfg = CAT_CONFIG[cat]; const icon = emojiOverride || cfg.emoji;
-  return L.divIcon({ className:'', html:`<div style="width:52px;height:52px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:22px;border:3px solid #b8913a;box-shadow:0 0 0 4px rgba(184,145,58,0.35),0 3px 12px rgba(0,0,0,0.45);cursor:pointer;">${icon}</div>`, iconSize:[52,52], iconAnchor:[26,26], popupAnchor:[0,-30] });
+  const s = isMobile() ? 26 : 52; const fs = isMobile() ? '11px' : '22px'; const half = s/2;
+  return L.divIcon({ className:'', html:`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${cfg.color};display:flex;align-items:center;justify-content:center;font-size:${fs};border:3px solid #b8913a;box-shadow:0 0 0 4px rgba(184,145,58,0.35),0 3px 12px rgba(0,0,0,0.45);cursor:pointer;">${icon}</div>`, iconSize:[s,s], iconAnchor:[half,half], popupAnchor:[0,-(half+4)] });
 }
 
 /* Map init */
@@ -1082,11 +1087,11 @@ document.querySelectorAll('.partner-card').forEach(card => {
     const entries = markersBySlug[slug];
     if (activeCard === card) {
       card.classList.remove('active');
-      activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false)); marker.closePopup(); });
+      activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false, data.subcatLabel ? [...data.subcatLabel][0] : null)); marker.closePopup(); });
       activeCard = null; activeMarkers = []; resetMapView(); return;
     }
     if (activeCard) activeCard.classList.remove('active');
-    activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false)); });
+    activeMarkers.forEach(({ marker, data }) => { marker.setIcon(makeIcon(data.cat, false, data.subcatLabel ? [...data.subcatLabel][0] : null)); });
     activeCard = card; activeMarkers = entries; card.classList.add('active');
     entries.forEach(({ marker, data }) => { marker.setIcon(makeIconHighlighted(data.cat, data.subcatLabel ? [...data.subcatLabel][0] : null)); });
     const points = [[PROPERTY.lat, PROPERTY.lng], ...entries.map(({ data }) => [data.lat, data.lng])];
